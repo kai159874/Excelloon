@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   devise_for :users, skip: [:passwords], controllers: {
     regstrations: "public/registrations",
-    sessions: 'public/sesstions'
+    sessions: 'public/sessions'
   }
 
   root to: "public/homes#top"
@@ -14,15 +14,15 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'about' => "homes#about"
     get 'mypage' => 'users#mypage', as: "mypage"
-    
+
     resources :users, only: [:edit, :show, :update, :destroy] do
       resource :relationships, only: [:create, :destroy]
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
     end
-    
+
     resources :balloons, only: [:new, :create, :edit, :show, :update, :destroy]
-    
+
     get 'searches/search'
   end
 
