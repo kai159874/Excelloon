@@ -1,12 +1,12 @@
-<div class="container-fulid">
+<header class="container-fulid header-bg">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 text-center">
       <%= link_to "about", about_path %>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 text-center">
       <%= link_to "top-image", root_path %>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 text-center">
       <% if admin_signed_in? %>
           <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "col-3 col-xl-2 btn header-btn mb-2" %>
       <% elsif user_signed_in? %>
@@ -17,4 +17,4 @@
       <% end %>
     </div>
   </div>
-</div>
+</header>

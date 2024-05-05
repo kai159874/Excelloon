@@ -8,7 +8,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string  :email,               null: false, default: ""
       t.string  :encrypted_password,  null: false, default: ""
       t.boolean :is_active,           null: false, default: "true"
-      t.string   :public_uid
+      t.string  :public_uid
+
+
 
 
       ## Recoverable
@@ -42,7 +44,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
+    add_index :users, :public_uid, unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end
+
 end

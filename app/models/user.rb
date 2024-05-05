@@ -4,7 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   # IDランダム生成
-  generate_public_uid
+  generate_public_uid column: :public_uid
+
+  def to_param
+    public_uid
+  end
 
   has_one_attached :profile_image
 
