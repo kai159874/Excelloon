@@ -1,53 +1,53 @@
 <h2>新しいバルーンを飛ばそう！</h2>
 
-<%= form_with url: balloons_path, method: :post, local: true do |f| %>
-<%= f.label :color_status, "バルーンの色を選んでください" %></br>
-<div class="container">
-  <dix class="row">
-    <div class="color_form">
-      <%= f.radio_button :color_status, :white %>
-      <%= f.label :color_status_white, class: "white"%>
-      <%= f.radio_button :color_status, :black %>
-      <%= f.label :color_status_black, class: "black"%>
-      <%= f.radio_button :color_status, :red %>
-      <%= f.label :color_status_red, class: "red"%>
-      <%= f.radio_button :color_status, :orange %>
-      <%= f.label :color_status_orange, class: "orange"%>
-      <%= f.radio_button :color_status, :yellow %>
-      <%= f.label :color_status_yellow, class: "yellow"%>
-      <%= f.radio_button :color_status, :grass %>
-      <%= f.label :color_status_grass, class: "grass"%>
-      <%= f.radio_button :color_status, :green %>
-      <%= f.label :color_status_green, class: "green"%>
-      <%= f.radio_button :color_status, :water %>
-      <%= f.label :color_status_water, class: "water"%>
-      <%= f.radio_button :color_status, :blue %>
-      <%= f.label :color_status_blue, class: "blue"%>
-      <%= f.radio_button :color_status, :wisteria %>
-      <%= f.label :color_status_wisteria, class: "wisteria"%>
-      <%= f.radio_button :color_status, :purple %>
-      <%= f.label :color_status_purple, class: "purple"%>
-      <%= f.radio_button :color_status, :pink %>
-      <%= f.label :color_status_pink, class: "pink"%>
+<%= form_with model: @balloon, local: true do |f| %>
+  <div class="container">
+    <%= f.label :color_status, "バルーンの色を選んでください" %></br>
+    <dix class="row">
+      <div class="color_form">
+        <%= f.radio_button :color_status, :white %>
+        <%= f.label :color_status_white, class: "white"%>
+        <%= f.radio_button :color_status, :black %>
+        <%= f.label :color_status_black, class: "black"%>
+        <%= f.radio_button :color_status, :red %>
+        <%= f.label :color_status_red, class: "red"%>
+        <%= f.radio_button :color_status, :orange %>
+        <%= f.label :color_status_orange, class: "orange"%>
+        <%= f.radio_button :color_status, :yellow %>
+        <%= f.label :color_status_yellow, class: "yellow"%>
+        <%= f.radio_button :color_status, :grass %>
+        <%= f.label :color_status_grass, class: "grass"%>
+        <%= f.radio_button :color_status, :green %>
+        <%= f.label :color_status_green, class: "green"%>
+        <%= f.radio_button :color_status, :water %>
+        <%= f.label :color_status_water, class: "water"%>
+        <%= f.radio_button :color_status, :blue %>
+        <%= f.label :color_status_blue, class: "blue"%>
+        <%= f.radio_button :color_status, :wisteria %>
+        <%= f.label :color_status_wisteria, class: "wisteria"%>
+        <%= f.radio_button :color_status, :purple %>
+        <%= f.label :color_status_purple, class: "purple"%>
+        <%= f.radio_button :color_status, :pink %>
+        <%= f.label :color_status_pink, class: "pink"%>
+      </div>
+    </dix>
+
+    <div class="row">
+      <%= f.text_area :content, placeholder: "今日頑張ったことを詰め込もう！", size: "60x5", class: "form text_field_color" %>
     </div>
-  </dix>
 
-  <div class="row">
-    <%= f.text_area :content, placeholder: "今日頑張ったことを詰め込もう！", size: "60x5", class: "form text_field_color" %>
-  </div>
+    <!--画像アイコンつける-->
+    <div class="row">
+      <%= f.file_field :balloon_image, id: "file-input" %>
+    </div>
+    <!--プレビュー-->
+    <div id="image-preview"></div>
 
-  <!--画像アイコンつける-->
-  <div class="row">
-    <%= f.file_field :balloon_image, id: "file-input" %>
-  </div>
-  <!--プレビュー-->
-  <div id="image-preview"></div>
-
-  <div class="row">
-    <div class="col-sm-7 col-md-4">
-      <%= f.submit "飛ばす", class: "btn btn-block btn-success" %>
+    <div class="row">
+      <div class="col-sm-7 col-md-4">
+        <%= f.submit "飛ばす", class: "btn btn-block btn-success" %>
+      </div>
     </div>
   </div>
-</div>
 
 <% end %>

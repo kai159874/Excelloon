@@ -1,2 +1,7 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<% @balloons.each do |balloon| %>
+  <%= balloon.content %>
+  <%= balloon.color_status %>
+
+  <%= image_tag balloon.balloon_image if balloon.balloon_image.attached? %>
+
+<% end %>
