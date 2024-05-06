@@ -119,3 +119,10 @@ input[type="radio"]:checked + label{
   border: 6px solid #FFCCEC;
   }
 }
+
+// 画像プレビュー
+
+.image-preview{
+  width: 300px;
+  object-fit: cover;
+}

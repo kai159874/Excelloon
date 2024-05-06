@@ -35,9 +35,14 @@
   <div class="row">
     <%= f.text_area :content, placeholder: "今日頑張ったことを詰め込もう！", size: "60x5", class: "form text_field_color" %>
   </div>
+
+  <!--画像アイコンつける-->
   <div class="row">
     <%= f.file_field :balloon_image, id: "file-input" %>
   </div>
+  <!--プレビュー-->
+  <div id="image-preview"></div>
+
   <div class="row">
     <div class="col-sm-7 col-md-4">
       <%= f.submit "飛ばす", class: "btn btn-block btn-success" %>
@@ -46,15 +51,3 @@
 </div>
 
 <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
