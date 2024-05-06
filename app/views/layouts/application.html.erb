@@ -12,12 +12,19 @@
   </head>
 
   <body>
-    <div class="container-fluid bg-dark">
+    <div class="container-fluid bg-white">
       <%= render "layouts/header" %>
     </div>
+    
+    <!--フラッシュメッセージ-->
+    <div class="text-center">
+      <%= render 'shared/flash_message' %>
+    </div>
+    
     <div class="container">
       <%= yield %>
     </div>
+    
     <div class="container-fluid">
       <%= render "layouts/footer" %>
     </div>

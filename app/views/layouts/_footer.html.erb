@@ -1,19 +1,18 @@
 <footer class="footer-bg fixed-bottom bg-dark">
-  <div class="row">
+  <div class="d-flex justify-content-between">
     <div class="col-md-4 text-center">
-      <%= link_to "about", about_path %>
+      <%= link_to "ID検索", about_path %>
     </div>
     <div class="col-md-4 text-center">
-      <%= link_to "top-image", root_path %>
+      <%= link_to "投稿", root_path %>
     </div>
     <div class="col-md-4 text-center">
       <% if admin_signed_in? %>
         <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "col-3 col-xl-2 btn header-btn mb-2" %>
       <% elsif user_signed_in? %>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn header-btn" %>
+        <%= link_to 'マイページ', destroy_user_session_path, method: :delete, class: "" %>
       <% else %>
-        <%= link_to '新規登録', new_user_registration_path, class: "btn header-btn" %>
-        <%= link_to 'ログイン', new_user_session_path, class: "btn header-btn" %>
+        <%= link_to '新規登録', new_user_registration_path, class: "" %>
       <% end %>
     </div>
   </div>

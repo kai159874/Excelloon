@@ -1,2 +1,6 @@
-<h1>Public::Balloons#new</h1>
-<p>Find me in app/views/public/balloons/new.html.erb</p>
+<h2>新しいバルーンを飛ばす</h2>
+
+<%= form_with model: [:user, @balloon ], local: true do |f| %>
+
+<%= f.form :content, placeholder: "今日頑張ったことは？" %>
+<%= f.radio_button :color_status, 
