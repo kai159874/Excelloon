@@ -1,1 +1,40 @@
 @use '~bootstrap/scss/bootstrap';
+
+input[type=radio] {
+  display: none; /* ラジオボタンを非表示にする */
+}
+
+.color_form label{
+  height: 32px;
+  width: 32px;
+  border: 1px solid black;
+  line-height: 28px;
+  display: block;
+  float: left;
+  text-align: center;
+  margin: 4px;
+
+  &.white{
+  background: white;
+  color: #000000;
+  }
+
+  &.black{
+  background: black;
+  color: #ffffff;
+  }
+
+}
+
+
+input[type="radio"]:checked + label{
+  &.white{
+  border: 4px solid black;
+  color: #ffffff;
+  }
+  &.black{
+  border: 4px solid white;
+  color: #000000;
+  }
+
+}

@@ -1,6 +1,52 @@
-<h2>新しいバルーンを飛ばす</h2>
+<h2>新しいバルーンを飛ばそう！</h2>
 
-<%= form_with model: [:user, @balloon ], local: true do |f| %>
+<%= form_with url: balloons_path, method: :post, local: true do |f| %>
+<%= f.label :color_status, "バルーンの色を選んでください" %></br>
+<div class="col-mid-6">
+  <div class="color_form">
+    <%= f.radio_button :color_status, :white %>
+    <%= f.label :color_status_white, "◆" , class: "white"%>
+    <%= f.radio_button :color_status, :black %>
+    <%= f.label :color_status_black, "◆" , class: "black"%>
+    <%= f.radio_button :color_status, :red %>
+    <%= f.label :color_status_red, "◆" , class: "red"%>
+    <%= f.radio_button :color_status, :orange %>
+    <%= f.label :color_status_orange, "◆" , class: "orange"%>
+    <%= f.radio_button :color_status, :yellow %>
+    <%= f.label :color_status_yellow, "◆" , class: "yellow"%>
+    <%= f.radio_button :color_status, :grass %>
+    <%= f.label :color_status_grass, "◆" , class: "grass"%>
+    <%= f.radio_button :color_status, :green %>
+    <%= f.label :color_status_green, "◆" , class: "green"%>
+    <%= f.radio_button :color_status, :water %>
+    <%= f.label :color_status_water, "◆" , class: "water"%>
+    <%= f.radio_button :color_status, :blue %>
+    <%= f.label :color_status_blue, "◆" , class: "blue"%>
+    <%= f.radio_button :color_status, :wisteria %>
+    <%= f.label :color_status_wistaria, "◆" , class: "wistaria"%>
+    <%= f.radio_button :color_status, :purple %>
+    <%= f.label :color_status_purple, "◆" , class: "purple"%>
+    <%= f.radio_button :color_status, :pink %>
+    <%= f.label :color_status_pink, "◆" , class: "pink"%>
+  </div>
 
-<%= f.form :content, placeholder: "今日頑張ったことは？" %>
-<%= f.radio_button :color_status, 
+  <br>
+
+  <%= f.text_field :content, placeholder: "今日頑張ったことは？", class: "text_field_color" %><br>
+
+  <%= f.submit "飛ばす" %>
+</div>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+

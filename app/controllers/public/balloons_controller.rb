@@ -30,9 +30,9 @@ class Public::BalloonsController < ApplicationController
   
   private
   
-  def balloon.params
-    params.requier(:balloon).permit(:content, :color_status, :user_id)
-  end
+  # def balloon.params
+  #   params.requier(:balloon).permit(:content, :color_status, :user_id)
+  # end
   
   def ensure_balloon
     @balloon = Balloon.find(params[:id])
