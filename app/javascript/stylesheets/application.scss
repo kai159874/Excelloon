@@ -1,5 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
 
+// カラー選択ボタン
+
 input[type=radio] {
   display: none; /* ラジオボタンを非表示にする */
 }
@@ -7,34 +9,113 @@ input[type=radio] {
 .color_form label{
   height: 32px;
   width: 32px;
-  border: 1px solid black;
+  border: 2px solid black;
   line-height: 28px;
   display: block;
   float: left;
   text-align: center;
   margin: 4px;
+  font-size: 0;
 
   &.white{
   background: white;
-  color: #000000;
   }
 
   &.black{
   background: black;
-  color: #ffffff;
   }
 
+  &.red{
+  background: #CC2929;
+  }
+
+  &.orange{
+  background: #CC7A29;
+  }
+
+  &.yellow{
+  background: #CCCC29;
+  }
+
+  &.grass{
+  background: #7ACC29;
+  }
+
+  &.green{
+  background: #29CC29;
+  }
+
+  &.water{
+  background: #29CCCC;
+  }
+
+  &.blue{
+  background: #297ACC;
+  }
+
+  &.wisteria{
+  background: #2929CC;
+  }
+
+  &.purple{
+  background: #7A29CC;
+  }
+
+  &.pink{
+  background: #FF33B4;
+  }
 }
 
+// カラー選択時
 
 input[type="radio"]:checked + label{
   &.white{
-  border: 4px solid black;
+  border: 6px solid #AAAAAA;
   color: #ffffff;
   }
+
   &.black{
-  border: 4px solid white;
+  border: 6px solid #888888;
   color: #000000;
   }
 
+  &.red{
+  border: 6px solid #CCA3A3;
+  }
+
+  &.orange{
+  border: 6px solid #CCB8A3;
+  }
+
+  &.yellow{
+  border: 6px solid #CCCCA3;
+  }
+
+  &.grass{
+  border: 6px solid #B8CCA3;
+  }
+
+  &.green{
+  border: 6px solid #A3CCA3;
+  }
+
+  &.water{
+  border: 6px solid #A3CCCC;
+  }
+
+  &.blue{
+  border: 6px solid #A3B8CC;
+  }
+
+  &.wisteria{
+  border: 6px solid #A3A3CC;
+  }
+
+  &.purple{
+  border: 6px solid #B8A3CC;
+  }
+
+  &.pink{
+  border: 6px solid #FFCCEC;
+  }
 }
