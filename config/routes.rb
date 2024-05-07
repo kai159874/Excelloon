@@ -14,8 +14,12 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'about' => "homes#about"
     get 'mypage' => 'users#mypage', as: "mypage"
+    get 'mypage/edit' => 'users#edit', as: "mypage_edit"
+    patch 'mypage' => 'users#update'
+    get 'unsubscribe' => 'users#unsubscribe', as: "unsubscribe"
+    patch 'withdrow' => 'users#withdrow', as: "withdrow"
 
-    resources :users, only: [:edit, :show, :update, :destroy] do
+    resources :users, only: [:show] do
       resource :relationships, only: [:create, :destroy]
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
@@ -29,7 +33,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
     resources :users, only: [:index, :show, :edit, :update]
-    resources :balloons, only: [:index, :show, :edit, :destroy]
+    resources :balloons, only: [:index, :show, :destroy]
   end
 
 end
