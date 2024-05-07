@@ -1,0 +1,17 @@
+<article class='d-flex flex-column text-center'>
+  <div class='mx-auto'>
+    <h2>退会しますか？</h2>
+    <p>※退会すると、同じメールアドレスでのログインができなくなります</p>
+
+    <div class="row">
+      <div class="col-6">
+        <%= link_to "戻る", mypage_path, class: "btn border" %>
+      </div>
+
+      <!--退会処理まだ-->
+      <div class="col-6">
+        <%= link_to "退会する", class: "btn border", data: { confirm: "退会してもよろしいですか？" } %>
+      </div>
+    </div>
+  </div>
+</article>
