@@ -1,7 +1,8 @@
 <% @balloons.each do |balloon| %>
-  <%= balloon.content %>
-  <%= balloon.color_status %>
+  <%= link_to balloon_path(balloon) do %>
+    <%= balloon.content %>
+    <%= balloon.color_status %>
 
-  <%= image_tag balloon.balloon_image if balloon.balloon_image.attached? %>
-
+    <%= image_tag balloon.balloon_image if balloon.balloon_image.attached? %>
+  <% end %>
 <% end %>

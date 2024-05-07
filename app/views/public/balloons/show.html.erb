@@ -1,2 +1,7 @@
-<h1>Public::Balloons#show</h1>
-<p>Find me in app/views/public/balloons/show.html.erb</p>
+
+<%= @balloon.content %>
+<%= @balloon.color_status %>
+
+<%= image_tag @balloon.balloon_image if @balloon.balloon_image.attached? %>
+
+<%= link_to "バルーンを削除する", balloon_path(@balloon), method: :delete, class: "btn border", local: true %>

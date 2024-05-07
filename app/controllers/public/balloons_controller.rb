@@ -1,5 +1,5 @@
 class Public::BalloonsController < ApplicationController
-  before_action :ensure_balloon, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_balloon, only: [:show, :destroy]
 
   def new
     @balloon = Balloon.new
@@ -18,15 +18,8 @@ class Public::BalloonsController < ApplicationController
   def show
   end
 
-  def edit
-  end
-
-  def update
-    @balloon.update(balloon_params) ? (redirect_to balloon_path(@balloon)) : (render :edit)
-  end
-
   def destroy
-    @balloon.destroy ? (redirect_to balloons_path) : (render :edit)
+    @balloon.destroy ? (redirect_to root_path) : (render :edit)
   end
 
   private
