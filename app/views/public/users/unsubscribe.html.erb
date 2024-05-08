@@ -8,9 +8,8 @@
         <%= link_to "戻る", mypage_path, class: "btn border" %>
       </div>
 
-      <!--退会処理まだ-->
       <div class="col-6">
-        <%= link_to "退会する", class: "btn border", data: { confirm: "退会してもよろしいですか？" } %>
+        <%= link_to "退会する", withdrow_path, method: :patch, class: "btn border", data: { confirm: "退会してもよろしいですか？" } %>
       </div>
     </div>
   </div>
