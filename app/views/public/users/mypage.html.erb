@@ -1,0 +1,36 @@
+<article class="d-flex flex-column text-center">
+  <div class="profile-image">
+    <%= image_tag @user.get_profile_image, size: "160x160", class: "rounded-circle" %>
+  </div>
+  <div class="profile-name">
+    <%= @user.name %>
+  </div>
+  <table class="profile-infomation">
+    <tr>
+      <th>
+        バルーン数
+      </th>
+      <th>
+        フォロー
+      </th>
+      <th>
+        フォロワー
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <%= @user.balloons.count %>
+      </td>
+      <td>
+        <%= link_to @user.followings.count, user_followings_path(@user) %>
+      </td>
+      <td>
+        <%= link_to @user.followers.count, user_followers_path(@user) %>
+      </td>
+    </tr>
+  </table>
+  <div>
+    <%= link_to "プロフィール編集", mypage_edit_path, class: "btn border" %>
+  </div>
+
+</article>

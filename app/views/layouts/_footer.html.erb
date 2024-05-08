@@ -1,0 +1,19 @@
+<footer class="footer-bg fixed-bottom bg-dark">
+  <div class="d-flex justify-content-between">
+    <div class="col-md-4 text-center">
+      <%= link_to "ID検索", about_path %>
+    </div>
+    <div class="col-md-4 text-center">
+      <%= link_to "投稿", new_balloon_path %>
+    </div>
+    <div class="col-md-4 text-center">
+      <% if admin_signed_in? %>
+        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "col-3 col-xl-2 btn header-btn mb-2" %>
+      <% elsif user_signed_in? %>
+        <%= link_to 'マイページ', mypage_path, class: "" %>
+      <% else %>
+        <%= link_to '新規登録', new_user_registration_path, class: "" %>
+      <% end %>
+    </div>
+  </div>
+</footer>

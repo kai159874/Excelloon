@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Excelloon</title>
+    <title>えくせるーん -Excellent Balloon-</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag('favicon.ico') %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container-fluid">
+      <%= render "layouts/header" %>
+    </div>
+
+    <!--フラッシュメッセージ　えらーまだ-->
+    <div class="text-center">
+      <%= render 'public/shared/flash_message' %>
+    </div>
+    <div class="container mb-5">
+      <%= yield %>
+    </div>
+
+    <div class="container-fluid">
+      <%= render "layouts/footer" %>
+    </div>
   </body>
 </html>
