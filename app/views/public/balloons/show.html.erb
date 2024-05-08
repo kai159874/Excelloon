@@ -6,7 +6,9 @@
     </div>
   </div>
   <div>
-    <%= link_to "X", balloon_path(@balloon), method: :delete, class: "btn border", local: true %>
+    <% if @balloon.user_id === current_user.id %>
+      <%= link_to "X", balloon_path(@balloon), method: :delete, class: "btn border", local: true %>
+    <% end %>
   </div>
 </article>
 

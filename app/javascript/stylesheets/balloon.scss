@@ -117,3 +117,75 @@ input[type="radio"]:checked + label{
   border: 6px solid #FFCCEC;
   }
 }
+
+// TOP/SHOW balloon view
+
+.balloon{
+  width: 42%;
+  margin: 32px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+// バルーンカラー設定
+
+.balloon-white{
+  background: #AAAAAA;
+  border: 6px solid #FFFFFF;
+}
+
+.balloon-black{
+  background: #888888;
+  border: 6px solid #000000;
+}
+
+.balloon-red{
+  background: #CCA3A3;
+  border: 6px solid #CC2929;
+}
+
+.balloon-orange{
+  background: #CCB8A3;
+  border: 6px solid #CC7A29;
+}
+
+.balloon-yellow{
+  background: #CCCCA3;
+  border: 6px solid #CCCC29;
+}
+
+.balloon-grass{
+  background: #B8CCA3;
+  border: 6px solid #7ACC29;
+}
+
+.balloon-green{
+  background: #A3CCA3;
+  border: 6px solid #29CC29;
+}
+
+.balloon-water{
+  background: #A3CCCC;
+  border: 6px solid #29CCCC;
+}
+
+.balloon-blue{
+  background: #A3B8CC;
+  border: 6px solid #297ACC;
+}
+
+.balloon-wisteria{
+  background: #A3A3CC;
+  border: 6px solid #2929CC;
+}
+
+.balloon-purple{
+  background: #B8A3CC;
+  border: 6px solid #7A29CC;
+}
+
+.balloon-pink{
+  background: #FFCCEC;
+  border: 6px solid #FF33B4;
+}
+

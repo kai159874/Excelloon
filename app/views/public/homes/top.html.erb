@@ -1,13 +1,11 @@
-<div class="d-flex justify-content-center">
-  <div class="">
-    <% @balloons.each do |balloon| %>
-      <%= link_to balloon_path(balloon) do %>
-      <!--border調整-->
-        <div class="card text-center m-5" style="width:18rem;">
-          <div class="card-header"><%= balloon.content %></div>
-          <%= image_tag balloon.convert_balloon_image("300") if balloon.balloon_image.attached? %>
-        </div>
-      <% end %>
+<div class="d-flex flex-wrap justify-content-between mx-auto">
+  <% @balloons.each do |balloon| %>
+    <%= link_to balloon_path(balloon), class: "balloon" do %>
+    <!--border調整-->
+      <div class="card balloon-<%= balloon.color_status %>">
+        <div class="card-header"><%= balloon.content %></div>
+        <%= image_tag balloon.convert_balloon_image("300") if balloon.balloon_image.attached? %>
+      </div>
     <% end %>
-  </div>
+  <% end %>
 </div>
