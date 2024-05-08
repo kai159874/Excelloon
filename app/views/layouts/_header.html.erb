@@ -1,11 +1,13 @@
 <header class="header-bg">
-  <div class="d-flex justify-content-between">
+  <div class="d-flex align-items-center justify-content-between">
     <div class="col-md-4 text-center">
       <%= link_to "about", about_path %>
     </div>
-    <div class="col-md-4 text-center">
-      <%= link_to "top-image", root_path %>
-    </div>
+    <h1 class="col-md-4 text-center">
+      <%= link_to root_path do %>
+        <%= image_tag "Excelloon.png", size: "50x50" %>
+      <% end %>
+    </h1>
     <div class="col-md-4 text-center">
       <% if admin_signed_in? %>
         <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "col-3 col-xl-2 btn header-btn mb-2" %>

@@ -27,4 +27,9 @@ class Balloon < ApplicationRecord
     validates :color_status
   end
 
+  def convert_balloon_image(size)
+    balloon_image.variant( resize: size ).processed
+  end
+
+
 end

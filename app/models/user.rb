@@ -10,6 +10,8 @@ class User < ApplicationRecord
     public_uid
   end
 
+  validates :name, presence: true
+
   has_one_attached :profile_image
 
   has_many :balloons
