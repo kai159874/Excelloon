@@ -1,11 +1,18 @@
-<div class="d-flex flex-wrap justify-content-between mx-auto">
-  <% @balloons.each do |balloon| %>
-    <%= link_to balloon_path(balloon), class: "balloon" do %>
-    <!--border調整-->
-      <div class="card balloon-<%= balloon.color_status %>">
-        <div class="card-header"><%= balloon.content %></div>
-        <%= image_tag balloon.convert_balloon_image("300") if balloon.balloon_image.attached? %>
-      </div>
-    <% end %>
-  <% end %>
+<% if @balloons.count == 0 %>
+<div class="m-5 text-center">
+  <p>綺麗な青空が広がっていますね</p>
+  <p>バルーンを飛ばしましょう！</p>
 </div>
+<% else %>
+  <div class="d-flex flex-wrap justify-content-between mx-auto">
+    <% @balloons.each do |balloon| %>
+      <%= link_to balloon_path(balloon), class: "balloon" do %>
+      <!--border調整-->
+        <div class="card balloon-<%= balloon.color_status %>">
+          <div class="card-header"><%= balloon.content %></div>
+          <%= image_tag balloon.convert_balloon_image("300") if balloon.balloon_image.attached? %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
