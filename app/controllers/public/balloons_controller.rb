@@ -1,4 +1,5 @@
 class Public::BalloonsController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_balloon, only: [:show, :destroy]
 
   def new
@@ -19,7 +20,12 @@ class Public::BalloonsController < ApplicationController
   end
 
   def destroy
-    @balloon.destroy ? (redirect_to root_path) : (render :edit)
+    if @balloon.destroy
+      flash[:success] = "バルーンを削除しました。"
+      redirect_to root_path
+    else
+      (render :edit)
+    end
   end
 
   private
