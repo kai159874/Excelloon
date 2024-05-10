@@ -1,6 +1,6 @@
 <article class="d-flex flex-column text-center">
   <div class="profile-image">
-    <%= image_tag @user.get_profile_image, size: "160x160", class: "rounded-circle" %>
+    <%= image_tag @user.get_profile_image, size: "160x160", class: "rounded-circle mx-auto my-5" %>
   </div>
   <div class="profile-name">
     <%= @user.name %>
@@ -32,5 +32,22 @@
   <div>
     <%= link_to "プロフィール編集", mypage_edit_path, class: "btn border" %>
   </div>
+
+  <h3>バルーンボックス(仮)</h3>
+  <!--連続投稿日数、バルーンの物理エンジン入れたい-->
+
+  <div class="balloon-layout">
+    <h3>マイバルーン</h3>
+    <% @balloons.each do |balloon| %>
+      <%= link_to balloon_path(balloon), class: "balloon-frame" do %>
+      <!--border調整-->
+        <div class="card balloon balloon-<%= balloon.color_status %>">
+          <div class="balloon-content"><%= balloon.content %></div>
+          <%= image_tag balloon.convert_balloon_image("300"), class: "balloon-image" if balloon.balloon_image.attached? %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
 
 </article>

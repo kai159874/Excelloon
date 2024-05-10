@@ -3,6 +3,7 @@ class Public::UsersController < ApplicationController
   before_action :set_current_user, only: [:mypage, :edit, :update, :withdrow]
 
   def mypage
+    @balloons = @user.balloons.order(id: "DESC")
   end
 
   def edit
