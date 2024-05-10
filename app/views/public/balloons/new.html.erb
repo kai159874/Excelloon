@@ -1,4 +1,5 @@
 <article class="d-flex flex-column justify-content-center text-center">
+  <%= render 'layouts/errors', obj: @balloon %>
   <h2 class="my-3">新しいバルーンを飛ばそう！</h2>
 
   <%= form_with model: @balloon, local: true do |f| %>
