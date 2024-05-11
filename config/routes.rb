@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       get "followers" => "relationships#followers", as: "followers"
     end
 
-    resources :balloons, only: [:new, :create, :edit, :show, :update, :destroy]
+    resources :balloons, only: [:new, :create, :show, :update, :destroy]
 
     get 'searches/search'
   end

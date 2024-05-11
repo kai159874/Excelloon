@@ -1,6 +1,6 @@
 class Public::BalloonsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_balloon, only: [:show, :destroy]
+  before_action :ensure_balloon, only: [:show, :update, :destroy]
 
   def new
     @balloon = Balloon.new
@@ -9,22 +9,33 @@ class Public::BalloonsController < ApplicationController
   def create
     @balloon = current_user.balloons.new(balloon_params)
     if @balloon.save
-      flash[:success] = "バルーンを作りました！"
-      redirect_to root_path
+      flash[:notice] = "バルーンを作りました！"
+      redirect_to balloon_path(@balloon)
     else
       render :new
     end
   end
 
   def show
+    @user = User.find(@balloon.user_id)
+  end
+
+  def update
+    if @balloon.update(balloon_params)
+      flash[:notice] = "バルーンの色を変更しました。"
+      redirect_to balloon_path(@balloon)
+    else
+      flash[:alert] = "色の変更に失敗しました。"
+      render :show
+    end
   end
 
   def destroy
     if @balloon.destroy
-      flash[:success] = "バルーンを削除しました。"
+      flash[:notice] = "バルーンを削除しました。"
       redirect_to root_path
     else
-      (render :edit)
+      render :edit
     end
   end
 
