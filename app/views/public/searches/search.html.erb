@@ -1,2 +1,13 @@
-<h1>Public::Searches#search</h1>
-<p>Find me in app/views/public/searches/search.html.erb</p>
+<article class="layout text-center">
+  <h2>友達検索</h2>
+  <p>友達のIDを入力して検索してください。(完全一致のみ)</p>
+  <div>
+    <%= form_with url: searches_user_search_path, method: :post, local: false do |f| %>
+      <%= f.text_field :keyword, placeholder: " IDを入力 " %>
+      <%= f.submit "ID検索", class: "" %>
+    <% end %>
+  </div>
+
+  <div class="search-result", id="search_result">
+  </div>
+</article>

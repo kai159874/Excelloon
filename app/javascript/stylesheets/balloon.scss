@@ -120,11 +120,6 @@ input[type="radio"]:checked + label{
 
 // TOP/SHOW balloon view
 
-.balloon-layout {
-  display: block;
-  width: 40%;
-  margin: 64px auto;
-}
 
 .balloon-frame {
   position: relative;
@@ -153,9 +148,6 @@ input[type="radio"]:checked + label{
 }
 
 @media (max-width: 992px) {
-  .balloon-layout {
-    width: 95%;
-  }
 
   .balloon{
     margin: 8px;

@@ -4,7 +4,7 @@
     <p>バルーンを飛ばしましょう！</p>
   </div>
 <% else %>
-  <div class="balloon-layout">
+  <div class="layout">
     <% @balloons.each do |balloon| %>
       <%= link_to balloon_path(balloon), class: "balloon-frame" do %>
       <!--border調整-->
