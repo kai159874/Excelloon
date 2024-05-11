@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :balloons, only: [:new, :create, :show, :update, :destroy]
 
     get 'searches/search'
+    post "searches/user_search"
   end
 
   namespace :admin do
