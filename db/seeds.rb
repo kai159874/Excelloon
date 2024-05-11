@@ -52,4 +52,9 @@ Balloon.find_or_create_by!(content: "朝早く起きることが出来た！時�
   balloon.color_status = 8
 end
 
+Sticker.find_or_create_by!(message: "いいね！")
+Sticker.find_or_create_by!(message: "素晴らしい！")
+Sticker.find_or_create_by!(message: "その調子！")
+Sticker.find_or_create_by!(message: "Excellent！")
+
 puts "seedの実行を完了しました"

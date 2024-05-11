@@ -47,6 +47,16 @@
       </div>
     <% end %>
   </div>
+
+
+    <div class="btn border">
+      <%= link_to balloon_balloon_stickers_path(balloon_id: @balloon.id, sticker_id: @sticker4.id), method: :post do %>
+        <%= @sticker4.message %><%= @sticker4_quantity.quantity %>
+      <% end %>
+    </div>
+
+
+
 </article>
 
 

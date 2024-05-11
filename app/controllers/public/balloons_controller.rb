@@ -17,6 +17,15 @@ class Public::BalloonsController < ApplicationController
   end
 
   def show
+    # さすがにクソコードすぎる モデルにメソッド書きたい あとviewの表示方法考える
+    @sticker1 = Sticker.find(1)
+    @sticker2 = Sticker.find(2)
+    @sticker3 = Sticker.find(3)
+    @sticker4 = Sticker.find(4)
+    @sticker1_quantity = BalloonSticker.find_by(balloon_id: @balloon.id, sticker_id: @sticker1.id)
+    @sticker2_quantity = BalloonSticker.find_by(balloon_id: @balloon.id, sticker_id: @sticker2.id)
+    @sticker3_quantity = BalloonSticker.find_by(balloon_id: @balloon.id, sticker_id: @sticker3.id)
+    @sticker4_quantity = BalloonSticker.find_by(balloon_id: @balloon.id, sticker_id: @sticker4.id)
     @user = User.find(@balloon.user_id)
   end
 
