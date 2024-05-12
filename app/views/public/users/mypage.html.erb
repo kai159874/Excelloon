@@ -46,6 +46,7 @@
           <%= image_tag balloon.convert_balloon_image("300"), class: "balloon-image" if balloon.balloon_image.attached? %>
         </div>
       <% end %>
+      <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: balloon, stickers: @stickers %>
     <% end %>
   </div>
 
