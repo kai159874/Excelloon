@@ -18,6 +18,18 @@ body:after {
   z-index: -1;
 }
 
+// ページ幅
+.layout {
+  display: block;
+  width: 50%;
+  margin: 64px auto;
+}
+
+@media (max-width: 992px) {
+  .layout {
+    width: 95%;
+  }
+}
 
 // 画像プレビュー
 

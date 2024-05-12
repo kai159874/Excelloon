@@ -1,0 +1,12 @@
+<% if @result == nil %>
+  <p>ユーザーがいません。</p>
+  <p>IDが正しいか確認してください。</p>
+<% else %>
+  <div class="result-user">
+    <div>
+      <%= result.name %>
+    </div>
+    <!--フォロー申請ボタン設置予定-->
+    <%= link_to "フォロー申請", root_path, class: "mt-3 btn border" %>
+  </div>
+<% end %>

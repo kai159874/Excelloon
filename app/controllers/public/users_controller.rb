@@ -4,6 +4,7 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @balloons = @user.balloons.order(id: "DESC")
+    @stickers = Sticker.all
   end
 
   def edit

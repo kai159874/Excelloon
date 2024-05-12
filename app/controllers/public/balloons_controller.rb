@@ -17,6 +17,7 @@ class Public::BalloonsController < ApplicationController
   end
 
   def show
+    @stickers = Sticker.all
     @user = User.find(@balloon.user_id)
   end
 
