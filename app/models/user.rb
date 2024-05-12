@@ -14,9 +14,9 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  has_many :balloons
-  has_many :favorites
-  has_many :balloon_comments
+  has_many :balloons, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :balloon_comments, dependent: :destroy
 
   # 通報機能
   has_many :active_reports,  class_name: "Report", foreign_key: "reporter_id", dependent: :destroy

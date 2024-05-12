@@ -7,11 +7,12 @@
   <div class="layout">
     <% @balloons.each do |balloon| %>
       <%= link_to balloon_path(balloon), class: "balloon-frame" do %>
-      <!--border調整-->
+      <!--カラー調整-->
         <div class="card balloon balloon-<%= balloon.color_status %>">
           <div class="balloon-content"><%= balloon.content %></div>
           <%= image_tag balloon.convert_balloon_image("300"), class: "balloon-image" if balloon.balloon_image.attached? %>
         </div>
+        <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: balloon, stickers: @stickers %>
       <% end %>
     <% end %>
   </div>

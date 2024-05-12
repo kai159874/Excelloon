@@ -1,8 +1,9 @@
 class Public::HomesController < ApplicationController
+  helper Public::BalloonStickersHelper
   def top
     # 有効ユーザーの取得？
     @balloons = Balloon.all.order(id: "DESC")
-    @sticker = Sticker.all
+    @stickers = Sticker.all
   end
 
   def about
