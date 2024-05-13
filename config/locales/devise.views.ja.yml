@@ -8,6 +8,13 @@ ja:
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
         name: "ユーザー名"
+      admin:
+        current_password: "現在のパスワード"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"
+        name: "ユーザー名"
     models:
       user: "ユーザ"
   devise:

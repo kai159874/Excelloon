@@ -8,6 +8,10 @@
 
 puts "seedの実行を開始しました"
 
+Admin.find_or_create_by!(email: ENV['ADMIN_ADDRESS']) do |admin|
+  admin.password = "eeeeee"
+end
+
 User.find_or_create_by!(email: "olivia@example.com") do |user|
   user.name = "Olivia"
   user.password = "password"
