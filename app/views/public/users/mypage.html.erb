@@ -5,6 +5,9 @@
   <div class="profile-name">
     <%= @user.name %>
   </div>
+  <div class="profile-id">
+    ID: <%= @user.public_uid %>
+  </div>
   <table class="profile-infomation">
     <tr>
       <th>
@@ -46,6 +49,7 @@
           <%= image_tag balloon.convert_balloon_image("300"), class: "balloon-image" if balloon.balloon_image.attached? %>
         </div>
       <% end %>
+      <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: balloon, stickers: @stickers %>
     <% end %>
   </div>
 

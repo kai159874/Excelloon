@@ -3,19 +3,36 @@
     <div class="col-md-4 text-center">
       <%= link_to "about", about_path %>
     </div>
-    <h1 class="col-md-4">
-      <%= link_to root_path do %>
-        <%= image_tag "Excelloon.png", size: "50x50", class: "mx-auto" %>
-      <% end %>
-    </h1>
-    <div class="col-md-4 text-center">
-      <% if admin_signed_in? %>
-        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "col-3 col-xl-2 btn header-btn mb-2" %>
-      <% elsif user_signed_in? %>
+    <!--admin signed in-->
+    <% if admin_signed_in? %>
+      <h1 class="col-md-4">
+        <%= link_to admin_top_path do %>
+          <%= image_tag "Excelloon.png", size: "50x50", class: "mx-auto" %>
+        <% end %>
+      </h1>
+      <div class="col-md-4 text-center">
+        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "" %>
+      </div>
+    <!--user signed in-->
+    <% elsif user_signed_in? %>
+      <h1 class="col-md-4">
+        <%= link_to root_path do %>
+          <%= image_tag "Excelloon.png", size: "50x50", class: "mx-auto" %>
+        <% end %>
+      </h1>
+      <div class="col-md-4 text-center">
         <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "" %>
-      <% else %>
+      </div>
+    <!--guest-->
+    <% else %>
+      <h1 class="col-md-4">
+        <%= link_to root_path do %>
+          <%= image_tag "Excelloon.png", size: "50x50", class: "mx-auto" %>
+        <% end %>
+      </h1>
+      <div class="col-md-4 text-center">
         <%= link_to 'ログイン', new_user_session_path, class: "" %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </header>

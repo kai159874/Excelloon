@@ -8,6 +8,10 @@
 
 puts "seedの実行を開始しました"
 
+Admin.find_or_create_by!(email: ENV['ADMIN_ADDRESS']) do |admin|
+  admin.password = "eeeeee"
+end
+
 User.find_or_create_by!(email: "olivia@example.com") do |user|
   user.name = "Olivia"
   user.password = "password"
@@ -51,5 +55,10 @@ Balloon.find_or_create_by!(content: "朝早く起きることが出来た！時�
   balloon.user_id = 4
   balloon.color_status = 8
 end
+
+Sticker.find_or_create_by!(message: "いいね！")
+Sticker.find_or_create_by!(message: "素晴らしい！")
+Sticker.find_or_create_by!(message: "その調子！")
+Sticker.find_or_create_by!(message: "Excellent！")
 
 puts "seedの実行を完了しました"

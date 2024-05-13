@@ -4,6 +4,7 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @balloons = @user.balloons.order(id: "DESC")
+    @stickers = Sticker.all
   end
 
   def edit
@@ -11,8 +12,7 @@ class Public::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:success] = "情報を更新しました。"
-      redirect_to mypage_path
+      redirect_to mypage_path, notice: "情報を更新しました。"
     else
       render "edit"
     end
@@ -24,8 +24,7 @@ class Public::UsersController < ApplicationController
   def withdrow
     @user.update(is_active: false)
     reset_session
-    flash[:notice] = "退会しました。"
-    redirect_to root_path
+    redirect_to root_path, notice: "退会しました。"
   end
 
   def show

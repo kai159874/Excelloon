@@ -25,16 +25,18 @@ Rails.application.routes.draw do
       get "followers" => "relationships#followers", as: "followers"
     end
 
-    resources :balloons, only: [:new, :create, :show, :update, :destroy]
-
+    resources :balloons, only: [:new, :create, :show, :update, :destroy] do
+      resource :balloon_stickers, onlu: [:create]
+    end
     get 'searches/search'
     post "searches/user_search"
   end
 
   namespace :admin do
-    get 'homes/top'
-    resources :users, only: [:index, :show, :edit, :update]
-    resources :balloons, only: [:index, :show, :destroy]
+    get 'top' => "homes#top"
+    resources :users, only: [:index, :show, :update]
+    resources :balloons, only: [:show, :destroy]
+    resources :stickers, only: [:index, :edit, :create, :update, :destroy]
   end
 
 end

@@ -1,5 +1,5 @@
 class Sticker < ApplicationRecord
   
-  has_many :balloon_stickers
+  has_many :balloon_stickers, dependent: :destroy
   
 end
