@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2024_05_14_005547) do
   end
 
   create_table "balloon_stickers", force: :cascade do |t|
-    t.integer "sticker", null: false
+    t.integer "sticker_id", null: false
     t.integer "balloon_id", null: false
     t.integer "quantity", null: false
     t.datetime "created_at", precision: 6, null: false
