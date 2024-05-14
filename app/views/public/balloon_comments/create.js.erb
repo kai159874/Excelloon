@@ -1,0 +1,2 @@
+$("#comments-<%= @balloon.id %>").html("<%= j(render 'public/balloon_comments/comments', balloon: @balloon) %>");
+$("#balloon_comment_comment").val("");
