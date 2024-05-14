@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_05_025253) do
+ActiveRecord::Schema.define(version: 2024_05_14_005547) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2024_05_05_025253) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
+    t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -53,11 +53,13 @@ ActiveRecord::Schema.define(version: 2024_05_05_025253) do
   end
 
   create_table "balloon_comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "balloon_id"
+    t.integer "user_id", null: false
+    t.integer "balloon_id", null: false
     t.string "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["balloon_id"], name: "index_balloon_comments_on_balloon_id"
+    t.index ["user_id"], name: "index_balloon_comments_on_user_id"
   end
 
   create_table "balloon_stickers", force: :cascade do |t|
@@ -66,6 +68,8 @@ ActiveRecord::Schema.define(version: 2024_05_05_025253) do
     t.integer "quantity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["balloon_id"], name: "index_balloon_stickers_on_balloon_id"
+    t.index ["sticker_id"], name: "index_balloon_stickers_on_sticker_id"
   end
 
   create_table "balloons", force: :cascade do |t|
@@ -74,6 +78,16 @@ ActiveRecord::Schema.define(version: 2024_05_05_025253) do
     t.integer "color_status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_balloons_on_user_id"
+  end
+
+  create_table "favotites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "balloon_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["balloon_id"], name: "index_favotites_on_balloon_id"
+    t.index ["user_id"], name: "index_favotites_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -115,4 +129,11 @@ ActiveRecord::Schema.define(version: 2024_05_05_025253) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "balloon_comments", "balloons"
+  add_foreign_key "balloon_comments", "users"
+  add_foreign_key "balloon_stickers", "balloons"
+  add_foreign_key "balloon_stickers", "stickers"
+  add_foreign_key "balloons", "users"
+  add_foreign_key "favotites", "balloons"
+  add_foreign_key "favotites", "users"
 end
