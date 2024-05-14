@@ -18,6 +18,7 @@ class Public::BalloonsController < ApplicationController
   def show
     @stickers = Sticker.all
     @user = User.find(@balloon.user_id)
+    @balloon_comment = BalloonComment.new
   end
 
   def update

@@ -1,7 +1,7 @@
 class Balloon < ApplicationRecord
   # has_many :favorites, dependent: :destroy
   # has_many :reports, dependent: :destroy
-  # has_many :balloon_comments, dependent: :destroy
+  has_many :balloon_comments, dependent: :destroy
   has_many :balloon_stickers, dependent: :destroy
 
   has_one_attached :balloon_image
