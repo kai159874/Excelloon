@@ -9,8 +9,7 @@ class Public::BalloonsController < ApplicationController
   def create
     @balloon = current_user.balloons.new(balloon_params)
     if @balloon.save
-      flash[:notice] = "バルーンを作りました！"
-      redirect_to balloon_path(@balloon)
+      redirect_to balloon_path(@balloon), notice: "バルーンを作りました！"
     else
       render :new
     end
@@ -19,25 +18,20 @@ class Public::BalloonsController < ApplicationController
   def show
     @stickers = Sticker.all
     @user = User.find(@balloon.user_id)
+    @balloon_comment = BalloonComment.new
   end
 
   def update
     if @balloon.update(balloon_params)
-      flash[:notice] = "バルーンの色を変更しました。"
-      redirect_to balloon_path(@balloon)
+      redirect_to balloon_path(@balloon), notice: "バルーンの色を変更しました。"
     else
-      flash[:alert] = "色の変更に失敗しました。"
-      render :show
+      render :show, alert: "色の変更に失敗しました。"
     end
   end
 
   def destroy
-    if @balloon.destroy
-      flash[:notice] = "バルーンを削除しました。"
-      redirect_to root_path
-    else
-      render :edit
-    end
+    @balloon.destroy
+    redirect_to root_path, notice: "バルーンを削除しました。"
   end
 
   private

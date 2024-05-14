@@ -1,0 +1,19 @@
+<article class="container text-center">
+  <%= render 'layouts/errors', obj: @sticker %>
+  <h2>ステッカー編集</h2>
+  <div class="col-6 mx-auto my-4">
+    <%= form_with model: @sticker, url: admin_sticker_path(@sticker), method: :patch, local: true do |f| %>
+      <div class="d-flex justify-content-between">
+        <div class="">
+          <%= f.label "褒めステッカー", class: "form-label" %>
+        </div>
+        <div class="">
+          <%= f.text_field :message, class: "form-control" %>
+        </div>
+        <div class="">
+        <%= f.submit "更新", class: "submit" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</article>

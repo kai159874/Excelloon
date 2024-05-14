@@ -50,6 +50,18 @@
 
   <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: @balloon, stickers: @stickers %>
 
+  <!--相互フォローのみに限定する-->
+  <!--見た目調整-->
+  <table id="comments-<%= @balloon.id %>">
+    <%= render "public/balloon_comments/comments", balloon: @balloon %>
+  </table>
+  <div>
+    <%= form_with model: [@balloon, @balloon_comment], local: false do |f| %>
+    <%= f.text_area :comment %>
+    <%= f.submit "comment" %>
+    <% end %>
+  </div>
+
 </article>
 
 

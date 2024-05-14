@@ -1,7 +1,7 @@
 class Balloon < ApplicationRecord
-  has_many :favorites, dependent: :destroy
-  has_many :reports, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  # has_many :favorites, dependent: :destroy
+  # has_many :reports, dependent: :destroy
+  has_many :balloon_comments, dependent: :destroy
   has_many :balloon_stickers, dependent: :destroy
 
   has_one_attached :balloon_image
@@ -30,6 +30,5 @@ class Balloon < ApplicationRecord
   def convert_balloon_image(size)
     balloon_image.variant( resize: size ).processed
   end
-
 
 end

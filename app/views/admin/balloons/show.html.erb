@@ -1,2 +1,13 @@
-<h1>Admin::Balloons#show</h1>
-<p>Find me in app/views/admin/balloons/show.html.erb</p>
+<article class="layout">
+  <div class="balloon-frame">
+    <div class="card balloon balloon-<%= @balloon.color_status %>">
+      <div class="balloon-content"><%= @balloon.content %></div>
+      <%= image_tag @balloon.convert_balloon_image("400"), class: "balloon-image" if @balloon.balloon_image.attached? %>
+    </div>
+    <div class="balloon-created-time">投稿日時: <%= l @balloon.created_at %></div>
+    <div class="balloon-user-id">ID: <%= @user.public_uid %></div>
+    <%= link_to "削除", admin_balloon_path(@balloon), method: :delete, class: "btn balloon-delete border", local: true, data: { confirm: "バルーンを削除しますか？" } %>
+  </div>
+</article>
+
+
