@@ -9,16 +9,23 @@ class Admin::StickersController < ApplicationController
 
   def create
     @sticker = Sticker.new(sticker_params)
-    @sticker.save
-    redirect_to admin_stickers_path, notice: "新規ステッカーを登録しました。"
+    if @sticker.save
+      redirect_to admin_stickers_path, notice: "新規ステッカーを登録しました。"
+    else
+      @stickers = Sticker.all
+      render :index
+    end
   end
 
   def edit
   end
 
   def update
-    @sticker.update(sticker_params)
-    redirect_to admin_stickers_path, notice: "ステッカーを編集しました。"
+    if @sticker.update(sticker_params)
+      redirect_to admin_stickers_path, notice: "ステッカーを編集しました。"
+    else
+      render :edit, alert: "編集に失敗しました。"
+    end
   end
 
   def destroy

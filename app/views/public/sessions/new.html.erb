@@ -1,5 +1,5 @@
 <article class="d-flex flex-column text-center">
-  <h2>Log in</h2>
+  <h2>ログイン</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -26,4 +26,8 @@
   <% end %>
 
   <%= render "public/shared/links" %>
+
+  <div class="m-4">
+    <%= link_to "管理者ログイン", new_admin_session_path %>
+  </div>
 </article>
