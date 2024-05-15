@@ -40,7 +40,13 @@
   <!--連続投稿日数、バルーンの物理エンジン入れたい-->
 
   <div class="balloon-layout">
-    <h3>マイバルーン</h3>
+    <% if @type == "mine" %>
+      <h3>マイバルーン</h3>
+      <%= link_to "お気に入りバルーン一覧へ", mypage_path(type: "favorite") %>
+    <% else %>
+      <h3>お気に入り</h3>
+      <%= link_to "マイバルーン一覧へ", mypage_path %>
+    <% end %>
     <% @balloons.each do |balloon| %>
       <%= link_to balloon_path(balloon), class: "balloon-frame" do %>
       <!--border調整-->

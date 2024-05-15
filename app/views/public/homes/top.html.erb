@@ -9,6 +9,9 @@
       <%= link_to balloon_path(balloon), class: "balloon-frame" do %>
       <!--カラー調整-->
         <div class="card balloon balloon-<%= balloon.color_status %>">
+          <div id="favorite-btn-<%= balloon.id %>">
+            <%= render "public/favorites/favorite_btn", balloon: balloon %>
+          </div>
           <div class="balloon-content"><%= balloon.content %></div>
           <%= image_tag balloon.convert_balloon_image("300"), class: "balloon-image" if balloon.balloon_image.attached? %>
         </div>

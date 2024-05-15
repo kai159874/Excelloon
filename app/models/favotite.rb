@@ -1,5 +1,0 @@
-class Favotite < ApplicationRecord
-  
-  
-  
-end

@@ -26,8 +26,9 @@ Rails.application.routes.draw do
     end
 
     resources :balloons, only: [:new, :create, :show, :update, :destroy] do
-      resource :balloon_stickers, onlu: [:create]
-      resources :balloon_comments, onlu: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+      resource :balloon_stickers, only: [:create]
+      resources :balloon_comments, only: [:create, :destroy]
     end
     get 'searches/search'
     post "searches/user_search"

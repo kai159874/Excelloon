@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_14_005547) do
+ActiveRecord::Schema.define(version: 2024_05_15_020233) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -80,6 +80,15 @@ ActiveRecord::Schema.define(version: 2024_05_14_005547) do
     t.index ["user_id"], name: "index_balloons_on_user_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "balloon_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["balloon_id"], name: "index_favorites_on_balloon_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "favotites", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "balloon_id", null: false
@@ -132,6 +141,8 @@ ActiveRecord::Schema.define(version: 2024_05_14_005547) do
   add_foreign_key "balloon_comments", "users"
   add_foreign_key "balloon_stickers", "balloons"
   add_foreign_key "balloons", "users"
+  add_foreign_key "favorites", "balloons"
+  add_foreign_key "favorites", "users"
   add_foreign_key "favotites", "balloons"
   add_foreign_key "favotites", "users"
 end
