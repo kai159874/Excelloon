@@ -1,5 +1,5 @@
 class Balloon < ApplicationRecord
-  # has_many :favorites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   # has_many :reports, dependent: :destroy
   has_many :balloon_comments, dependent: :destroy
   has_many :balloon_stickers, dependent: :destroy
@@ -29,6 +29,10 @@ class Balloon < ApplicationRecord
 
   def convert_balloon_image(size)
     balloon_image.variant( resize: size ).processed
+  end
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
 end
