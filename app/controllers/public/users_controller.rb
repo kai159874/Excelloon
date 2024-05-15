@@ -3,8 +3,15 @@ class Public::UsersController < ApplicationController
   before_action :set_current_user, only: [:mypage, :edit, :update, :withdrow]
 
   def mypage
-    @balloons = @user.balloons.order(id: "DESC")
     @stickers = Sticker.all
+    if params[:type] == "favorite"
+      favorites = Favorite.where(user_id: current_user.id).pluck(:balloon_id).reverse
+      @balloons = Balloon.find(favorites)
+      @type = "favorite"
+    else
+      @balloons = @user.balloons.order(id: "DESC")
+      @type = "mine"
+    end
   end
 
   def edit
