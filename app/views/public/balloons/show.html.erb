@@ -61,17 +61,21 @@
 
   <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: @balloon, stickers: @stickers %>
 
-  <!--相互フォローのみに限定する-->
-  <!--見た目調整-->
-  <table id="comments-<%= @balloon.id %>">
-    <%= render "public/balloon_comments/comments", balloon: @balloon %>
-  </table>
-  <div>
-    <%= form_with model: [@balloon, @balloon_comment], local: false do |f| %>
-    <%= f.text_area :comment %>
-    <%= f.submit "comment" %>
+    <% current_user.friends.each do |friend| %>
+      <% if [friend.id, current_user.id].include?(@balloon.user_id) %>
+        <table id="comments-<%= @balloon.id %>">
+          <%= render "public/balloon_comments/comments", balloon: @balloon, friend: friend %>
+        </table>
+        <div>
+          <%= form_with model: [@balloon, @balloon_comment], local: false do |f| %>
+          <%= f.text_area :comment %>
+          <%= f.submit "comment" %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
-  </div>
+
+  <!--見た目調整-->
 
 </article>
 

@@ -6,7 +6,7 @@
     <div>
       <%= result.name %>
     </div>
-    <% if current_user.matchers?(@result) %>
+    <% if current_user.friends?(@result) %>
       <p>すでに友達です！</p>
     <% elsif current_user.following?(@result) %>
       <p>-友達申請中-</p>
