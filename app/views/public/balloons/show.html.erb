@@ -60,7 +60,7 @@
   </div>
 
   <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: @balloon, stickers: @stickers %>
-  
+
   <% if current_user == @user || current_user.friends.include?(@user) %>
     <table id="comments-<%= @balloon.id %>">
       <%= render "public/balloon_comments/comments", balloon: @balloon, user: @user %>
@@ -71,6 +71,8 @@
       <%= f.submit "comment" %>
       <% end %>
     </div>
+  <% else %>
+    <p>---友達になることでコメントをすることができます。---</p>
   <% end %>
 
 
