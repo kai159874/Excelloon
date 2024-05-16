@@ -1,11 +1,23 @@
 class Public::HomesController < ApplicationController
+  before_action :top_authenticate_user
 
   def top
-    # 有効ユーザーの取得？
-    @balloons = Balloon.all.order(id: "DESC")
     @stickers = Sticker.all
+    @balloons = Balloon.all.order(id: "DESC")
+    if params[:type] == "friends"
+      @type = "friends"
+    end
   end
 
   def about
   end
+
+  private
+
+  def top_authenticate_user
+    if params[:type] == "friends" && !user_signed_in?
+      redirect_to root_path
+    end
+  end
+
 end

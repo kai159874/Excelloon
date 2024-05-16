@@ -50,16 +50,16 @@ class User < ApplicationRecord
     followings.include?(user)
   end
   
-  def matchers
+  def friends
     followings & followers
   end
   
-  def matchers?(other_user)
+  def friends?(other_user)
     active_relationships.find_by(followed_id: other_user.id) && passive_relationships.find_by(follower_id: other_user.id)
   end
   
   def follow_request?(user, other_user)
-    !user.matchers?(other_user) && other_user.following?(user)
+    !user.friends?(other_user) && other_user.following?(user)
   end
   
 end
