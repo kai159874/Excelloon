@@ -60,20 +60,20 @@
   </div>
 
   <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: @balloon, stickers: @stickers %>
-
-    <% current_user.friends.each do |friend| %>
-      <% if [friend.id, current_user.id].include?(@balloon.user_id) %>
-        <table id="comments-<%= @balloon.id %>">
-          <%= render "public/balloon_comments/comments", balloon: @balloon, friend: friend %>
-        </table>
-        <div>
-          <%= form_with model: [@balloon, @balloon_comment], local: false do |f| %>
-          <%= f.text_area :comment %>
-          <%= f.submit "comment" %>
-          <% end %>
-        </div>
+  
+  <% if current_user == @user || current_user.friends.include?(@user) %>
+    <table id="comments-<%= @balloon.id %>">
+      <%= render "public/balloon_comments/comments", balloon: @balloon, user: @user %>
+    </table>
+    <div>
+      <%= form_with model: [@balloon, @balloon_comment], local: false do |f| %>
+      <%= f.text_area :comment, placeholder: "相互フォローのみコメントができます。" %>
+      <%= f.submit "comment" %>
       <% end %>
-    <% end %>
+    </div>
+  <% end %>
+
+
 
   <!--見た目調整-->
 
