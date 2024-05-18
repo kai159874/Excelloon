@@ -9,31 +9,7 @@
     <% if @type == "friends" %>
       <h2>友達のバルーン</h2>
       <%= link_to "みんなのバルーン一覧へ", root_path %>
-      <div class="layout">
-        <% @balloons.each do |balloon| %>
-          <% current_user.friends.each do |friend| %>
-            <% if balloon.user_id == friend.id %>
-              <% if user_signed_in? %>
-                <div id="favorite-btn-<%= balloon.id %>">
-                  <%= render "public/favorites/favorite_btn", balloon: balloon %>
-                </div>
-              <% end %>
-              <%= link_to balloon_path(balloon), class: "balloon-frame" do %>
-                <div class="card balloon balloon-<%= balloon.color_status %>">
-                  <div class="balloon-content"><%= balloon.content %></div>
-                  <%= image_tag balloon.convert_balloon_image("300"), class: "balloon-image" if balloon.balloon_image.attached? %>
-                  <% current_user.friends.each do |friend| %>
-                    <% if balloon.user_id == friend.id %>
-                     <div><%= image_tag friend.get_profile_image, size: "60x60", class: "rounded-circle mx-auto" %></div>
-                     <div><%= friend.name %></div>
-                    <% end %>
-                  <% end %>
-                </div>
-                <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: balloon, stickers: @stickers %>
-              <% end %>
-            <% end %>
-          <% end %>
-        <% end %>
+        <%= render "public/balloons/index", balloons: @balloons, stickers: @stickers %>
       </div>
 
     <% else %>
@@ -41,8 +17,9 @@
       <% if user_signed_in? %>
         <%= link_to "友達のバルーン一覧へ", root_path(type: "friends") %>
       <% end %>
-      <%= render "public/balloons/index", balloons: @balloons, stickers: @stickers %>
+          <%= render "public/balloons/index", balloons: @balloons, stickers: @stickers %>
+      </div>
     <% end %>
-
+    
   <% end %>
 </article>
