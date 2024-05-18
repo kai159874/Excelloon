@@ -1,0 +1,6 @@
+<div>
+  <%= form_with model: [balloon, balloon_comment], local: false do |f| %>
+  <%= f.text_area :comment %>
+  <%= f.submit "comment" %>
+  <% end %>
+</div>

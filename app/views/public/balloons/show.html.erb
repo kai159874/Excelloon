@@ -9,6 +9,14 @@
     </div>
     <div class="balloon-created-time">投稿日時: <%= l @balloon.created_at %></div>
     <div class="balloon-user-id">ID: <%= @user.public_uid %></div>
+
+    <% current_user.friends.each do |friend| %>
+      <% if @balloon.user_id == friend.id %>
+       <div><%= image_tag friend.get_profile_image, size: "60x60", class: "rounded-circle" %></div>
+       <div><%= friend.name %></div>
+      <% end %>
+    <% end %>
+
     <% if @balloon.user_id === current_user.id %>
       <%= link_to "X", balloon_path(@balloon), method: :delete, class: "btn balloon-delete border", local: true, data: { confirm: "バルーンを削除しますか？" } %>
 
@@ -53,17 +61,23 @@
 
   <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: @balloon, stickers: @stickers %>
 
-  <!--相互フォローのみに限定する-->
+  <% if current_user == @user || current_user.friends.include?(@user) %>
+    <table id="comments-<%= @balloon.id %>">
+      <%= render "public/balloon_comments/comments", balloon: @balloon, user: @user %>
+    </table>
+    <div>
+      <%= form_with model: [@balloon, @balloon_comment], local: false do |f| %>
+      <%= f.text_area :comment, placeholder: "相互フォローのみコメントができます。" %>
+      <%= f.submit "comment" %>
+      <% end %>
+    </div>
+  <% else %>
+    <p>---友達になることでコメントをすることができます。---</p>
+  <% end %>
+
+
+
   <!--見た目調整-->
-  <table id="comments-<%= @balloon.id %>">
-    <%= render "public/balloon_comments/comments", balloon: @balloon %>
-  </table>
-  <div>
-    <%= form_with model: [@balloon, @balloon_comment], local: false do |f| %>
-    <%= f.text_area :comment %>
-    <%= f.submit "comment" %>
-    <% end %>
-  </div>
 
 </article>
 

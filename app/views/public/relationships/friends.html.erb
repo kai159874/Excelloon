@@ -1,0 +1,4 @@
+<% @users.each do |user| %>
+  <%= user.name %>
+  <%= link_to '友達リストから削除する', user_relationships_path(user.id), method: :delete, data: { confirm: "友達リストから削除しますか？" }, class: "" %>
+<% end %>

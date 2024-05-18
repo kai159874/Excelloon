@@ -18,11 +18,10 @@ Rails.application.routes.draw do
     patch 'mypage' => 'users#update'
     get 'unsubscribe' => 'users#unsubscribe', as: "unsubscribe"
     patch 'withdrow' => 'users#withdrow', as: "withdrow"
-
+    get "mypage/friends" => "relationships#friends", as: "friends"
+    get "mypage/follow_requests" => "relationships#follow_requests", as: "follow_requests"
     resources :users, only: [:show] do
       resource :relationships, only: [:create, :destroy]
-      get "followings" => "relationships#followings", as: "followings"
-      get "followers" => "relationships#followers", as: "followers"
     end
 
     resources :balloons, only: [:new, :create, :show, :update, :destroy] do
