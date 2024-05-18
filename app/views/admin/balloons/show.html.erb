@@ -7,6 +7,8 @@
     <div class="balloon-created-time">投稿日時: <%= l @balloon.created_at %></div>
     <div class="balloon-user-id">ID: <%= @user.public_uid %></div>
     <%= link_to "削除", admin_balloon_path(@balloon), method: :delete, class: "btn balloon-delete border", local: true, data: { confirm: "バルーンを削除しますか？" } %>
+
+    <div class="balloon-reports-count">報告数: <%= @balloon.reports.count %></div>
   </div>
 </article>
 

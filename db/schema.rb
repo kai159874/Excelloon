@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2024_05_15_020233) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2024_05_15_020233) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
+    t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -106,11 +106,12 @@ ActiveRecord::Schema.define(version: 2024_05_15_020233) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.integer "reporter_id"
-    t.integer "reported_id"
-    t.integer "balloon_id"
+    t.integer "user_id", null: false
+    t.integer "balloon_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["balloon_id"], name: "index_reports_on_balloon_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "stickers", force: :cascade do |t|
@@ -145,4 +146,6 @@ ActiveRecord::Schema.define(version: 2024_05_15_020233) do
   add_foreign_key "favorites", "users"
   add_foreign_key "favotites", "balloons"
   add_foreign_key "favotites", "users"
+  add_foreign_key "reports", "balloons"
+  add_foreign_key "reports", "users"
 end
