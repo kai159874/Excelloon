@@ -3,9 +3,13 @@ class Public::HomesController < ApplicationController
 
   def top
     @stickers = Sticker.all
-    @balloons = Balloon.all.order(id: "DESC")
     if params[:type] == "friends"
       @type = "friends"
+      user_ids = current_user.friends.pluck(:id)
+      user_ids.push(current_user.id)
+      @balloons = Balloon.where(user_id: user_ids).order(created_at: :desc)
+    else
+      @balloons = Balloon.all.order(id: "DESC")
     end
   end
 
