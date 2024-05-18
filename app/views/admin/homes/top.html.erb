@@ -1,5 +1,11 @@
 <article class="container text-center">
-  <h2>(通報)投稿一覧</h2>
+  <% if @type == "all" %>
+    <h2>投稿一覧</h2>
+    <%= link_to "通報一覧へ", admin_top_path %>
+  <% else %>
+    <h2>通報投稿一覧</h2>
+    <%= link_to "全投稿一覧へ", admin_top_path(type: "all") %>
+  <% end %>
   <div class="row">
     <div class="col mx-auto">
       <table class="table table-hover text-center">
@@ -15,7 +21,7 @@
             <tr>
               <td><%= link_to find_user(balloon).name, admin_user_path(find_user(balloon)) %></td>
               <td><%= link_to balloon.content.truncate(20), admin_balloon_path(balloon) %></td>
-              <td><%=  %></td>
+              <td><%= balloon.reports.count %></td>
             </tr>
           <% end %>
         </tbody>
@@ -23,7 +29,5 @@
     </div>
   </div>
 </article>
-
-<!--通報数順に並べる 通報機能実装後-->
 
 <!--ページネーション-->

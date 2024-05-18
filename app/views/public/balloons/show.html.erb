@@ -75,6 +75,9 @@
     <p>---友達になることでコメントをすることができます。---</p>
   <% end %>
 
+  <div class="report-btn">
+    <%= link_to "報告", balloon_reports_path(@balloon), method: :post, data: { confirm: "このバルーンを不適切な内容として報告しますか？" }, class: "btn border" %>
+  </div>
 
 
   <!--見た目調整-->
