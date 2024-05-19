@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col mx-auto">
+    <table class="table table-hover text-center">
+      <thead>
+        <tr class="table-secondary">
+          <th>会員名</th>
+          <th>本文</th>
+          <th>報告数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% balloons.each do |balloon| %>
+          <tr>
+            <td><%= link_to find_user(balloon).name, admin_user_path(find_user(balloon)) %></td>
+            <td><%= link_to balloon.content.truncate(20), admin_balloon_path(balloon) %></td>
+            <td><%= balloon.reports.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

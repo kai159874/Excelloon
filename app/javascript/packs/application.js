@@ -20,3 +20,7 @@ import './preview'
 Rails.start()
 // Turbolinks.start()
 ActiveStorage.start()
+import * as echarts from "echarts";
+import "echarts/theme/dark";
+
+window.echarts = echarts;
