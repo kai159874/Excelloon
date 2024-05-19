@@ -37,7 +37,9 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'top' => "homes#top"
     resources :users,     only: [:index, :show, :update]
-    resources :balloons,  only: [:show, :destroy]
+    resources :balloons,  only: [:show, :destroy] do
+      resources :balloon_comments, only: [:destroy]
+    end
     resources :stickers,  only: [:index, :edit, :create, :update, :destroy]
   end
 

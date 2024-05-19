@@ -1,37 +1,7 @@
 <article class="d-flex flex-column text-center">
-  <div class="profile-image">
-    <%= image_tag @user.get_profile_image, size: "160x160", class: "rounded-circle mx-auto my-5" %>
-  </div>
-  <div class="profile-name">
-    <%= @user.name %>
-  </div>
-  <div class="profile-id">
-    ID: <%= @user.public_uid %>
-  </div>
-  <table class="profile-infomation">
-    <tr>
-      <th>
-        バルーン数
-      </th>
-      <th>
-        フォロー
-      </th>
-      <th>
-        フォロワー
-      </th>
-    </tr>
-    <tr>
-      <td>
-        <%= @user.balloons.count %>
-      </td>
-      <td>
-        <%= link_to @user.followings.count, user_followings_path(@user) %>
-      </td>
-      <td>
-        <%= link_to @user.followers.count, user_followers_path(@user) %>
-      </td>
-    </tr>
-  </table>
+
+  <%= render "public/users/introduction", user: @user %>
+
   <div class="mt-5">
     現在のステータス
     <% if @user.is_active %>
@@ -40,36 +10,19 @@
       <div class="text-secondary"><b>退会</b></div>
     <% end %>
   </div>
-  <div>
+  <div class="my-4">
     <% if @user.is_active === true %>
-      <%= link_to "ユーザーを退会させる", admin_user_path(@user), method: :patch, class: "mt-5 btn btn-danger border", data: { confirm: "このユーザーを退会させます。" } %>
+      <%= link_to "ユーザーを退会させる", admin_user_path(@user), method: :patch, class: "btn btn-danger border", data: { confirm: "このユーザーを退会させます。" } %>
     <% else %>
-      <%= link_to "ユーザーを復元させる", admin_user_path(@user), method: :patch, class: "mt-5 btn btn-danger border", data: { confirm: "このユーザーを復元させます。" } %>
+      <%= link_to "ユーザーを復元させる", admin_user_path(@user), method: :patch, class: "btn btn-danger border", data: { confirm: "このユーザーを復元させます。" } %>
     <% end %>
   </div>
-
-  <div class="layout">
-    <h3>バルーン</h3>
-    <% @balloons.each do |balloon| %>
-      <table class="table table-hover text-center">
-        <thead>
-          <tr class="table-secondary">
-            <th>バルーンID</th>
-            <th>本文</th>
-            <th>通報件数</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr onclick='window.location="<%= admin_balloon_path(balloon) %>"', role="link", class="cursor">
-            <td><%= balloon.id %></td>
-            <td><%= balloon.content.truncate(20) %></td>
-            <td><%=  %></td>
-          </tr>
-        </tbody>
-      </table>
-
-    <% end %>
-  </div>
-
 
 </article>
+
+  <div class="container text-center">
+    <h3><%= @user.name %>のバルーン</h3>
+    <%= render "admin/balloons/index", balloons: @balloons %>
+  </div>
+
+
