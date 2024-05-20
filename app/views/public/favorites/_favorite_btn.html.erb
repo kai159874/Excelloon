@@ -1,13 +1,13 @@
 <% if balloon.favorited_by?(current_user) %>
   <div class="favorite-btn">
     <%= link_to balloon_favorites_path(balloon), method: :delete, remote: true do %>
-      ★
+      <i class="fa-solid fa-star" style="color: #fed243;"></i>
     <% end %>
   </div>
 <% else %>
   <div class="favorite-btn">
     <%= link_to balloon_favorites_path(balloon), method: :post, remote: true do %>
-      ☆
+      <i class="fa-regular fa-star" style="color: #545454;"></i>
     <% end %>
   </div>
 <% end %>

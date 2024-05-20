@@ -126,11 +126,11 @@ input[type="radio"]:checked + label{
 }
 
 .balloon{
-  margin: 32px;
+  margin: 16px;
   text-align: center;
   color: #FFFFFF;
   border: 6px solid;
-  border-radius: 40%;
+  border-radius: 45% 45% 75% 75%;
 }
 
 .balloon:hover {
@@ -144,7 +144,7 @@ input[type="radio"]:checked + label{
 .balloon-image {
   width: 60%;
   border-radius: 15%;
-  margin: 32px auto;
+  margin: 64px auto 18px;
 }
 
 @media (max-width: 992px) {
@@ -219,11 +219,18 @@ input[type="radio"]:checked + label{
 }
 
 
-// 削除ボタン
+// ボタン配置
 
 .balloon-delete {
   position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 32px;
 }
 
