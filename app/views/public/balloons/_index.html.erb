@@ -1,14 +1,16 @@
 <div class="layout">
   <% balloons.each do |balloon| %>
     <div class="balloon-frame">
-      <div id="favorite-btn-<%= balloon.id %>">
-        <%= render "public/favorites/favorite_btn", balloon: balloon %>
-      </div>
+      <% if user_signed_in? %>
+        <div id="favorite-btn-<%= balloon.id %>">
+          <%= render "public/favorites/favorite_btn", balloon: balloon %>
+        </div>
+      <% end %>
       <%= link_to balloon_path(balloon), class: "" do %>
       <!--カラー調整-->
         <div class="card balloon balloon-<%= balloon.color_status %>">
-          <div class="balloon-content"><%= simple_format(h(balloon.content)) %></div>
           <%= image_tag balloon.convert_balloon_image("300"), class: "balloon-image" if balloon.balloon_image.attached? %>
+          <div class="balloon-content"><%= simple_format(h(balloon.content)) %></div>
           <% if user_signed_in? %>
             <% current_user.friends.each do |friend| %>
               <% if balloon.user_id == friend.id %>
@@ -18,7 +20,9 @@
             <% end %>
           <% end %>
         </div>
-        <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: balloon, stickers: stickers %>
+        <div id="sticker-<%= balloon.id %>">
+          <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: balloon, stickers: stickers %>
+        </div>
       <% end %>
     </div>
   <% end %>

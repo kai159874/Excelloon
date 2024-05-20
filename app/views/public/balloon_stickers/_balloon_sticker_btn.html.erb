@@ -1,6 +1,6 @@
 <% stickers.each do |sticker| %>
   <div class="btn balloon-<%= balloon.color_status %>">
-    <%= link_to balloon_balloon_stickers_path(balloon_id: balloon.id, sticker_id: sticker.id), method: :post do %>
+    <%= link_to balloon_balloon_stickers_path(balloon_id: balloon.id, sticker_id: sticker.id), method: :post, remote: true do %>
       <%= sticker.message %><br>
       <%= quantity_for_balloon_sticker(balloon, sticker) %>
     <% end %>
