@@ -18,6 +18,59 @@ body:after {
   z-index: -1;
 }
 
+// header footer
+
+.header-text {
+  color: black;
+}
+
+.bg-img {
+  background-size: 120px;
+  background-repeat: no-repeat;
+  width: 160px;
+  height: 90px;
+  line-height: 90px;
+}
+
+.cloud-1 {
+  background-image: url("../../assets/images/cloud.png");
+  background-position: center;
+}
+.cloud-2 {
+  background-image: url("../../assets/images/cloud2.png");
+  background-position: center;
+}
+
+.footer-bg {
+  background-color: #b6d300;
+  border-radius: 50% 50% 0% 0%;
+  width: 10%;
+  transform: translateY(20px);
+}
+
+.footer-bg:hover {
+  transform: translateY(0px);
+}
+
+@media (max-width: 992px) {
+  .footer-bg {
+    width: 23%;
+  }
+}
+
+.footer-icon {
+  color: white;
+  font-size: clamp(16px, 1.8vw, 28px);
+  width: clamp(16px, 1.8vw, 28px);
+  height: auto;
+  margin: 0 auto;
+}
+
+.footer-text {
+  color: white;
+  font-size: clamp(10px, 1.1vw, 12px);
+}
+
 // ページ幅
 .layout {
   display: block;
