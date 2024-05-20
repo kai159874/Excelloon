@@ -1,37 +1,37 @@
 <header class="header-bg">
-  <div class="d-flex align-items-center justify-content-between">
-    <div class="col-md-4 text-center">
-      <%= link_to "about", about_path %>
+  <div class="d-flex align-items-center justify-content-around text-center">
+    <div class="bg-img cloud-1">
+      <%= link_to "about", about_path, class: "header-text" %>
     </div>
     <!--admin signed in-->
     <% if admin_signed_in? %>
-      <h1 class="col-md-4">
+      <h1 class="">
         <%= link_to admin_top_path do %>
-          <%= image_tag "Excelloon.png", size: "50x50", class: "mx-auto" %>
+          <%= image_tag "Excelloon.png", size: "90x90", class: "mx-auto" %>
         <% end %>
       </h1>
-      <div class="col-md-4 text-center">
-        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "" %>
+      <div class="bg-img cloud-2">
+        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "header-text " %>
       </div>
     <!--user signed in-->
     <% elsif user_signed_in? %>
-      <h1 class="col-md-4">
+      <h1 class="">
         <%= link_to root_path do %>
-          <%= image_tag "Excelloon.png", size: "50x50", class: "mx-auto" %>
+          <%= image_tag "Excelloon.png", size: "90x90", class: "mx-auto" %>
         <% end %>
       </h1>
-      <div class="col-md-4 text-center">
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "" %>
+      <div class="bg-img cloud-2">
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-text" %>
       </div>
     <!--guest-->
     <% else %>
-      <h1 class="col-md-4">
+      <h1 class="">
         <%= link_to root_path do %>
-          <%= image_tag "Excelloon.png", size: "50x50", class: "mx-auto" %>
+          <%= image_tag "Excelloon.png", size: "90x90", class: "mx-auto" %>
         <% end %>
       </h1>
-      <div class="col-md-4 text-center">
-        <%= link_to 'ログイン', new_user_session_path, class: "" %>
+      <div class="bg-img cloud-2">
+        <%= link_to 'ログイン', new_user_session_path, class: "header-text" %>
       </div>
     <% end %>
   </div>

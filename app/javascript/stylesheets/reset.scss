@@ -13,6 +13,7 @@
 
 a, a:hover {
 	text-decoration: none !important;
+	color: white;
 }
 
 :where([hidden]:not([hidden='until-found'])) {
