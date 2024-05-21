@@ -74,13 +74,13 @@ body:after {
 // ページ幅
 .layout {
   display: block;
-  width: 50%;
+  width: 40%;
   margin: 64px auto;
 }
 
 @media (max-width: 992px) {
   .layout {
-    width: 95%;
+    width: 90%;
   }
 }
 
