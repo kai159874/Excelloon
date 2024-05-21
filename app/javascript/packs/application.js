@@ -10,11 +10,8 @@ import "channels"
 
 import "jquery";
 import "popper.js";
-import "../stylesheets/reset";
 import "bootstrap";
 import "../stylesheets/application";
-import "../stylesheets/balloon";
-import "../stylesheets/search";
 import './preview'
 
 Rails.start()

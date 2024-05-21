@@ -1,5 +1,30 @@
 @use '~bootstrap/scss/bootstrap';
 
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -ms-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+a, a:hover {
+	text-decoration: none !important;
+}
+
+td {
+	vertical-align: middle !important;
+}
+
+.cursor {
+	cursor: pointer;
+}
+
 html,body {
   height: 100%;
 }
@@ -90,3 +115,252 @@ body:after {
   width: 300px;
   object-fit: cover;
 }
+
+// 検索
+
+.result-user {
+  padding: 64px;
+  margin: 24px;
+  background: white;
+  border: 1px solid #CCCCCC;
+  border-radius: 16px;
+}
+
+// バルーン関連
+
+// カラー選択ボタン
+
+input[type=radio] {
+  display: none; /* ラジオボタンを非表示にする */
+}
+
+.color_form label{
+  height: 32px;
+  width: 32px;
+  border: 2px solid black;
+  line-height: 28px;
+  display: block;
+  float: left;
+  text-align: center;
+  margin: 4px;
+  font-size: 0;
+
+  &.white{
+  background: white;
+  }
+
+  &.black{
+  background: black;
+  }
+
+  &.red{
+  background: #CC2929;
+  }
+
+  &.orange{
+  background: #CC7A29;
+  }
+
+  &.yellow{
+  background: #CCCC29;
+  }
+
+  &.grass{
+  background: #7ACC29;
+  }
+
+  &.green{
+  background: #29CC29;
+  }
+
+  &.water{
+  background: #29CCCC;
+  }
+
+  &.blue{
+  background: #297ACC;
+  }
+
+  &.wisteria{
+  background: #2929CC;
+  }
+
+  &.purple{
+  background: #7A29CC;
+  }
+
+  &.pink{
+  background: #FF33B4;
+  }
+}
+
+// カラー選択時
+
+input[type="radio"]:checked + label{
+  &.white{
+  border: 6px solid #AAAAAA;
+  color: #ffffff;
+  }
+
+  &.black{
+  border: 6px solid #888888;
+  color: #000000;
+  }
+
+  &.red{
+  border: 6px solid #CCA3A3;
+  }
+
+  &.orange{
+  border: 6px solid #CCB8A3;
+  }
+
+  &.yellow{
+  border: 6px solid #CCCCA3;
+  }
+
+  &.grass{
+  border: 6px solid #B8CCA3;
+  }
+
+  &.green{
+  border: 6px solid #A3CCA3;
+  }
+
+  &.water{
+  border: 6px solid #A3CCCC;
+  }
+
+  &.blue{
+  border: 6px solid #A3B8CC;
+  }
+
+  &.wisteria{
+  border: 6px solid #A3A3CC;
+  }
+
+  &.purple{
+  border: 6px solid #B8A3CC;
+  }
+
+  &.pink{
+  border: 6px solid #FFCCEC;
+  }
+}
+
+// TOP/SHOW balloon view
+
+
+.balloon-frame {
+  position: relative;
+}
+
+.balloon{
+  margin: 16px;
+  text-align: center;
+  color: #FFFFFF;
+  border: 6px solid;
+  border-radius: 45% 45% 75% 75%;
+}
+
+.balloon:hover {
+  opacity: 0.8;
+}
+
+.balloon-content {
+  margin: 64px 32px;
+}
+
+.balloon-image {
+  width: 60%;
+  border-radius: 15%;
+  margin: 64px auto 18px;
+}
+
+@media (max-width: 992px) {
+
+  .balloon{
+    margin: 8px;
+  }
+
+}
+
+
+// バルーンカラー設定
+
+.balloon-white{
+  background: #AAAAAA;
+  border-color: #FFFFFF;
+}
+
+.balloon-black{
+  background: #888888;
+  border-color: #000000;
+}
+
+.balloon-red{
+  background: #CCA3A3;
+  border-color: #CC2929;
+}
+
+.balloon-orange{
+  background: #CCB8A3;
+  border-color: #CC7A29;
+}
+
+.balloon-yellow{
+  background: #CCCCA3;
+  border-color: #CCCC29;
+}
+
+.balloon-grass{
+  background: #B8CCA3;
+  border-color: #7ACC29;
+}
+
+.balloon-green{
+  background: #A3CCA3;
+  border-color: #29CC29;
+}
+
+.balloon-water{
+  background: #A3CCCC;
+  border-color: #29CCCC;
+}
+
+.balloon-blue{
+  background: #A3B8CC;
+  border-color: #297ACC;
+}
+
+.balloon-wisteria{
+  background: #A3A3CC;
+  border-color: #2929CC;
+}
+
+.balloon-purple{
+  background: #B8A3CC;
+  border-color: #7A29CC;
+}
+
+.balloon-pink{
+  background: #FFCCEC;
+  border-color: #FF33B4;
+}
+
+
+// ボタン配置
+
+.balloon-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 32px;
+}
+
