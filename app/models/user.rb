@@ -10,7 +10,7 @@ class User < ApplicationRecord
     public_uid
   end
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { in: 1..10 }
 
   has_one_attached :profile_image
 
