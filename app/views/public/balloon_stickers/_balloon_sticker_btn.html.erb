@@ -1,8 +1,10 @@
 <% stickers.each do |sticker| %>
-  <div class="btn balloon-<%= balloon.color_status %>">
+  <div class="d-flex flex-wrap m-2">
     <%= link_to balloon_balloon_stickers_path(balloon_id: balloon.id, sticker_id: sticker.id), method: :post, remote: true do %>
-      <%= sticker.message %><br>
-      <%= quantity_for_balloon_sticker(balloon, sticker) %>
+      <div class="sticker btn balloon-<%= balloon.color_status %>">
+        <%= sticker.message %><br>
+        <%= quantity_for_balloon_sticker(balloon, sticker) %>
+      </div>
     <% end %>
   </div>
 <% end %>
