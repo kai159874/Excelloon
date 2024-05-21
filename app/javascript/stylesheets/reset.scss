@@ -13,7 +13,10 @@
 
 a, a:hover {
 	text-decoration: none !important;
-	color: white;
+}
+
+td {
+	vertical-align: middle !important;
 }
 
 :where([hidden]:not([hidden='until-found'])) {

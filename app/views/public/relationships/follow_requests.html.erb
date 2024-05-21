@@ -1,24 +1,30 @@
-<div>
-  <p>受信した友達申請</p>
-  <% @users.each do |user| %>
-    <% unless current_user.id == user.id %>
-      <% if user.follow_request?(current_user, user) %>
-        <li>
-          <%= user.name %>
-          <%= link_to '友達になる', user_relationships_path(user.id), method: :post, class: "" %>
-          <%= link_to '申請を取り消す', user_relationships_path(user.id), method: :delete, data: { confirm: "友達申請を取り消しますか？" }, class: "" %>
-        </li>
+<article class="layout text-center">
+  <div>
+    <p>受信した友達申請</p>
+    <table class="table">
+      <% @users.each do |user| %>
+        <% if !(current_user.id == user.id) && user.follow_request?(current_user, user) %>
+          <tr>
+            <td><%= image_tag user.get_profile_image, size: "50x50", class: "rounded-circle mx-auto" %></td>
+            <td><%= user.name %></td>
+            <td><%= link_to "ユーザー詳細", user_path(user), class: "btn border border-dark" %></td>
+            <td><%= link_to '友達になる', user_relationships_path(user.id), method: :post, class: "btn btn-info" %></td>
+            <td><%= link_to 'X', user_relationships_path(user.id), method: :delete, data: { confirm: "友達申請を取り下げますか？" }, class: "btn btn-sm btn-danger" %></td>
+          </tr>
+        <% end %>
       <% end %>
-    <% end %>
-  <% end %>
-</div>
-<div>
-  <p>友達申請中</p>
-  <% @users.each do |user| %>
-    <% if current_user.follow_request?(user, current_user) %>
-      <li>
-        <%= user.name %>
-      </li>
-    <% end %>
-  <% end %>
-</div>
+    </table>
+  </div>
+  <div>
+    <p>友達申請中</p>
+    <table class="table">
+      <% @users.each do |user| %>
+        <% if current_user.follow_request?(user, current_user) %>
+          <tr>
+            <td><%= user.name %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</article>
