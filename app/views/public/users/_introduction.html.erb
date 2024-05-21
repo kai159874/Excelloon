@@ -12,12 +12,16 @@
     <tr>
       <th>バルーン数</th>
       <th>友達リスト</th>
-      <th>友達申請</th>
+      <%= if user == current_user %>
+        <th>友達申請</th>
+      <% end %>
     </tr>
     <tr>
       <td><%= user.balloons.count %></td>
       <td><%= link_to user.friends.count, friends_path %></td>
-      <td><%= link_to "申請リスト", follow_requests_path %></td>
+      <%= if user == current_user %>
+        <td><%= link_to "申請リスト", follow_requests_path %></td>
+      <% end %>
     </tr>
   </table>
 <% end %>

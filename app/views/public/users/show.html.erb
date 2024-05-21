@@ -1,2 +1,10 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<article class="d-flex flex-culumn mb-5 text-center">
+  
+  <%= render "public/users/introduction", user: @user %>
+
+  <h3><%= @user.name %>さんのバルーン</h3>
+
+  <%= render "public/balloons/index", balloons: @balloons, stickers: @stickers %>
+
+
+</article>

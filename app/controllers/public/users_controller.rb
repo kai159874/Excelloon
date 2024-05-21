@@ -35,7 +35,9 @@ class Public::UsersController < ApplicationController
   end
 
   def show
+    @stickers = Sticker.all
     @user = User.find_by(public_uid: params[:id])
+    @balloons = @user.balloons.order(id: "DESC")
   end
 
   private
