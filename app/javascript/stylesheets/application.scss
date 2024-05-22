@@ -366,6 +366,31 @@ body:after {
 
 // header footer
 
+.excelloon-icon {
+  animation: excelloon-icon 3s ease-in-out infinite alternate;
+  background-image: url("../../assets/images/Excelloon.png");
+  background-size: 70px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  transition: 1.5s ease-in-out;
+  width: 70px;
+  height: 70px;
+  margin-top: 15px;
+}
+
+@keyframes excelloon-icon {
+  0% {
+    transform:translate(0, 0) rotate(-7deg);
+  }
+  50% {
+    transform:translate(0, -7px) rotate(0deg);
+  }
+  100% {
+    transform:translate(0, 0) rotate(7deg);
+  }
+}
+
 .header-text {
   color: black;
 }
@@ -401,6 +426,7 @@ body:after {
 @media (max-width: 992px) {
   .footer-bg {
     width: 23%;
+    transform: translateY(0px);
   }
 }
 
@@ -458,7 +484,7 @@ input[type=radio] {
 .color_form label{
   height: 32px;
   width: 32px;
-  border: 2px solid black;
+  border: 2px solid white;
   line-height: 28px;
   display: block;
   float: left;
@@ -577,10 +603,11 @@ input[type="radio"]:checked + label{
 }
 
 .balloon{
+  margin: 16px 0;
   text-align: center;
   color: #FFFFFF;
   border: 6px solid;
-  border-radius: 70%;
+  border-radius: 46%;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .5);
 }
 
@@ -589,7 +616,7 @@ input[type="radio"]:checked + label{
 }
 
 .balloon-content {
-  margin: 42px 64px;
+  margin: 17%;
 }
 
 .balloon-image {
@@ -598,13 +625,6 @@ input[type="radio"]:checked + label{
   margin: 64px auto 18px;
 }
 
-@media (max-width: 992px) {
-
-  .balloon{
-    margin: 8px;
-  }
-
-}
 
 
 // バルーンカラー設定
@@ -685,5 +705,16 @@ input[type="radio"]:checked + label{
   left: 0;
   font-size: 32px;
   z-index: 1;
+}
+
+// ステッカー
+
+.sticker {
+  font-size: clamp(10px, 1.1vw, 14px);
+  box-shadow: 0 3px 10px 2px rgba(0, 0, 0, 0.5)
+}
+
+.sticker:hover {
+  box-shadow: 0 3px 30px 2px rgba(0, 0, 0, 0.5)
 }
 

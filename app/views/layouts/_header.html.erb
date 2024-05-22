@@ -7,7 +7,7 @@
     <% if admin_signed_in? %>
       <h1 class="">
         <%= link_to admin_top_path do %>
-          <%= image_tag "Excelloon.png", size: "90x90", class: "mx-auto" %>
+          <div class="excelloon-icon"></div>
         <% end %>
       </h1>
       <div class="bg-img cloud-2">
@@ -17,7 +17,7 @@
     <% elsif user_signed_in? %>
       <h1 class="">
         <%= link_to root_path do %>
-          <%= image_tag "Excelloon.png", size: "90x90", class: "mx-auto" %>
+          <div class="excelloon-icon"></div>
         <% end %>
       </h1>
       <div class="bg-img cloud-2">
@@ -27,7 +27,7 @@
     <% else %>
       <h1 class="">
         <%= link_to root_path do %>
-          <%= image_tag "Excelloon.png", size: "90x90", class: "mx-auto" %>
+          <div class="excelloon-icon"></div>
         <% end %>
       </h1>
       <div class="bg-img cloud-2">
