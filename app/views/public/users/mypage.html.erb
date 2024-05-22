@@ -18,7 +18,9 @@
     <h3>お気に入り</h3>
     <%= link_to "マイバルーン一覧へ", mypage_path %>
   <% end %>
-  <%= render "public/balloons/index", balloons: @balloons, stickers: @stickers %>
+  <div class="jscroll-div">
+    <%= render "public/balloons/index", balloons: @balloons, stickers: @stickers %>
+  </div>
 
 
 </article>

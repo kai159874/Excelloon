@@ -9,7 +9,7 @@
     <% if @type == "friends" %>
       <h2>友達のバルーン</h2>
         <%= link_to "みんなのバルーン一覧へ", root_path %>
-      <div>
+      <div class="jscroll-div">
         <%= render "public/balloons/index", balloons: @balloons, stickers: @stickers %>
       </div>
 
@@ -18,7 +18,7 @@
       <% if user_signed_in? %>
         <%= link_to "友達のバルーン一覧へ", root_path(type: "friends") %>
       <% end %>
-      <div>
+      <div class="jscroll-div">
           <%= render "public/balloons/index", balloons: @balloons, stickers: @stickers %>
       </div>
     <% end %>

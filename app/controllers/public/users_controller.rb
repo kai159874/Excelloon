@@ -6,10 +6,10 @@ class Public::UsersController < ApplicationController
     @stickers = Sticker.all
     if params[:type] == "favorite"
       favorites = Favorite.where(user_id: current_user.id).pluck(:balloon_id).reverse
-      @balloons = Balloon.find(favorites)
+      @balloons = Balloon.find(favorites).page(params[:page]).per(20)
       @type = "favorite"
     else
-      @balloons = @user.balloons.order(id: "DESC")
+      @balloons = @user.balloons.order(id: "DESC").page(params[:page]).per(20)
       @type = "mine"
     end
   end
@@ -37,7 +37,7 @@ class Public::UsersController < ApplicationController
   def show
     @stickers = Sticker.all
     @user = User.find_by(public_uid: params[:id])
-    @balloons = @user.balloons.order(id: "DESC")
+    @balloons = @user.balloons.order(id: "DESC").page(params[:page]).per(20)
   end
 
   private

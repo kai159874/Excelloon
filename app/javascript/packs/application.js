@@ -21,3 +21,12 @@ import * as echarts from "echarts";
 import "echarts/theme/dark";
 
 window.echarts = echarts;
+
+$(document).on('turbolinks:load', function() {
+  $('.jscroll-div').jscroll({
+    contentSelector: '.jscroll',
+    nextSelector: '.next a',
+    loadingHtml: '読み込み中',
+    padding: 10
+  });
+});
