@@ -10,7 +10,7 @@ class User < ApplicationRecord
     public_uid
   end
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { in: 1..10 }
 
   has_one_attached :profile_image
 
@@ -26,12 +26,14 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   def get_profile_image
-    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+    if profile_image.attached?
+      profile_image.variant( resize: "160x160" ).processed
+      return profile_image
+    else
+      profile_image = 'no_image.jpg'
+    end
   end
 
-  def convert_to_icon
-    variant( resize: "100" ).processed
-  end
 
   def follow(user)
     active_relationships.create(followed_id: user.id)

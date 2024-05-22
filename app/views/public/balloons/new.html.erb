@@ -1,4 +1,4 @@
-<article class="d-flex flex-column mb-5 justify-content-center text-center">
+<article class="layout mb-5 justify-content-center text-center">
   <%= render 'layouts/errors', obj: @balloon %>
   <h2 class="my-3">新しいバルーンを飛ばそう！</h2>
 
@@ -8,12 +8,14 @@
       <%= render "public/balloons/color_select", f: f %>
 
       <div class="my-3">
-        <%= f.text_area :content, placeholder: "今日頑張ったことを詰め込もう！", size: "45x5", class: "form text_field_color" %>
+        <%= f.text_area :content, placeholder: "今日頑張ったことを詰め込もう！(最大200文字)", size: "45x5", class: "form-control text_field_color" %>
       </div>
 
-      <!--画像アイコンつける-->
       <div class="">
-        <%= f.file_field :balloon_image, id: "file-input" %>
+        <%= f.label :balloon_image, class: "h3" do %>
+          <i class="fa-regular fa-image"></i>
+          <%= f.file_field :balloon_image, id: "file-input", class: "h6" %>
+        <% end %>
       </div>
       <!--プレビュー-->
       <div id="image-preview" class="mx-auto"></div>

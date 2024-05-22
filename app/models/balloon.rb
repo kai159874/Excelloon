@@ -23,7 +23,7 @@ class Balloon < ApplicationRecord
 
   with_options presence: true do
     validates :user_id
-    validates :content
+    validates :content, length: { in: 1..200 }
     validates :color_status
   end
 

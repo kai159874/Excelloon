@@ -1,27 +1,29 @@
-<div class="profile-image">
-  <%= image_tag user.get_profile_image, size: "160x160", class: "rounded-circle mx-auto my-5" %>
+<div class="d-flex flex-column layout" %>
+  <h3 class="profile-name">
+    <%= user.name %>
+  </h3>
+  <div class="profile-image">
+    <%= image_tag user.get_profile_image, size: "160x160", class: "rounded-circle mx-auto my-5" %>
+  </div>
+  <div class="profile-id">
+    ID: <%= user.public_uid %>
+  </div>
+  <% unless admin_signed_in? %>
+    <table class="profile-infomation">
+      <tr>
+        <th>バルーン数</th>
+        <% if user == current_user %>
+          <th>友達リスト</th>
+          <th>友達申請</th>
+        <% end %>
+      </tr>
+      <tr>
+        <td><%= user.balloons.count %></td>
+        <% if user == current_user %>
+          <td><%= link_to user.friends.count, friends_path %></td>
+          <td><%= link_to "申請リスト", follow_requests_path %></td>
+        <% end %>
+      </tr>
+    </table>
+  <% end %>
 </div>
-<div class="profile-name">
-  <%= user.name %>
-</div>
-<div class="profile-id">
-  ID: <%= user.public_uid %>
-</div>
-<% unless admin_signed_in? %>
-  <table class="profile-infomation">
-    <tr>
-      <th>バルーン数</th>
-      <th>友達リスト</th>
-      <%= if user == current_user %>
-        <th>友達申請</th>
-      <% end %>
-    </tr>
-    <tr>
-      <td><%= user.balloons.count %></td>
-      <td><%= link_to user.friends.count, friends_path %></td>
-      <%= if user == current_user %>
-        <td><%= link_to "申請リスト", follow_requests_path %></td>
-      <% end %>
-    </tr>
-  </table>
-<% end %>

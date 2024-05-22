@@ -77,10 +77,9 @@ Balloon.find_or_create_by!(content: "朝早く起きることが出来た！時�
 end
 
 Sticker.find_or_create_by!(message: "いいね！")
-Sticker.find_or_create_by!(message: "素晴らしい！")
-Sticker.find_or_create_by!(message: "その調子！")
+Sticker.find_or_create_by!(message: "すごい！")
+Sticker.find_or_create_by!(message: "素敵！")
 Sticker.find_or_create_by!(message: "Excellent！")
 Sticker.find_or_create_by!(message: "天才か？")
-Sticker.find_or_create_by!(message: "GO！GO！")
 
 puts "seedの実行を完了しました"
