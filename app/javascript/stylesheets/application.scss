@@ -603,7 +603,7 @@ input[type="radio"]:checked + label{
 }
 
 .balloon{
-  margin: 16px 0;
+  margin: 18px 0;
   text-align: center;
   color: #FFFFFF;
   border: 6px solid;
@@ -711,10 +711,10 @@ input[type="radio"]:checked + label{
 
 .sticker {
   font-size: clamp(10px, 1.1vw, 14px);
-  box-shadow: 0 3px 10px 2px rgba(0, 0, 0, 0.5)
+  box-shadow: 0 5px 3px 0px rgba(0, 0, 0, 0.5)
 }
 
 .sticker:hover {
-  box-shadow: 0 3px 30px 2px rgba(0, 0, 0, 0.5)
+  box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.5)
 }
 
