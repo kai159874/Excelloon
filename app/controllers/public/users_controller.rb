@@ -6,7 +6,8 @@ class Public::UsersController < ApplicationController
     @stickers = Sticker.all
     if params[:type] == "favorite"
       favorites = Favorite.where(user_id: current_user.id).pluck(:balloon_id).reverse
-      @balloons = Balloon.find(favorites).page(params[:page]).per(20)
+      @balloons = Balloon.find(favorites)
+      @balloons = Kaminari.paginate_array(@balloons).page(params[:page]).per(20)
       @type = "favorite"
     else
       @balloons = @user.balloons.order(id: "DESC").page(params[:page]).per(20)

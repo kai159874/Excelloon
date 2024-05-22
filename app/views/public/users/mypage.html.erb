@@ -20,7 +20,6 @@
   <% end %>
   <div class="jscroll-div">
     <%= render "public/balloons/index", balloons: @balloons, stickers: @stickers %>
+    <%= paginate @balloons %>
   </div>
-
-
 </article>
