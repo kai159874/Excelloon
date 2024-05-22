@@ -76,6 +76,10 @@ Balloon.find_or_create_by!(content: "朝早く起きることが出来た！時�
   balloon.color_status = 8
 end
 
+100.times do
+  Balloon.create(content: "dddddddddd", user_id: 1, color_status: 1)
+end
+
 Sticker.find_or_create_by!(message: "いいね！")
 Sticker.find_or_create_by!(message: "すごい！")
 Sticker.find_or_create_by!(message: "素敵！")

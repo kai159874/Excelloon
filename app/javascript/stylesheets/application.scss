@@ -625,7 +625,9 @@ input[type="radio"]:checked + label{
   margin: 64px auto 18px;
 }
 
-
+.pagination {
+  transform: translateX(-200px);
+}
 
 // バルーンカラー設定
 
