@@ -1,4 +1,4 @@
-<article class="d-flex flex-column text-center">
+<article class="bg-cover text-center">
   <%= render 'layouts/errors', obj: @user %>
   <h2>新規登録</h2>
 
@@ -8,14 +8,6 @@
         <%= f.label :name %><br />
         <%= f.text_field :name ,autofocus: true, class: "form-control" %>
       </div>
-
-      <div class="mt-2">
-        <%= f.label :profile_image %><br />
-        <small>※あとで設定できます。</small>
-        <%= f.file_field :profile_image, id: "file-input" %>
-      </div>
-
-      <div id="image-preview" class="mx-auto"></div>
 
       <div class="mt-2">
         <%= f.label :email %><br />
@@ -40,7 +32,6 @@
       </div>
     </div>
   <% end %>
-
   <small>
     会員の方は<%= render "public/shared/links" %>
   </small>

@@ -3,9 +3,8 @@
   <p>IDが正しいか確認してください。</p>
 <% else %>
   <div class="result-user">
-    <div>
-      <%= result.name %>
-    </div>
+    <div><%= image_tag result.get_profile_image, size: "50x50", class: "rounded-circle mx-auto" %></div>
+    <h4><%= result.name %></h4>
     <% if current_user.friends?(@result) %>
       <p>すでに友達です！</p>
     <% elsif current_user.following?(@result) %>
@@ -13,7 +12,7 @@
     <% elsif @result == current_user %>
       <p>ご自身のアカウントです</p>
     <% else %>
-      <%= link_to '友達申請', user_relationships_path(@result.id), method: :post, data: { confirm: "友達申請をしますか？" }, class: "btn border" %>
+      <%= link_to '友達申請', user_relationships_path(@result.id), method: :post, data: { confirm: "友達申請をしますか？" }, class: "btn btn-success border" %>
     <% end %>
   </div>
 <% end %>
