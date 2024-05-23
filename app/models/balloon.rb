@@ -35,6 +35,4 @@ class Balloon < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-
-
 end

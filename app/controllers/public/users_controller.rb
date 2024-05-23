@@ -54,9 +54,7 @@ class Public::UsersController < ApplicationController
   end
 
   def set_months_balloons_counts(user)
-    start_date = Date.today.beginning_of_year
-    end_date = start_date.end_of_year
-    @counts = user.balloons.where("date(created_at) BETWEEN date(?) AND date(?)", start_date, end_date).group("strftime('%Y-%m', created_at)").count
+    @counts = user.balloons.group("strftime('%Y',created_at)").group("strftime('%m',created_at)").count
   end
 
 end
