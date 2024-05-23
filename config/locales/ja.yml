@@ -6,6 +6,7 @@ ja:
     attributes:
       user:
         name: "ユーザー名"
+        profile_image: "アイコン"
         email: "メールアドレス"
         password: "パスワード"
       balloon:

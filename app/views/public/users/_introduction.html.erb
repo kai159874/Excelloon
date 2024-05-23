@@ -1,11 +1,11 @@
-<div class="d-flex flex-column layout" %>
+<div class="d-flex flex-column layout bg-cover" >
   <h3 class="profile-name">
     <%= user.name %>
   </h3>
   <div class="profile-image">
-    <%= image_tag user.get_profile_image, size: "160x160", class: "rounded-circle mx-auto my-5" %>
+    <%= image_tag user.get_profile_image, size: "160x160", class: "rounded-circle mx-auto my-3" %>
   </div>
-  <div class="profile-id">
+  <div class="h4 profile-id m-2">
     ID: <%= user.public_uid %>
   </div>
   <% unless admin_signed_in? %>
@@ -25,5 +25,8 @@
         <% end %>
       </tr>
     </table>
+  <% end %>
+  <% if user == current_user %>
+    <%= link_to "プロフィール編集", mypage_edit_path, class: "mt-2 btn border" %>
   <% end %>
 </div>

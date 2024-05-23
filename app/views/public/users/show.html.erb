@@ -2,6 +2,8 @@
 
   <%= render "public/users/introduction", user: @user %>
 
+  <%= render "public/users/trophy_box", counts: @counts %>
+
   <h3><%= @user.name %>さんのバルーン</h3>
 
   <%= render "public/balloons/index", balloons: @balloons, stickers: @stickers %>

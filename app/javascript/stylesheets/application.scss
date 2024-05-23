@@ -356,12 +356,24 @@ body:after {
   width: 100%;
   height: 100%;
   content: "";
-  background: #4DC4FF;
-  background: -moz-linear-gradient(top, #4DC4FF 0%,#ffffff 100%);
-  background: -webkit-linear-gradient(top, #4DC4FF 0%,#ffffff 100%);
+  background: #80D5FF;
+  background: -moz-linear-gradient(top, #80D5FF 0%,#ffffff 100%);
+  background: -webkit-linear-gradient(top, #80D5FF 0%,#ffffff 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbcacb', endColorstr='#f79697',GradientType=0 );
-  background: linear-gradient(to bottom, #4DC4FF 0%,#ffffff 100%);
+  background: linear-gradient(to bottom, #80D5FF 0%,#ffffff 100%);
   z-index: -1;
+}
+
+.bg-cover {
+  background-color: rgba(255, 243, 230, 1);
+  padding: 32px;
+  border-radius: 5%;
+}
+
+@media (max-width: 992px) {
+  .bg-cover {
+    padding: 16px;
+  }
 }
 
 // header footer
@@ -723,12 +735,12 @@ input[type="radio"]:checked + label{
 // トロフィー
 
 .trophy-box {
-  width: 40%;
+  width: 80%;
 }
 
 @media (max-width: 992px) {
   .trophy-box {
-    width: 95%;
+    width: 98%;
   }
 }
 
