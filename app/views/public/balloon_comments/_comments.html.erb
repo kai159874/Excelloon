@@ -1,5 +1,9 @@
-<% balloon.balloon_comments.each do |balloon_comment| %>
-  <table class="table mx-auto">
+<table class="table mx-auto">
+  <tr>
+    <th>ユーザー名</th>
+    <th width="50%">コメント</th>
+  </tr>
+  <% balloon.balloon_comments.each do |balloon_comment| %>
     <tr>
       <% if balloon_comment.user_id == current_user.id || current_user.friends.include?(balloon_comment.user) %>
         <td>
@@ -7,12 +11,14 @@
             <%= balloon_comment.user.name %>
           </div>
         </td>
-        <td>
+        <td width="50%">
           <%= balloon_comment.comment %>
         </td>
         <% if balloon_comment.user_id == current_user.id %>
-          <td>
-            <%= link_to '削除する', balloon_balloon_comment_path(balloon_comment.balloon, balloon_comment), method: :delete, remote: true, data: { confirm: 'コメントを削除しますか？' }, class: "btn btn-sm btn-danger"%>
+          <td width="10%">
+            <%= link_to balloon_balloon_comment_path(balloon_comment.balloon, balloon_comment), method: :delete, remote: true, data: { confirm: 'コメントを削除しますか？' }, class: "btn btn-sm btn-danger" do %>
+              <i class="fa-solid fa-trash-can"></i>
+            <% end %>
           </td>
         <% end %>
       <% else %>
@@ -24,6 +30,7 @@
         </td>
       <% end %>
     </tr>
-  </table>
-<% end %>
+  <% end %>
+</table>
+
 
