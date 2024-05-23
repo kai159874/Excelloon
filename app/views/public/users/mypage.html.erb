@@ -6,8 +6,29 @@
     <%= link_to "プロフィール編集", mypage_edit_path, class: "btn border" %>
   </div>
 
-  <h3>バルーンボックス(仮)</h3>
-  <!--連続投稿日数、バルーンの物理エンジン入れたい-->
+  <h3>バルーンカウンター</h3>
+
+  <table class="table table-bordered">
+    <% @counts.each do |month, count| %>
+      <tr>
+        <th>年月</th>
+        <td><%= month %></td>
+      </tr>
+      <tr>
+        <th>バルーン数</th>
+        <td><%= count %></td>
+        <% if count >= 1 %>
+          <td>〇</td>
+        <% elsif count >= 10 %>
+          <td>☆</td>
+        <% elsif count >= 20 %>
+          <td>すご</td>
+        <% elsif count >= 25 %>
+          <td>わお</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
 
 
 

@@ -34,7 +34,6 @@ class User < ApplicationRecord
     end
   end
 
-
   def follow(user)
     active_relationships.create(followed_id: user.id)
   end
