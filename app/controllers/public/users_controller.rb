@@ -4,6 +4,7 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @stickers = Sticker.all
+    set_months_balloons_counts(@user)
     if params[:type] == "favorite"
       favorites = Favorite.where(user_id: current_user.id).pluck(:balloon_id).reverse
       @balloons = Balloon.find(favorites)
@@ -39,6 +40,7 @@ class Public::UsersController < ApplicationController
     @stickers = Sticker.all
     @user = User.find_by(public_uid: params[:id])
     @balloons = @user.balloons.order(id: "DESC").page(params[:page]).per(20)
+    set_months_balloons_counts(@user)
   end
 
   private
@@ -49,6 +51,10 @@ class Public::UsersController < ApplicationController
 
   def set_current_user
     @user = current_user
+  end
+
+  def set_months_balloons_counts(user)
+    @counts = user.balloons.group("strftime('%Y',created_at)").group("strftime('%m',created_at)").count
   end
 
 end

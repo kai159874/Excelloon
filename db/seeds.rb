@@ -76,8 +76,28 @@ Balloon.find_or_create_by!(content: "朝早く起きることが出来た！時�
   balloon.color_status = 8
 end
 
-100.times do
-  Balloon.create(content: "dddddddddd", user_id: 1, color_status: 1)
+30.times do
+  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.prev_month)
+end
+
+22.times do
+  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(2.month))
+end
+
+15.times do
+  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(3.month))
+end
+
+3.times do
+  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(4.month))
+end
+
+3.times do
+  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(7.month))
+end
+
+3.times do
+  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(9.month))
 end
 
 Sticker.find_or_create_by!(message: "いいね！")
