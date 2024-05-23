@@ -8,7 +8,8 @@
 
   <div class="bg-cover">
     <h3>トロフィーボックス</h3>
-    <small>バルーンの数が1個、10個、20個、28個達成でトロフィーを獲得できます！</small>
+    <small>投稿があった月(過去6か月分)のバルーン投稿実績を表示しています。<br>
+            バルーンの数が1個、10個、20個、28個達成でトロフィーを獲得できます！</small>
     <div class="trophy-box mx-auto">
       <table class="table table-bordered mx-auto">
         <tr>
@@ -16,9 +17,9 @@
           <th>バルーン数</th>
           <th>トロフィー</th>
         </tr>
-        <% @counts.reverse_each do |month, count| %>
+        <% @counts.to_a.last(6).reverse_each do |month, count| %>
           </tr>
-            <th><%= month[1] %>月</th>
+            <th><%= month[0] %>年<br><%= month[1] %>月</th>
             <td><%= count %></td>
             <td class="trophy">
               <% if count >= 28 %>
