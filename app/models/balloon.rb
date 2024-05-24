@@ -8,6 +8,7 @@ class Balloon < ApplicationRecord
   has_one_attached :balloon_image
 
   scope :where_user_active, -> { joins(:user).where(users: { is_active: true }) }
+  scope :where_user_delete, -> { joins(:user).where(users: { is_active: false }) }
 
   enum color_status: {
     white:    1,

@@ -16,7 +16,7 @@
   <p>一日の頑張りをバルーンに詰めて飛ばそう！</p>
 
   <div class="row m-4">
-    <div class="col-6">
+    <div class="col-md-6">
       <h4> -バルーンのつくりかた- </h4>
       <p>まずは全12色から好きな色を選択してください。</p>
 
@@ -25,18 +25,19 @@
 
       <p>画像を貼ることもできます</p>
 
-      <h4>バルーンができたら飛ばそう！</h4>
+      <h4 class="mt-5">バルーンができたら飛ばそう！</h4>
     </div>
-    <div class="col-6">
-
+    <div class="col-md-6">
+      <%= image_tag "newballoon.png", class: "rounded" %>
     </div>
   </div>
   <hr class="heading-line">
 
   <div class="row m-4">
-    <div class="col-6">
+    <div class="col-md-6">
+      <%= image_tag "trophy.png", class: "rounded" %>
     </div>
-    <div class="col-6">
+    <div class="col-md-6">
       <h3>マイページで自分のバルーンを確認する</h3>
       <p>マイページで自分の作ったバルーンを見ることができます。</p>
       <p>また、一か月の作成数に応じてトロフィーを獲得することができます！</p>
@@ -46,24 +47,37 @@
   <hr class="heading-line">
 
   <div class="row m-4">
-    <div class="col-6">
+    <div class="col-md-6">
         <h3>みんなのバルーンに応援ボタンを押そう！</h3>
         <p>バルーン下部に応援ボタンがあります。</p>
         <p>何回でも押せます！いっぱい応援しよう！</p>
     </div>
-    <div class="col-6">
-
+    <div class="col-md-6">
+      <%= image_tag "stiker.png", class: "rounded" %>
     </div>
   </div>
   <hr class="heading-line">
 
   <div class="row m-4">
-    <div class="col-6">
+    <div class="col-md-6">
+      <%= image_tag "friend.png", class: "rounded" %>
     </div>
-    <div class="col-6">
+    <div class="col-md-6">
       <h3>ID検索を活用して友達にフォロー申請を送る</h3>
       <p>画面左下のID検索を押して、友達のIDを入れてみよう！</p>
       <p>フォロー申請をすることができます。</p>
     </div>
   </div>
+  
+  <div class="row m-4">
+    <div class="col-md-6">
+      <%= image_tag "friend.png", class: "rounded" %>
+    </div>
+    <div class="col-md-6">
+      <h3>コメントを送ろう</h3>
+      <p>友達になることができたら、バルーンにコメントを送れるようになります！</p>
+      <p>友達の頑張りにコメントを送ってみよう</p>
+    </div>
+  </div>
+  
 </article>

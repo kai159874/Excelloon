@@ -1,4 +1,5 @@
-<article class="container mb-5 text-center">
+<article class="container pb-5 text-center">
+
   <% if @type == "all" %>
     <h2>投稿一覧</h2>
     <%= link_to "通報一覧へ", admin_top_path %>
@@ -7,6 +8,9 @@
     <%= link_to "全投稿一覧へ", admin_top_path(type: "all") %>
   <% end %>
   <%= render "admin/balloons/index", balloons: @balloons %>
+  <div class="d-flex justify-content-center">
+    <%= paginate @balloons %>
+  </div>
+
 </article>
 
-<!--ページネーション-->
