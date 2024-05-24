@@ -16,6 +16,9 @@ class Public::HomesController < ApplicationController
   def about
   end
 
+  def tos
+  end
+
   private
 
   def top_authenticate_user

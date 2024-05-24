@@ -68,16 +68,27 @@
       <p>フォロー申請をすることができます。</p>
     </div>
   </div>
-  
+  <hr class="heading-line">
+
   <div class="row m-4">
-    <div class="col-md-6">
-      <%= image_tag "friend.png", class: "rounded" %>
-    </div>
     <div class="col-md-6">
       <h3>コメントを送ろう</h3>
       <p>友達になることができたら、バルーンにコメントを送れるようになります！</p>
-      <p>友達の頑張りにコメントを送ってみよう</p>
+      <p>友達の頑張りにコメントを送ってみよう！</p>
+    </div>
+    <div class="col-md-6">
+      <%= image_tag "comment.png", class: "rounded" %>
     </div>
   </div>
-  
+  <hr class="heading-line">
+
+  <h3>たくさんの「えくせるーん」を飛ばそう！</h3>
+  <%= link_to "TOPへ", root_path %>
+
+  <div class="row m-4">
+    <div class="col">
+      <%= link_to "利用規約", tos_path %>
+    </div>
+  </div>
+
 </article>
