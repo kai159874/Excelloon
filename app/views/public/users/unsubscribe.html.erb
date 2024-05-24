@@ -1,15 +1,15 @@
-<article class='d-flex flex-column mb-5 text-center'>
+<article class='mb-5 text-center'>
   <div class='mx-auto'>
     <h2>退会しますか？</h2>
     <p>※退会すると、同じメールアドレスでのログインができなくなります</p>
 
     <div class="row">
       <div class="col-6">
-        <%= link_to "戻る", mypage_path, class: "btn border" %>
+        <%= link_to "戻る", mypage_path, class: "btn btn-info border" %>
       </div>
 
       <div class="col-6">
-        <%= link_to "退会する", withdrow_path, method: :patch, class: "btn border", data: { confirm: "退会してもよろしいですか？" } %>
+        <%= link_to "退会する", withdrow_path, method: :patch, class: "btn btn-danger border", data: { confirm: "退会してもよろしいですか？" } %>
       </div>
     </div>
   </div>

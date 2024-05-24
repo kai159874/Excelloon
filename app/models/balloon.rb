@@ -1,10 +1,13 @@
 class Balloon < ApplicationRecord
+  belongs_to :user
   has_many :favorites,        dependent: :destroy
   has_many :reports,          dependent: :destroy
   has_many :balloon_comments, dependent: :destroy
   has_many :balloon_stickers, dependent: :destroy
 
   has_one_attached :balloon_image
+
+  scope :where_user_active, -> { joins(:user).where(users: { is_active: true }) }
 
   enum color_status: {
     white:    1,

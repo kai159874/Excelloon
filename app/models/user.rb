@@ -11,6 +11,8 @@ class User < ApplicationRecord
   end
 
   validates :name, presence: true, length: { in: 1..10 }
+  
+  scope :only_active, -> { where(is_active: true) }
 
   has_one_attached :profile_image
 

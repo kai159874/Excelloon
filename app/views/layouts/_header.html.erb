@@ -1,7 +1,7 @@
 <header>
   <div class="d-flex justify-content-around">
-    <div class="text-center">
-      <%= link_to "つかいかた", about_path, class: "header-text header-bg" %>
+    <div class="text-center header-bg">
+      <%= link_to "つかいかた", about_path, class: "header-text" %>
     </div>
     <!--admin signed in-->
     <% if admin_signed_in? %>
@@ -10,8 +10,8 @@
           <div class="excelloon-icon d-block mx-auto"></div>
         <% end %>
       </h1>
-      <div class="text-center">
-        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "header-text header-bg" %>
+      <div class="text-center header-bg">
+        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "header-text" %>
       </div>
     <!--user signed in-->
     <% elsif user_signed_in? %>
@@ -20,8 +20,8 @@
           <div class="excelloon-icon d-block mx-auto"></div>
         <% end %>
       </h1>
-      <div class="text-center">
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-text header-bg" %>
+      <div class="text-center header-bg">
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-text" %>
       </div>
     <!--guest-->
     <% else %>
@@ -30,8 +30,8 @@
           <div class="excelloon-icon d-block mx-auto"></div>
         <% end %>
       </h1>
-      <div class="text-center">
-        <%= link_to 'ログイン', new_user_session_path, class: "header-text header-bg" %>
+      <div class="text-center header-bg">
+        <%= link_to 'ログイン', new_user_session_path, class: "header-text" %>
       </div>
     <% end %>
   </div>

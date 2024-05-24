@@ -11,7 +11,7 @@
       <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: @balloon, stickers: @stickers %>
     </div>
 
-    <div class="d-flex justify-content-between">
+    <div class="mt-5 d-flex justify-content-between">
       <div>
         <div class="balloon-created-time">投稿日時: <%= l @balloon.created_at %></div>
         <div class="balloon-user-id">ID: <%= @user.public_uid %></div>
