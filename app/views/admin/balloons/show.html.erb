@@ -1,13 +1,48 @@
-<article class="layout">
+<article class="layout mb-5">
   <div class="balloon-frame">
     <div class="card balloon balloon-<%= @balloon.color_status %>">
-      <div class="balloon-content"><%= @balloon.content %></div>
+      <div class="balloon-content"><%= simple_format(h(@balloon.content)) %></div>
       <%= image_tag @balloon.convert_balloon_image("400"), class: "balloon-image" if @balloon.balloon_image.attached? %>
     </div>
     <div class="balloon-created-time">投稿日時: <%= l @balloon.created_at %></div>
     <div class="balloon-user-id">ID: <%= @user.public_uid %></div>
-    <%= link_to "削除", admin_balloon_path(@balloon), method: :delete, class: "btn balloon-delete border", local: true, data: { confirm: "バルーンを削除しますか？" } %>
+    <%= link_to "削除", admin_balloon_path(@balloon), method: :delete, class: "btn btn-danger balloon-delete border", local: true, data: { confirm: "バルーンを削除しますか？" } %>
+
+    <div class="balloon-reports-count">報告数: <%= @balloon.reports.count %></div>
   </div>
+
+  <h3>コメント</h3>
+
+  <div class="mx-auto">
+    <table class="table">
+      <tr>
+        <th>
+          名前
+        </th>
+        <th>
+          コメント
+        </th>
+        <th>
+        </th>
+      </tr>
+      <% @balloon.balloon_comments.each do |balloon_comment| %>
+        <tr>
+          <td>
+            <div>
+              <%= balloon_comment.user.name %>
+            </div>
+          </td>
+          <td>
+            <%= balloon_comment.comment %>
+          </td>
+          <td>
+            <%= link_to '削除する', admin_balloon_balloon_comment_path(balloon_comment.balloon, balloon_comment), method: :delete, data: { confirm: 'コメントを削除しますか？' }, class: "btn btn-sm btn-danger"%>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
 </article>
 
 

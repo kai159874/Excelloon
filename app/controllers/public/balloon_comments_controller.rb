@@ -3,12 +3,16 @@ class Public::BalloonCommentsController < ApplicationController
   before_action :ensure_balloon_comment
 
   def create
-    comment = current_user.balloon_comments.new(balloon_comment_params)
-    comment.balloon_id = @balloon.id
-    comment.save
+    @balloon_comment = current_user.balloon_comments.new(balloon_comment_params)
+    @balloon_comment.balloon_id = @balloon.id
+    @user = User.find_by(id: @balloon.user_id)
+    if current_user == @user || current_user.friends.include?(@user)
+      @balloon_comment.save
+    end
   end
 
   def destroy
+    @user = User.find_by(id: @balloon.user_id)
     comment = BalloonComment.find(params[:id])
     comment.destroy
   end

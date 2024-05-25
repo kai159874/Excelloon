@@ -1,0 +1,39 @@
+<article class="container text-center">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>届いた友達申請</h3>
+      <% if @recieved_request_users.count == 0 %>
+        <p>現在友達申請はありません。</p>
+      <% else %>
+        <table class="table">
+          <% @recieved_request_users.each do |user| %>
+            <tr>
+              <td><%= image_tag user.get_profile_image, size: "50x50", class: "rounded-circle mx-auto" %></td>
+              <td><%= user.name %></td>
+              <td><%= link_to "詳細", user_path(user), class: "btn border border-dark" %></td>
+              <td><%= link_to '許可', user_relationships_path(user.id), method: :post, class: "btn btn-info" %></td>
+              <td><%= link_to 'X', user_relationships_path(user.id), method: :delete, data: { confirm: "友達申請を取り下げますか？" }, class: "btn btn-sm btn-danger" %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <h3>申請中</h3>
+      <% if @sent_request_users.count == 0 %>
+        <p><%= link_to "こちら", searches_search_path %>からIDを入力して友達申請をすることができます</p>
+      <% else %>
+        <table class="table mx-auto", style="width: 300px;">
+          <% @sent_request_users.each do |user| %>
+            <% if current_user.follow_request?(user, current_user) %>
+              <tr class="my-2">
+                <td><%= image_tag user.get_profile_image, size: "50x50", class: "rounded-circle mx-auto" %></td>
+                <td><%= user.name %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</article>

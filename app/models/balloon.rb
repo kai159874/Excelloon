@@ -1,10 +1,14 @@
 class Balloon < ApplicationRecord
-  # has_many :favorites, dependent: :destroy
-  # has_many :reports, dependent: :destroy
+  belongs_to :user
+  has_many :favorites,        dependent: :destroy
+  has_many :reports,          dependent: :destroy
   has_many :balloon_comments, dependent: :destroy
   has_many :balloon_stickers, dependent: :destroy
 
   has_one_attached :balloon_image
+
+  scope :where_user_active, -> { joins(:user).where(users: { is_active: true }) }
+  scope :where_user_delete, -> { joins(:user).where(users: { is_active: false }) }
 
   enum color_status: {
     white:    1,
@@ -23,12 +27,16 @@ class Balloon < ApplicationRecord
 
   with_options presence: true do
     validates :user_id
-    validates :content
+    validates :content, length: { in: 1..200 }
     validates :color_status
   end
 
   def convert_balloon_image(size)
     balloon_image.variant( resize: size ).processed
+  end
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
 end

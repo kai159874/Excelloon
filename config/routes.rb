@@ -12,22 +12,24 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
 
   scope module: :public do
-    get 'about' => "homes#about"
-    get 'mypage' => 'users#mypage', as: "mypage"
-    get 'mypage/edit' => 'users#edit', as: "mypage_edit"
-    patch 'mypage' => 'users#update'
-    get 'unsubscribe' => 'users#unsubscribe', as: "unsubscribe"
-    patch 'withdrow' => 'users#withdrow', as: "withdrow"
-
+    get   'about'                   => "homes#about"
+    get   'tos'                     => "homes#tos"
+    get   'mypage'                  => 'users#mypage', as: "mypage"
+    get   'mypage/edit'             => 'users#edit', as: "mypage_edit"
+    patch 'mypage'                  => 'users#update'
+    get   'unsubscribe'             => 'users#unsubscribe', as: "unsubscribe"
+    patch 'withdrow'                => 'users#withdrow', as: "withdrow"
+    get   "mypage/friends"          => "relationships#friends", as: "friends"
+    get   "mypage/follow_requests"  => "relationships#follow_requests", as: "follow_requests"
     resources :users, only: [:show] do
       resource :relationships, only: [:create, :destroy]
-      get "followings" => "relationships#followings", as: "followings"
-      get "followers" => "relationships#followers", as: "followers"
     end
 
-    resources :balloons, only: [:new, :create, :show, :update, :destroy] do
-      resource :balloon_stickers, onlu: [:create]
-      resources :balloon_comments, onlu: [:create, :destroy]
+    resources :balloons,            only: [:new, :create, :show, :update, :destroy] do
+      resource  :favorites,         only: [:create, :destroy]
+      resource  :balloon_stickers,  only: [:create]
+      resources :balloon_comments,  only: [:create, :destroy]
+      resource  :reports,           only: [:create]
     end
     get 'searches/search'
     post "searches/user_search"
@@ -35,9 +37,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'top' => "homes#top"
-    resources :users, only: [:index, :show, :update]
-    resources :balloons, only: [:show, :destroy]
-    resources :stickers, only: [:index, :edit, :create, :update, :destroy]
+    resources :users,     only: [:index, :show, :update]
+    resources :balloons,  only: [:show, :destroy] do
+      resources :balloon_comments, only: [:destroy]
+    end
+    resources :stickers,  only: [:index, :edit, :create, :update, :destroy]
   end
 
 end

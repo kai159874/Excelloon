@@ -1,44 +1,48 @@
-<article class="layout">
+<article class="layout pb-5">
   <div class="balloon-frame">
     <div class="card balloon balloon-<%= @balloon.color_status %>">
-      <div class="balloon-content"><%= @balloon.content %></div>
-      <%= image_tag @balloon.convert_balloon_image("400"), class: "balloon-image" if @balloon.balloon_image.attached? %>
+      <div id="favorite-btn-<%= @balloon.id %>">
+        <%= render "public/favorites/favorite_btn", balloon: @balloon %>
+      </div>
+      <%= image_tag @balloon.convert_balloon_image("300"), class: "balloon-image" if @balloon.balloon_image.attached? %>
+      <div class="balloon-content"><%= simple_format(h(@balloon.content)) %></div>
     </div>
-    <div class="balloon-created-time">投稿日時: <%= l @balloon.created_at %></div>
-    <div class="balloon-user-id">ID: <%= @user.public_uid %></div>
+    <div id="sticker-<%= @balloon.id %>">
+      <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: @balloon, stickers: @stickers %>
+    </div>
+
+    <div class="mt-5 d-flex justify-content-between">
+      <div>
+        <div class="balloon-created-time">投稿日時: <%= l @balloon.created_at %></div>
+        <div class="balloon-user-id">ID: <%= @user.public_uid %></div>
+      </div>
+      <div class="report-btn">
+        <%= link_to "報告", balloon_reports_path(@balloon), method: :post, data: { confirm: "このバルーンを不適切な内容として報告しますか？" }, class: "btn btn-sm btn-secondary" %>
+      </div>
+    </div>
+
+    <% current_user.friends.each do |friend| %>
+      <% if @balloon.user_id == friend.id %>
+        <div class="m-4 d-flex">
+          <div><%= image_tag friend.get_profile_image, size: "60x60", class: "rounded-circle" %></div>
+          <div class="ml-4 my-auto"><%= friend.name %> さんのバルーン</div>
+        </div>
+      <% end %>
+    <% end %>
+
     <% if @balloon.user_id === current_user.id %>
-      <%= link_to "X", balloon_path(@balloon), method: :delete, class: "btn balloon-delete border", local: true, data: { confirm: "バルーンを削除しますか？" } %>
+      <div class="balloon-delete">
+        <%= link_to balloon_path(@balloon), method: :delete, class: "btn btn-danger border", local: true, data: { confirm: "バルーンを削除しますか？" } do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
+      </div>
 
       <div>
         <%= form_with model: @balloon, method: :patch, local: true do |f| %>
-          <div class="d-flex flex-column justify-content-center">
-            <%= f.label :color_status, "バルーンの色を変更できます。" %>
-            <div class="color_form mx-auto my-3">
-              <%= f.radio_button :color_status, :white %>
-              <%= f.label :color_status_white, class: "white"%>
-              <%= f.radio_button :color_status, :black %>
-              <%= f.label :color_status_black, class: "black"%>
-              <%= f.radio_button :color_status, :red %>
-              <%= f.label :color_status_red, class: "red"%>
-              <%= f.radio_button :color_status, :orange %>
-              <%= f.label :color_status_orange, class: "orange"%>
-              <%= f.radio_button :color_status, :yellow %>
-              <%= f.label :color_status_yellow, class: "yellow"%>
-              <%= f.radio_button :color_status, :grass %>
-              <%= f.label :color_status_grass, class: "grass"%>
-              <%= f.radio_button :color_status, :green %>
-              <%= f.label :color_status_green, class: "green"%>
-              <%= f.radio_button :color_status, :water %>
-              <%= f.label :color_status_water, class: "water"%>
-              <%= f.radio_button :color_status, :blue %>
-              <%= f.label :color_status_blue, class: "blue"%>
-              <%= f.radio_button :color_status, :wisteria %>
-              <%= f.label :color_status_wisteria, class: "wisteria"%>
-              <%= f.radio_button :color_status, :purple %>
-              <%= f.label :color_status_purple, class: "purple"%>
-              <%= f.radio_button :color_status, :pink %>
-              <%= f.label :color_status_pink, class: "pink"%>
-            </div>
+          <div class="d-flex flex-column justify-content-center text-center">
+
+            <%= render "public/balloons/color_select", f: f %>
+
             <div class="col-sm-7 col-md-4 mx-auto my-5">
               <%= f.submit "色変更", class: "btn btn-block btn-success" %>
             </div>
@@ -48,19 +52,19 @@
     <% end %>
   </div>
 
-  <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: @balloon, stickers: @stickers %>
-
-  <!--相互フォローのみに限定する-->
-  <!--見た目調整-->
-  <table id="comments-<%= @balloon.id %>">
-    <%= render "public/balloon_comments/comments", balloon: @balloon %>
-  </table>
-  <div>
-    <%= form_with model: [@balloon, @balloon_comment], local: false do |f| %>
-    <%= f.text_area :comment %>
-    <%= f.submit "comment" %>
-    <% end %>
-  </div>
+  <% if current_user == @user || current_user.friends.include?(@user) %>
+    <div id="comments-<%= @balloon.id %>">
+      <%= render "public/balloon_comments/comments", balloon: @balloon, user: @user %>
+    </div>
+    <div class="text-center">
+      <%= form_with model: [@balloon, @balloon_comment], local: false do |f| %>
+      <%= f.text_area :comment, placeholder: "相互フォローのみコメントができます。", class: "form-control" %>
+      <%= f.submit "送信", class: "btn btn-success m-4" %>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-center">---友達になることでコメントをすることができます。---</p>
+  <% end %>
 
 </article>
 

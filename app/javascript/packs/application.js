@@ -4,19 +4,28 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-// import Turbolinks from "turbolinks"
+import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 import "jquery";
 import "popper.js";
-import "../stylesheets/reset";
 import "bootstrap";
 import "../stylesheets/application";
-import "../stylesheets/balloon";
-import "../stylesheets/search";
 import './preview'
 
 Rails.start()
-// Turbolinks.start()
+Turbolinks.start()
 ActiveStorage.start()
+
+var jscrollOption = {
+  loadingHtml: '読み込み中・・・', //記事読み込み中の表示
+  autoTrigger: true, // 自動で読み込むか否か、trueで自動、falseでボタンクリックとなる。
+  padding: 0, // 指定したコンテンツの下かた何pxで読み込むかを指定(autoTrigger: trueの場合のみ)
+  contentSelector: '.jscroll-div', // 読み込む範囲の指定
+  nextSelector: 'span.next a'
+}
+
+$(document).on('turbolinks:load',function() {
+    $(".jscroll-div").jscroll(jscrollOption);
+});

@@ -1,0 +1,46 @@
+<div class="d-flex flex-column layout bg-cover" >
+  <h3 class="profile-name">
+    <%= user.name %>
+  </h3>
+  <div class="profile-image">
+    <%= image_tag user.get_profile_image, size: "160x160", class: "rounded-circle mx-auto my-3" %>
+  </div>
+  <div class="h4 profile-id m-2">
+    ID: <%= user.public_uid %>
+    <input class="d-none" id="copyTarget" type="text" value="<%= user.public_uid %>" readonly>
+    <button class="btn" onclick="copyToClipboard()">
+      <i class="fa-regular fa-copy"></i>
+    </button>
+  </div>
+  <% unless admin_signed_in? %>
+    <table class="profile-infomation">
+      <tr>
+        <th>バルーン数</th>
+        <% if user == current_user %>
+          <th>友達リスト</th>
+          <th>友達申請</th>
+        <% end %>
+      </tr>
+      <tr>
+        <td><%= user.balloons.count %></td>
+        <% if user == current_user %>
+          <td><%= link_to user.friends.count, friends_path %></td>
+          <td><%= link_to "申請リスト", follow_requests_path %></td>
+        <% end %>
+      </tr>
+    </table>
+  <% end %>
+  <% if user == current_user %>
+    <%= link_to "プロフィール編集", mypage_edit_path, class: "mt-2 btn border" %>
+  <% end %>
+</div>
+
+<!--ユーザーID クリップボートにコピーする処理-->
+<script>
+  function copyToClipboard() {
+    var copyTarget = document.getElementById("copyTarget");
+    copyTarget.select();
+    document.execCommand("Copy");
+    alert("コピーしました！ : " + copyTarget.value);
+    }
+</script>

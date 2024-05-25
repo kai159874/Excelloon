@@ -1,6 +1,6 @@
 require "test_helper"
 
-class FavotiteTest < ActiveSupport::TestCase
+class Admin::BalloonCommentsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

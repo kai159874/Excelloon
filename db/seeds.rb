@@ -9,7 +9,7 @@
 puts "seedの実行を開始しました"
 
 Admin.find_or_create_by!(email: ENV['ADMIN_ADDRESS']) do |admin|
-  admin.password = "eeeeee"
+  admin.password = ENV['ADMIN_PASSWORD']
 end
 
 User.find_or_create_by!(email: "olivia@example.com") do |user|
@@ -36,29 +36,74 @@ User.find_or_create_by!(email: "ray@example.com") do |user|
   user.is_active = true
 end
 
-Balloon.find_or_create_by!(content: "資格勉強〇日目！！") do |balloon|
+Balloon.find_or_create_by!(content: "資格勉強2日目！！") do |balloon|
   balloon.user_id = 1
   balloon.color_status = 1
 end
 
-Balloon.find_or_create_by!(content: "筋トレ継続〇日！まだまだ続けます") do |balloon|
+Balloon.find_or_create_by!(content: "筋トレ継続3日！まだまだ続けます") do |balloon|
   balloon.user_id = 2
-  balloon.color_status = 4
+  balloon.color_status = 2
 end
 
-Balloon.find_or_create_by!(content: "受験まで後〇日！今日は息抜き") do |balloon|
+Balloon.find_or_create_by!(content: "受験まで後100日！今日は息抜き") do |balloon|
   balloon.user_id = 3
-  balloon.color_status = 6
+  balloon.color_status = 3
 end
 
 Balloon.find_or_create_by!(content: "朝早く起きることが出来た！時間作れたので今日はお菓子作りをするよ！！") do |balloon|
   balloon.user_id = 4
+  balloon.color_status = 4
+end
+
+Balloon.find_or_create_by!(content: "資格勉強30日目！！") do |balloon|
+  balloon.user_id = 1
+  balloon.color_status = 5
+end
+
+Balloon.find_or_create_by!(content: "筋トレ継続522日！まだまだ続けます") do |balloon|
+  balloon.user_id = 2
+  balloon.color_status = 6
+end
+
+Balloon.find_or_create_by!(content: "受験まで後8005日！今日は息抜き") do |balloon|
+  balloon.user_id = 3
+  balloon.color_status = 7
+end
+
+Balloon.find_or_create_by!(content: "朝早く起きることが出来た！時間作れたので今日はお買い物をする！！") do |balloon|
+  balloon.user_id = 4
   balloon.color_status = 8
 end
 
+30.times do
+  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.prev_month)
+end
+
+22.times do
+  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(2.month))
+end
+
+15.times do
+  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(3.month))
+end
+
+3.times do
+  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(4.month))
+end
+
+3.times do
+  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(7.month))
+end
+
+3.times do
+  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(9.month))
+end
+
 Sticker.find_or_create_by!(message: "いいね！")
-Sticker.find_or_create_by!(message: "素晴らしい！")
-Sticker.find_or_create_by!(message: "その調子！")
+Sticker.find_or_create_by!(message: "すごい！")
+Sticker.find_or_create_by!(message: "素敵！")
 Sticker.find_or_create_by!(message: "Excellent！")
+Sticker.find_or_create_by!(message: "天才か？")
 
 puts "seedの実行を完了しました"

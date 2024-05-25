@@ -3,8 +3,18 @@ class Public::UsersController < ApplicationController
   before_action :set_current_user, only: [:mypage, :edit, :update, :withdrow]
 
   def mypage
-    @balloons = @user.balloons.order(id: "DESC")
     @stickers = Sticker.all
+    set_months_balloons_counts(@user)
+    hidden_balloons = Balloon.all.where_user_delete.includes(:user)
+    if params[:type] == "favorite"
+      favorites = Favorite.where(user_id: current_user.id).pluck(:balloon_id).reverse
+      @balloons = Balloon.find(favorites) - hidden_balloons
+      @balloons = Kaminari.paginate_array(@balloons).page(params[:page]).per(20)
+      @type = "favorite"
+    else
+      @balloons = @user.balloons.order(id: "DESC").page(params[:page]).per(20)
+      @type = "mine"
+    end
   end
 
   def edit
@@ -28,7 +38,19 @@ class Public::UsersController < ApplicationController
   end
 
   def show
+    @stickers = Sticker.all
     @user = User.find_by(public_uid: params[:id])
+
+    if current_user.friends?(@user)
+      if @user.is_active ===false
+        @balloons = []
+      else
+        @balloons = @user.balloons.order(id: "DESC").page(params[:page]).per(20)
+      end
+      set_months_balloons_counts(@user)
+    else
+      redirect_to root_path
+    end
   end
 
   private
@@ -39,6 +61,10 @@ class Public::UsersController < ApplicationController
 
   def set_current_user
     @user = current_user
+  end
+
+  def set_months_balloons_counts(user)
+    @counts = user.balloons.group("strftime('%Y',created_at)").group("strftime('%m',created_at)").count
   end
 
 end

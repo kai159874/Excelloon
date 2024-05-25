@@ -1,29 +1,16 @@
-<article class="container text-center">
-  <h2>(通報)投稿一覧</h2>
-  <div class="row">
-    <div class="col mx-auto">
-      <table class="table table-hover text-center">
-        <thead>
-          <tr class="table-secondary">
-            <th>会員名</th>
-            <th>本文</th>
-            <th>通報数</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @balloons.each do |balloon| %>
-            <tr>
-              <td><%= link_to find_user(balloon).name, admin_user_path(find_user(balloon)) %></td>
-              <td><%= link_to balloon.content.truncate(20), admin_balloon_path(balloon) %></td>
-              <td><%=  %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+<article class="container pb-5 text-center">
+
+  <% if @type == "all" %>
+    <h2>投稿一覧</h2>
+    <%= link_to "通報一覧へ", admin_top_path %>
+  <% else %>
+    <h2>通報投稿一覧</h2>
+    <%= link_to "全投稿一覧へ", admin_top_path(type: "all") %>
+  <% end %>
+  <%= render "admin/balloons/index", balloons: @balloons %>
+  <div class="d-flex justify-content-center">
+    <%= paginate @balloons %>
   </div>
+
 </article>
 
-<!--通報数順に並べる 通報機能実装後-->
-
-<!--ページネーション-->

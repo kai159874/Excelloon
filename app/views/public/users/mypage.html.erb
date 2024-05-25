@@ -1,57 +1,18 @@
-<article class="d-flex flex-column text-center">
-  <div class="profile-image">
-    <%= image_tag @user.get_profile_image, size: "160x160", class: "rounded-circle mx-auto my-5" %>
-  </div>
-  <div class="profile-name">
-    <%= @user.name %>
-  </div>
-  <div class="profile-id">
-    ID: <%= @user.public_uid %>
-  </div>
-  <table class="profile-infomation">
-    <tr>
-      <th>
-        バルーン数
-      </th>
-      <th>
-        フォロー
-      </th>
-      <th>
-        フォロワー
-      </th>
-    </tr>
-    <tr>
-      <td>
-        <%= @user.balloons.count %>
-      </td>
-      <td>
-        <%= link_to @user.followings.count, user_followings_path(@user) %>
-      </td>
-      <td>
-        <%= link_to @user.followers.count, user_followers_path(@user) %>
-      </td>
-    </tr>
-  </table>
-  <div>
-    <%= link_to "プロフィール編集", mypage_edit_path, class: "btn border" %>
-  </div>
+<article class="pb-5 text-center">
 
-  <h3>バルーンボックス(仮)</h3>
-  <!--連続投稿日数、バルーンの物理エンジン入れたい-->
+  <%= render "public/users/introduction", user: @user %>
 
-  <div class="balloon-layout">
+  <%= render "public/users/trophy_box", counts: @counts %>
+
+  <% if @type == "mine" %>
     <h3>マイバルーン</h3>
-    <% @balloons.each do |balloon| %>
-      <%= link_to balloon_path(balloon), class: "balloon-frame" do %>
-      <!--border調整-->
-        <div class="card balloon balloon-<%= balloon.color_status %>">
-          <div class="balloon-content"><%= balloon.content %></div>
-          <%= image_tag balloon.convert_balloon_image("300"), class: "balloon-image" if balloon.balloon_image.attached? %>
-        </div>
-      <% end %>
-      <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: balloon, stickers: @stickers %>
-    <% end %>
+    <%= link_to "お気に入りバルーン一覧へ", mypage_path(type: "favorite") %>
+  <% else %>
+    <h3>お気に入り</h3>
+    <%= link_to "マイバルーン一覧へ", mypage_path %>
+  <% end %>
+  <div class="jscroll-div">
+    <%= render "public/balloons/index", balloons: @balloons, stickers: @stickers %>
+    <%= paginate @balloons %>
   </div>
-
-
 </article>
