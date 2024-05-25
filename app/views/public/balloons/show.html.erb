@@ -11,7 +11,7 @@
       <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: @balloon, stickers: @stickers %>
     </div>
 
-    <div class="d-flex justify-content-between">
+    <div class="mt-5 d-flex justify-content-between">
       <div>
         <div class="balloon-created-time">投稿日時: <%= l @balloon.created_at %></div>
         <div class="balloon-user-id">ID: <%= @user.public_uid %></div>
@@ -23,14 +23,18 @@
 
     <% current_user.friends.each do |friend| %>
       <% if @balloon.user_id == friend.id %>
-       <div><%= image_tag friend.get_profile_image, size: "60x60", class: "rounded-circle" %></div>
-       <div><%= friend.name %></div>
+        <div class="m-4 d-flex">
+          <div><%= image_tag friend.get_profile_image, size: "60x60", class: "rounded-circle" %></div>
+          <div class="ml-4 my-auto"><%= friend.name %> さんのバルーン</div>
+        </div>
       <% end %>
     <% end %>
 
     <% if @balloon.user_id === current_user.id %>
       <div class="balloon-delete">
-        <%= link_to "削除", balloon_path(@balloon), method: :delete, class: "btn btn-danger border", local: true, data: { confirm: "バルーンを削除しますか？" } %>
+        <%= link_to balloon_path(@balloon), method: :delete, class: "btn btn-danger border", local: true, data: { confirm: "バルーンを削除しますか？" } do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
       </div>
 
       <div>
@@ -49,22 +53,18 @@
   </div>
 
   <% if current_user == @user || current_user.friends.include?(@user) %>
-    <table id="comments-<%= @balloon.id %>">
+    <div id="comments-<%= @balloon.id %>">
       <%= render "public/balloon_comments/comments", balloon: @balloon, user: @user %>
-    </table>
-    <div>
+    </div>
+    <div class="text-center">
       <%= form_with model: [@balloon, @balloon_comment], local: false do |f| %>
-      <%= f.text_area :comment, placeholder: "相互フォローのみコメントができます。" %>
-      <%= f.submit "comment" %>
+      <%= f.text_area :comment, placeholder: "相互フォローのみコメントができます。", class: "form-control" %>
+      <%= f.submit "送信", class: "btn btn-success m-4" %>
       <% end %>
     </div>
   <% else %>
-    <p>---友達になることでコメントをすることができます。---</p>
+    <p class="text-center">---友達になることでコメントをすることができます。---</p>
   <% end %>
-
-  <!--見た目調整-->
-
-
 
 </article>
 

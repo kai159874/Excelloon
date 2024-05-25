@@ -1,4 +1,5 @@
 @use '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;500;700;800&display=swap');
 
 // reset
 
@@ -37,11 +38,11 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "M PLUS 1p", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #333;
   text-align: left;
   background-color: #fff;
 }
@@ -356,12 +357,32 @@ body:after {
   width: 100%;
   height: 100%;
   content: "";
-  background: #4DC4FF;
-  background: -moz-linear-gradient(top, #4DC4FF 0%,#ffffff 100%);
-  background: -webkit-linear-gradient(top, #4DC4FF 0%,#ffffff 100%);
+  background: #80D5FF;
+  background: -moz-linear-gradient(top, #80D5FF 0%,#ffffff 100%);
+  background: -webkit-linear-gradient(top, #80D5FF 0%,#ffffff 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbcacb', endColorstr='#f79697',GradientType=0 );
-  background: linear-gradient(to bottom, #4DC4FF 0%,#ffffff 100%);
+  background: linear-gradient(to bottom, #80D5FF 0%,#ffffff 100%);
   z-index: -1;
+}
+
+.bg-cover {
+  background-color: rgba(255, 243, 230, 1);
+  padding: 32px;
+  border-radius: 24px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+  .bg-cover {
+    padding: 16px;
+    width: 95%;
+  }
+}
+
+.heading-line {
+  width: 99%;
+  margin-top: -5px;
 }
 
 // header footer
@@ -392,25 +413,17 @@ body:after {
 }
 
 .header-text {
-  color: black;
+  color: white;
 }
 
-.bg-img {
-  background-size: 120px;
-  background-repeat: no-repeat;
-  width: 160px;
-  height: 90px;
-  line-height: 90px;
+.header-bg {
+  height: min-content;
+  margin: auto 0;
+  padding: 12px;
+  border-radius: 20px;
+  background-color: #b6d300;
 }
 
-.cloud-1 {
-  background-image: url("../../assets/images/cloud.png");
-  background-position: center;
-}
-.cloud-2 {
-  background-image: url("../../assets/images/cloud2.png");
-  background-position: center;
-}
 
 .footer-bg {
   background-color: #b6d300;
@@ -443,6 +456,9 @@ body:after {
   font-size: clamp(10px, 1.1vw, 12px);
 }
 
+// top,about
+
+
 // ページ幅
 .layout {
   display: block;
@@ -466,7 +482,7 @@ body:after {
 // 検索
 
 .result-user {
-  padding: 64px;
+  padding: 32px;
   margin: 24px;
   background: white;
   border: 1px solid #CCCCCC;
@@ -605,7 +621,7 @@ input[type="radio"]:checked + label{
 .balloon{
   margin: 18px 0;
   text-align: center;
-  color: #FFFFFF;
+  color: #222222;
   border: 6px solid;
   border-radius: 46%;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .5);
@@ -632,7 +648,7 @@ input[type="radio"]:checked + label{
 // バルーンカラー設定
 
 .balloon-white{
-  background: #AAAAAA;
+  background: #CCCCCC;
   border-color: #FFFFFF;
 }
 
@@ -723,12 +739,12 @@ input[type="radio"]:checked + label{
 // トロフィー
 
 .trophy-box {
-  width: 40%;
+  width: 80%;
 }
 
 @media (max-width: 992px) {
   .trophy-box {
-    width: 95%;
+    width: 98%;
   }
 }
 

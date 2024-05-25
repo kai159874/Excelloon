@@ -2,50 +2,7 @@
 
   <%= render "public/users/introduction", user: @user %>
 
-  <div>
-    <%= link_to "プロフィール編集", mypage_edit_path, class: "btn border" %>
-  </div>
-
-  <div class="bg-cover">
-    <h3>トロフィーボックス</h3>
-    <small>投稿があった月(過去6か月分)のバルーン投稿実績を表示しています。<br>
-            バルーンの数が1個、10個、20個、28個達成でトロフィーを獲得できます！</small>
-    <div class="trophy-box mx-auto">
-      <table class="table table-bordered mx-auto">
-        <tr>
-          <th></th>
-          <th>バルーン数</th>
-          <th>トロフィー</th>
-        </tr>
-        <% @counts.to_a.last(6).reverse_each do |month, count| %>
-          </tr>
-            <th><%= month[0] %>年<br><%= month[1] %>月</th>
-            <td><%= count %></td>
-            <td class="trophy">
-              <% if count >= 28 %>
-                <div class="trophy-gold">
-                  <i class="fa-solid fa-trophy"></i>
-                </div>
-              <% elsif count >= 20 %>
-                <div class="trophy-silver">
-                  <i class="fa-solid fa-trophy"></i>
-                </div>
-              <% elsif count >= 10 %>
-                <div class="trophy-bronze">
-                  <i class="fa-solid fa-trophy"></i>
-                </div>
-              <% elsif count >= 1 %>
-                <div class="trophy-black">
-                  <i class="fa-solid fa-trophy"></i>
-                </div>
-              <% else %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-  </div>
+  <%= render "public/users/trophy_box", counts: @counts %>
 
   <% if @type == "mine" %>
     <h3>マイバルーン</h3>

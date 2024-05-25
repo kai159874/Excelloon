@@ -7,13 +7,16 @@ class Public::HomesController < ApplicationController
       @type = "friends"
       user_ids = current_user.friends.pluck(:id)
       user_ids.push(current_user.id)
-      @balloons = Balloon.where(user_id: user_ids).order(created_at: :desc).page(params[:page]).per(20)
+      @balloons = Balloon.where_user_active.includes(:user).where(user_id: user_ids).order(created_at: :desc).page(params[:page]).per(20)
     else
-      @balloons = Balloon.all.order(id: "DESC").page(params[:page]).per(20)
+      @balloons = Balloon.where_user_active.includes(:user).order(id: "DESC").page(params[:page]).per(20)
     end
   end
 
   def about
+  end
+
+  def tos
   end
 
   private

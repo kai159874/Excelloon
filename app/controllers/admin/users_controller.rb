@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @balloons = @user.balloons
+    @balloons = @user.balloons.order(id: "DESC").page(params[:page]).per(100)
   end
 
   def update

@@ -1,4 +1,4 @@
-<article class="layout container text-center">
+<article class="container text-center">
   <div class="row">
     <div class="col-md-6">
       <h3>届いた友達申請</h3>
@@ -10,8 +10,8 @@
             <tr>
               <td><%= image_tag user.get_profile_image, size: "50x50", class: "rounded-circle mx-auto" %></td>
               <td><%= user.name %></td>
-              <td><%= link_to "ユーザー詳細", user_path(user), class: "btn border border-dark" %></td>
-              <td><%= link_to '友達になる', user_relationships_path(user.id), method: :post, class: "btn btn-info" %></td>
+              <td><%= link_to "詳細", user_path(user), class: "btn border border-dark" %></td>
+              <td><%= link_to '許可', user_relationships_path(user.id), method: :post, class: "btn btn-info" %></td>
               <td><%= link_to 'X', user_relationships_path(user.id), method: :delete, data: { confirm: "友達申請を取り下げますか？" }, class: "btn btn-sm btn-danger" %></td>
             </tr>
           <% end %>
