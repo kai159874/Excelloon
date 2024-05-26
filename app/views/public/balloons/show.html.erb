@@ -58,7 +58,7 @@
     </div>
     <div class="text-center">
       <%= form_with model: [@balloon, @balloon_comment], local: false do |f| %>
-      <%= f.text_area :comment, placeholder: "相互フォローのみコメントができます。", class: "form-control" %>
+      <%= f.text_area :comment, placeholder: "自身と友達のみコメントができます。", class: "form-control" %>
       <%= f.submit "送信", class: "btn btn-success m-4" %>
       <% end %>
     </div>
