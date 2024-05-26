@@ -796,3 +796,16 @@ input[type="radio"]:checked + label{
     left: 100%;
   }
 }
+
+// mypage
+
+.user-id {
+  width: 122px;
+  border: 0;
+  background: none;
+  outline: none;
+}
+
+.user-id::selection {
+  background: none;
+}
