@@ -4,6 +4,13 @@
       <div id="favorite-btn-<%= @balloon.id %>">
         <%= render "public/favorites/favorite_btn", balloon: @balloon %>
       </div>
+      <% if current_user == @user %>
+        <div class="twitter">
+          <%= link_to "https://twitter.com/share?url=#{balloon_url(@balloon)}&text=【バルーンを飛ばしました！】%0a%0a#{@balloon.content}", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア", class: "x-link" do %>
+            <i class="fa-brands fa-x-twitter"></i>
+          <% end %>
+        </div>
+      <% end %>
       <%= image_tag @balloon.convert_balloon_image("300"), class: "balloon-image" if @balloon.balloon_image.attached? %>
       <div class="balloon-content"><%= simple_format(h(@balloon.content)) %></div>
     </div>
@@ -30,7 +37,7 @@
       <% end %>
     <% end %>
 
-    <% if @balloon.user_id === current_user.id %>
+    <% if current_user == @user %>
       <div class="balloon-delete">
         <%= link_to balloon_path(@balloon), method: :delete, class: "btn btn-danger border", local: true, data: { confirm: "バルーンを削除しますか？" } do %>
           <i class="fa-solid fa-trash-can"></i>
@@ -58,7 +65,7 @@
     </div>
     <div class="text-center">
       <%= form_with model: [@balloon, @balloon_comment], local: false do |f| %>
-      <%= f.text_area :comment, placeholder: "相互フォローのみコメントができます。", class: "form-control" %>
+      <%= f.text_area :comment, placeholder: "自身と友達のみコメントができます。", class: "form-control" %>
       <%= f.submit "送信", class: "btn btn-success m-4" %>
       <% end %>
     </div>

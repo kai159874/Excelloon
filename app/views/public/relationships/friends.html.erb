@@ -3,7 +3,7 @@
   <% if @users.nil? %>
     <p><%= link_to "こちら", searches_search_path %>からIDを入力して友達申請をすることができます</p>
   <% else %>
-    <table class="table table-hover mx-auto", style="width: 300px;">
+    <table class="table table-hover mx-auto", style="max-width: 460px;">
       <% @users.each do |user| %>
         <tr onclick='window.location="<%= user_path(user) %>"', role="link", class="cursor">
           <td><%= image_tag user.get_profile_image, size: "50x50", class: "rounded-circle mx-auto" %></td>

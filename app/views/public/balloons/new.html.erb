@@ -1,4 +1,4 @@
-<article class="bg-cover text-center">
+<article class="bg-cover layout text-center">
   <%= render 'layouts/errors', obj: @balloon %>
   <h2 class="my-3">新しいバルーンを飛ばそう！</h2>
 
@@ -8,13 +8,13 @@
       <%= render "public/balloons/color_select", f: f %>
 
       <div class="my-3">
-        <%= f.text_area :content, placeholder: "今日頑張ったことを詰め込もう！(最大200文字)", size: "45x5", class: "form-control text_field_color" %>
+        <%= f.text_area :content, placeholder: "今日頑張ったことを詰め込もう！(最大200文字)", size: "1x5", class: "form-control" %>
       </div>
 
-      <div class="">
+      <div>
         <%= f.label :balloon_image, class: "h3" do %>
           <i class="fa-regular fa-image"></i>
-          <%= f.file_field :balloon_image, id: "file-input", class: "h6" %>
+          <%= f.file_field :balloon_image, id: "file-input", class: "balloon-image-input" %>
         <% end %>
       </div>
       <!--プレビュー-->

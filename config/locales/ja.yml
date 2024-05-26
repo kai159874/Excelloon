@@ -13,6 +13,8 @@ ja:
         content: "本文"
         color_status: "カラー"
         balloon_image: "画像"
+      sticker:
+        message: "コメント"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

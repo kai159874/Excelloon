@@ -41,7 +41,7 @@ class Public::UsersController < ApplicationController
     @stickers = Sticker.all
     @user = User.find_by(public_uid: params[:id])
 
-    if current_user.friends?(@user)
+    if current_user.friends?(@user) || current_user.follow_request?(current_user, @user)
       if @user.is_active ===false
         @balloons = []
       else

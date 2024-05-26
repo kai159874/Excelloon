@@ -6,8 +6,8 @@
     <%= image_tag user.get_profile_image, size: "160x160", class: "rounded-circle mx-auto my-3" %>
   </div>
   <div class="h4 profile-id m-2">
-    ID: <%= user.public_uid %>
-    <input class="d-none" id="copyTarget" type="text" value="<%= user.public_uid %>" readonly>
+    ID:
+    <input class="user-id" id="copyTarget" type="text" value="<%= user.public_uid %>" readonly>
     <button class="btn" onclick="copyToClipboard()">
       <i class="fa-regular fa-copy"></i>
     </button>
