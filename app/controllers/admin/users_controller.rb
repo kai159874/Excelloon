@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :ensure_user, only: [:show, :update]
 
   def index
-    @users = User.all.order(id: "DESC")
+    @users = User.all.order(id: "DESC").page(params[:page]).per(100)
   end
 
   def show
