@@ -13,9 +13,9 @@
         <th>バルーン数</th>
         <th>トロフィー</th>
       </tr>
-      <% counts.to_a.last(6).reverse_each do |month, count| %>
+      <% counts.to_a.last(6).reverse_each do |date, count| %>
         </tr>
-          <th><%= month[0] %>年<br><%= month[1] %>月</th>
+          <th><%= date %>月</th>
           <td><%= count %></td>
           <td class="trophy">
             <% if count >= 28 %>
