@@ -36,68 +36,48 @@ User.find_or_create_by!(email: "ray@example.com") do |user|
   user.is_active = true
 end
 
-Balloon.find_or_create_by!(content: "資格勉強2日目！！") do |balloon|
-  balloon.user_id = 1
-  balloon.color_status = 1
+10.times do
+  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.prev_month)
 end
 
-Balloon.find_or_create_by!(content: "筋トレ継続3日！まだまだ続けます") do |balloon|
-  balloon.user_id = 2
-  balloon.color_status = 2
-end
-
-Balloon.find_or_create_by!(content: "受験まで後100日！今日は息抜き") do |balloon|
-  balloon.user_id = 3
-  balloon.color_status = 3
-end
-
-Balloon.find_or_create_by!(content: "朝早く起きることが出来た！時間作れたので今日はお菓子作りをするよ！！") do |balloon|
-  balloon.user_id = 4
-  balloon.color_status = 4
-end
-
-Balloon.find_or_create_by!(content: "資格勉強30日目！！") do |balloon|
-  balloon.user_id = 1
-  balloon.color_status = 5
-end
-
-Balloon.find_or_create_by!(content: "筋トレ継続522日！まだまだ続けます") do |balloon|
-  balloon.user_id = 2
-  balloon.color_status = 6
-end
-
-Balloon.find_or_create_by!(content: "受験まで後8005日！今日は息抜き") do |balloon|
-  balloon.user_id = 3
-  balloon.color_status = 7
-end
-
-Balloon.find_or_create_by!(content: "朝早く起きることが出来た！時間作れたので今日はお買い物をする！！") do |balloon|
-  balloon.user_id = 4
-  balloon.color_status = 8
-end
-
-30.times do
-  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.prev_month)
-end
-
-22.times do
-  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(2.month))
+6.times do
+  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.ago(2.month))
 end
 
 15.times do
-  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(3.month))
+  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.ago(3.month))
 end
 
 3.times do
-  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(4.month))
+  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.ago(4.month))
 end
 
 3.times do
-  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(7.month))
+  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.ago(7.month))
 end
 
 3.times do
-  Balloon.create(content: "testtesttest", user_id: 4, color_status: 1, created_at: Time.current.ago(9.month))
+  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.ago(9.month))
+end
+
+
+for n in 1..20 do
+
+  Balloon.find_or_create_by!(content: "資格勉強#{n}日目！！") do |balloon|
+    balloon.user_id = 1
+    balloon.color_status = rand(1..12)
+  end
+
+  Balloon.find_or_create_by!(content: "筋トレ継続5#{n}日！まだまだ続けます") do |balloon|
+    balloon.user_id = 2
+    balloon.color_status = rand(1..12)
+  end
+
+  Balloon.find_or_create_by!(content: "受験まで後800#{n}日！今日は息抜き") do |balloon|
+    balloon.user_id = 3
+    balloon.color_status = rand(1..12)
+  end
+
 end
 
 Sticker.find_or_create_by!(message: "いいね！")

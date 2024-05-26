@@ -497,6 +497,10 @@ input[type=radio] {
   display: none; /* ラジオボタンを非表示にする */
 }
 
+.balloon-image-input {
+  font-size: revert;
+}
+
 .color_form label{
   height: 32px;
   width: 32px;
@@ -517,43 +521,43 @@ input[type=radio] {
   }
 
   &.red{
-  background: #CC2929;
+  background: #FF3333;
   }
 
   &.orange{
-  background: #CC7A29;
+  background: #FF9933;
   }
 
   &.yellow{
-  background: #CCCC29;
+  background: #FFFF33;
   }
 
   &.grass{
-  background: #7ACC29;
+  background: #99FF33;
   }
 
   &.green{
-  background: #29CC29;
+  background: #33FF33;
   }
 
   &.water{
-  background: #29CCCC;
+  background: #33FFFF;
   }
 
   &.blue{
-  background: #297ACC;
+  background: #3399FF;
   }
 
   &.wisteria{
-  background: #2929CC;
+  background: #3333FF;
   }
 
   &.purple{
-  background: #7A29CC;
+  background: #9933FF;
   }
 
   &.pink{
-  background: #FF33B4;
+  background: #FF33FF;
   }
 }
 
@@ -561,7 +565,7 @@ input[type=radio] {
 
 input[type="radio"]:checked + label{
   &.white{
-  border: 6px solid #AAAAAA;
+  border: 6px solid #DDDDDD;
   color: #ffffff;
   }
 
@@ -571,43 +575,43 @@ input[type="radio"]:checked + label{
   }
 
   &.red{
-  border: 6px solid #CCA3A3;
+  border: 6px solid #FFB3B3;
   }
 
   &.orange{
-  border: 6px solid #CCB8A3;
+  border: 6px solid #FFD9B3;
   }
 
   &.yellow{
-  border: 6px solid #CCCCA3;
+  border: 6px solid #FFFFB3;
   }
 
   &.grass{
-  border: 6px solid #B8CCA3;
+  border: 6px solid #D9FFB3;
   }
 
   &.green{
-  border: 6px solid #A3CCA3;
+  border: 6px solid #B3FFB3;
   }
 
   &.water{
-  border: 6px solid #A3CCCC;
+  border: 6px solid #B3FFFF;
   }
 
   &.blue{
-  border: 6px solid #A3B8CC;
+  border: 6px solid #B3D9FF;
   }
 
   &.wisteria{
-  border: 6px solid #A3A3CC;
+  border: 6px solid #B3B3FF;
   }
 
   &.purple{
-  border: 6px solid #B8A3CC;
+  border: 6px solid #D9B3FF;
   }
 
   &.pink{
-  border: 6px solid #FFCCEC;
+  border: 6px solid #FFB3FF;
   }
 }
 
@@ -648,7 +652,7 @@ input[type="radio"]:checked + label{
 // バルーンカラー設定
 
 .balloon-white{
-  background: #CCCCCC;
+  background: #DDDDDD;
   border-color: #FFFFFF;
 }
 
@@ -658,53 +662,53 @@ input[type="radio"]:checked + label{
 }
 
 .balloon-red{
-  background: #CCA3A3;
-  border-color: #CC2929;
+  background: #FFB3B3;
+  border-color: #FF3333;
 }
 
 .balloon-orange{
-  background: #CCB8A3;
-  border-color: #CC7A29;
+  background: #FFD9B3;
+  border-color: #FF9933;
 }
 
 .balloon-yellow{
-  background: #CCCCA3;
-  border-color: #CCCC29;
+  background: #FFFFB3;
+  border-color: #FFFF33;
 }
 
 .balloon-grass{
-  background: #B8CCA3;
-  border-color: #7ACC29;
+  background: #D9FFB3;
+  border-color: #99FF33;
 }
 
 .balloon-green{
-  background: #A3CCA3;
-  border-color: #29CC29;
+  background: #B3FFB3;
+  border-color: #33FF33;
 }
 
 .balloon-water{
-  background: #A3CCCC;
-  border-color: #29CCCC;
+  background: #B3FFFF;
+  border-color: #33FFFF;
 }
 
 .balloon-blue{
-  background: #A3B8CC;
-  border-color: #297ACC;
+  background: #B3D9FF;
+  border-color: #3399FF;
 }
 
 .balloon-wisteria{
-  background: #A3A3CC;
-  border-color: #2929CC;
+  background: #B3B3FF;
+  border-color: #3333FF;
 }
 
 .balloon-purple{
-  background: #B8A3CC;
-  border-color: #7A29CC;
+  background: #D9B3FF;
+  border-color: #9933FF;
 }
 
 .balloon-pink{
-  background: #FFCCEC;
-  border-color: #FF33B4;
+  background: #FFB3FF;
+  border-color: #FF33FF;
 }
 
 
@@ -723,6 +727,17 @@ input[type="radio"]:checked + label{
   left: 0;
   font-size: 32px;
   z-index: 1;
+}
+
+.x-link {
+  background: black;
+  border-radius: 25%;
+  padding: 2px 8px;
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 // ステッカー
