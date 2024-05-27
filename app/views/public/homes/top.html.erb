@@ -12,7 +12,6 @@
       <%= link_to "みんなのバルーン一覧へ", root_path %>
     </div>
   <% else %>
-
     <% if @type == "friends" %>
       <h2>友達のバルーン</h2>
       <%= link_to "みんなのバルーン一覧へ", root_path %>
@@ -22,6 +21,9 @@
         <%= link_to "友達のバルーン一覧へ", root_path(type: "friends") %>
       <% end %>
     <% end %>
+      <div>
+        <%= render "public/searches/search_form" %>
+      </div>
       <div class="jscroll-div">
         <%= render "public/balloons/index", balloons: @balloons, stickers: @stickers %>
         <%= paginate @balloons %>
