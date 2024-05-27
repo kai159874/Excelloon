@@ -1,5 +1,6 @@
 class Balloon < ApplicationRecord
   belongs_to :user
+  
   has_many :favorites,        dependent: :destroy
   has_many :reports,          dependent: :destroy
   has_many :balloon_comments, dependent: :destroy

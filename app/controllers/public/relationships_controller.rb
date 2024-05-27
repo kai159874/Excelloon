@@ -19,7 +19,7 @@ class Public::RelationshipsController < ApplicationController
       redirect_to friends_path, notice: "#{other_user.name}さんを友達リストから解除しました。"
     else
       other_user.unfollow(current_user)
-      redirect_to mypage_path, notice: "友達申請を拒否しました。"
+      redirect_to follow_requests_path, notice: "友達申請を拒否しました。"
     end
   end
 

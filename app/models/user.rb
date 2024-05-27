@@ -11,7 +11,7 @@ class User < ApplicationRecord
   end
 
   validates :name, presence: true, length: { in: 1..10 }
-  
+
   scope :only_active, -> { where(is_active: true) }
 
   has_one_attached :profile_image
@@ -25,7 +25,7 @@ class User < ApplicationRecord
   has_many :active_relationships,  class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followings, through: :active_relationships,  source: :followed
-  has_many :followers, through: :passive_relationships, source: :follower
+  has_many :followers,  through: :passive_relationships, source: :follower
 
   def get_profile_image
     if profile_image.attached?

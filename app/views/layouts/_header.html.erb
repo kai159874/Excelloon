@@ -5,7 +5,7 @@
     </div>
     <!--admin signed in-->
     <% if admin_signed_in? %>
-      <h1 class="">
+      <h1>
         <%= link_to admin_top_path do %>
           <div class="excelloon-icon d-block mx-auto"></div>
         <% end %>
@@ -15,7 +15,7 @@
       </div>
     <!--user signed in-->
     <% elsif user_signed_in? %>
-      <h1 class="">
+      <h1>
         <%= link_to root_path do %>
           <div class="excelloon-icon d-block mx-auto"></div>
         <% end %>
@@ -25,7 +25,7 @@
       </div>
     <!--guest-->
     <% else %>
-      <h1 class="">
+      <h1>
         <%= link_to root_path do %>
           <div class="excelloon-icon d-block mx-auto"></div>
         <% end %>

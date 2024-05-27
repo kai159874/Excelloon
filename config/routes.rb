@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       resource  :reports,           only: [:create]
     end
     get 'searches/search'
+    get 'searches/balloons_search'
     post "searches/user_search"
   end
 
