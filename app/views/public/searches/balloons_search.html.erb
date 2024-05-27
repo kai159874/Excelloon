@@ -1,0 +1,23 @@
+<article class="pb-5 text-center">
+  <h2>えくせるーん</h2>
+  <h2>-Excellent Balloon-</h2>
+  <p>”みんなの頑張りを応援し合うおだやかでポジティブなプラットフォーム”を目指しています！</p>
+  <hr class="heading-line">
+
+  <h2>"<%= @keyword %>"の検索結果</h2>
+  <% if @balloons.count == 0 %>
+    <div class="text-center">
+      <p>ヒットするバルーンがありません。</p>
+      <p>ワードを変更して再検索してください。</p>
+      <%= link_to "みんなのバルーン一覧へ", root_path %>
+    </div>
+  <% else %>
+    <div>
+      <%= render "public/searches/search_form" %>
+    </div>
+    <div class="jscroll-div">
+      <%= render "public/balloons/index", balloons: @balloons, stickers: @stickers %>
+      <%= paginate @balloons %>
+    </div>
+  <% end %>
+</article>
