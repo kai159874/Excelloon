@@ -3,43 +3,43 @@
     <h4>バルーンを作ることでトロフィーを獲得できます！</h4>
     <p><%= link_to "こちら", new_balloon_path %>からバルーンを作ってみよう！</p>
   <% else %>
-  <h3>トロフィー</h3>
-  <small>投稿があった月(過去6か月分)のバルーン投稿実績を表示しています。<br>
-          バルーンの数が1個、10個、20個、28個達成でトロフィーを獲得できます！</small>
-  <div class="mx-auto">
-    <table class="table table-bordered mx-auto">
-      <tr>
-        <th></th>
-        <th>バルーン数</th>
-        <th>トロフィー</th>
-      </tr>
-      <% counts.to_a.last(6).reverse_each do |date, count| %>
+    <h3>トロフィー</h3>
+    <small>投稿があった月(過去6か月分)のバルーン投稿実績を表示しています。<br>
+            バルーンの数が1個、10個、20個、28個達成でトロフィーを獲得できます！</small>
+    <div class="mx-auto">
+      <table class="table table-bordered mx-auto">
+        <tr>
+          <th></th>
+          <th>バルーン数</th>
+          <th>トロフィー</th>
         </tr>
-          <th><%= date %></th>
-          <td><%= count %></td>
-          <td class="trophy">
-            <% if count >= 28 %>
-              <div class="trophy-gold">
-                <i class="fa-solid fa-trophy"></i>
-              </div>
-            <% elsif count >= 20 %>
-              <div class="trophy-silver">
-                <i class="fa-solid fa-trophy"></i>
-              </div>
-            <% elsif count >= 10 %>
-              <div class="trophy-bronze">
-                <i class="fa-solid fa-trophy"></i>
-              </div>
-            <% elsif count >= 1 %>
-              <div class="trophy-black">
-                <i class="fa-solid fa-trophy"></i>
-              </div>
-            <% else %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
+        <% counts.to_a.last(6).reverse_each do |date, count| %>
+          </tr>
+            <th><%= date %></th>
+            <td><%= count %></td>
+            <td class="trophy">
+              <% if count >= 28 %>
+                <div class="trophy-gold">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+              <% elsif count >= 20 %>
+                <div class="trophy-silver">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+              <% elsif count >= 10 %>
+                <div class="trophy-bronze">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+              <% elsif count >= 1 %>
+                <div class="trophy-black">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+              <% else %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   <% end %>
 </div>
