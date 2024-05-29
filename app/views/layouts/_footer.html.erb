@@ -13,7 +13,7 @@
       <% elsif user_signed_in? %>
       <div class="footer-bg">
         <%= link_to searches_search_path do %>
-          <div class="footer-icon">
+          <div class="footer-icon ">
             <i class="fa-solid fa-user-group"></i>
           </div>
           <div class="footer-text">
@@ -23,7 +23,7 @@
       </div>
       <div class="footer-bg">
         <%= link_to new_balloon_path do %>
-          <div class="footer-icon">
+          <div class="footer-icon ">
             <i class="fa-solid fa-circle-plus"></i>
           </div>
           <div class="footer-text">
@@ -34,7 +34,7 @@
       <div class="footer-bg">
         <%= link_to mypage_path do %>
         <div class="footer-icon">
-          <%= image_tag current_user.get_profile_image, class: "d-block m-1 rounded-circle" %>
+          <%= image_tag current_user.get_profile_image, size: "24x24", style: "object-fit: cover;", class: "my-2 rounded-circle" %>
         </div>
         <div class="footer-text align-items-end">
           マイページ
@@ -44,7 +44,7 @@
     <% else %>
       <div class="footer-bg">
         <%= link_to searches_search_path do %>
-          <div class="footer-icon">
+          <div class="footer-icon ">
             <i class="fa-solid fa-user-group"></i>
           </div>
           <div class="footer-text">
@@ -54,7 +54,7 @@
       </div>
       <div class="footer-bg">
         <%= link_to new_balloon_path do %>
-          <div class="footer-icon">
+          <div class="footer-icon ">
             <i class="fa-solid fa-circle-plus"></i>
           </div>
           <div class="footer-text">
@@ -64,7 +64,7 @@
       </div>
       <div class="footer-bg">
         <%= link_to new_user_registration_path do %>
-          <div class="footer-icon">
+          <div class="footer-icon ">
             <i class="fa-solid fa-right-to-bracket"></i>
           </div>
           <div class="footer-text">

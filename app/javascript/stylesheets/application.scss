@@ -59,11 +59,6 @@ body {
 	display: block;
 }
 
-:where(img, picture, svg, video) {
-	max-inline-size: 100%;
-	block-size: auto;
-}
-
 hr {
   box-sizing: content-box;
   height: 0;
@@ -433,7 +428,7 @@ body:after {
   background-color: #b6d300;
   border-radius: 50% 50% 0% 0%;
   width: 10%;
-  transform: translateY(20px);
+  transform: translateY(24px);
 }
 
 .footer-bg:hover {
@@ -449,8 +444,8 @@ body:after {
 
 .footer-icon {
   color: white;
-  font-size: clamp(16px, 1.8vw, 28px);
-  width: clamp(16px, 1.8vw, 28px);
+  font-size: clamp(22px, 1.8vw, 28px);
+  width: clamp(20px, 1.8vw, 28px);
   height: auto;
   margin: 0 auto;
 }
