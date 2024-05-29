@@ -3,7 +3,7 @@
   <p>IDが正しいか確認してください。</p>
 <% else %>
   <div class="result-user">
-    <div><%= image_tag result.get_profile_image, size: "50x50", class: "rounded-circle mx-auto" %></div>
+    <div><%= image_tag result.get_profile_image, size: "70x70", style: "object-fit: cover;", class: "rounded-circle mx-auto" %></div>
     <h4><%= result.name %></h4>
     <% if current_user.friends?(@result) %>
       <p>すでに友達です！</p>
