@@ -55,7 +55,7 @@
 |jscroll|無限スクロール|
 |dotenv|環境変数|
 |Bootstrap|レイアウト調整|
-|activestrage|画像保存|
+|activestorage|画像保存|
 |RSpec|テスト用|
 |Faker|テストデータ作成|
 |Factory_bot |テストデータ作成|
