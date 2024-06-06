@@ -16,7 +16,7 @@
       <h2>友達のバルーン</h2>
       <%= link_to "みんなのバルーン一覧へ", root_path %>
     <% else %>
-      <h2>みんなのバルーン</h2>
+      <h2>すべてのバルーン</h2>
       <% if user_signed_in? %>
         <%= link_to "友達のバルーン一覧へ", root_path(type: "friends") %>
       <% end %>
