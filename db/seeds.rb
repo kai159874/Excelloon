@@ -30,26 +30,14 @@ User.find_or_create_by!(email: "lucas@example.com") do |user|
   user.is_active = false
 end
 
-User.find_or_create_by!(email: "ray@example.com") do |user|
-  user.name = "ray"
+User.find_or_create_by!(email: "test@example.com") do |user|
+  user.name = "test"
   user.password = "password"
   user.is_active = true
 end
 
-10.times do
-  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.prev_month)
-end
-
-6.times do
-  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.ago(2.month))
-end
-
-15.times do
-  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.ago(3.month))
-end
-
 3.times do
-  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.ago(4.month))
+  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.ago(9.month))
 end
 
 3.times do
@@ -57,9 +45,20 @@ end
 end
 
 3.times do
-  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.ago(9.month))
+  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.ago(4.month))
 end
 
+15.times do
+  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.ago(3.month))
+end
+
+28.times do
+  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.ago(2.month))
+end
+
+20.times do
+  Balloon.create(content: "test", user_id: 4, color_status: rand(1..12), created_at: Time.current.prev_month)
+end
 
 for n in 1..20 do
 
