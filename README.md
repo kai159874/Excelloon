@@ -31,6 +31,15 @@
 - 身近な人を応援したい時
 - 日々の頑張りを記録したい時
 
+## 動作確認
+### テストユーザー
+- email : test@example.com
+- password : password
+
+### 管理者
+- email : admin@admin
+- password : eeeeee
+
 ## 設計書
 ### ER図
 ![2024-05-27](https://github.com/kai159874/Excelloon/assets/157882052/be1f9dba-baa6-41c5-afa3-b3cfd4d976cd)
