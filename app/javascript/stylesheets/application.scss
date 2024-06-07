@@ -837,3 +837,8 @@ input[type="radio"]:checked + label{
 .user-id::selection {
   background: none;
 }
+
+.profile-image {
+  object-fit: cover;
+  border-radius: 50%;
+}

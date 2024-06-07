@@ -33,8 +33,8 @@
       </div>
       <div class="footer-bg">
         <%= link_to mypage_path do %>
-        <div class="footer-icon">
-          <%= image_tag current_user.get_profile_image, size: "24x24", style: "object-fit: cover;", class: "my-2 rounded-circle" %>
+        <div>
+          <%= image_tag current_user.get_profile_image, size: "24x24", class: "profile-image mx-auto my-2" %>
         </div>
         <div class="footer-text align-items-end">
           マイページ

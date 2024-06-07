@@ -31,7 +31,7 @@
     <% current_user.friends.each do |friend| %>
       <% if @balloon.user_id == friend.id %>
         <div class="m-4 d-flex">
-          <div><%= image_tag friend.get_profile_image, size: "60x60", class: "rounded-circle" %></div>
+          <div><%= image_tag friend.get_profile_image, size: "60x60", class: "profile-image" %></div>
           <div class="ml-4 my-auto"><%= friend.name %> さんのバルーン</div>
         </div>
       <% end %>
