@@ -2,8 +2,8 @@
   <h3 class="profile-name">
     <%= user.name %>
   </h3>
-  <div class="profile-image">
-    <%= image_tag user.get_profile_image, size: "160x160", style: "object-fit: cover;" , class: "rounded-circle mx-auto my-3" %>
+  <div>
+    <%= image_tag user.get_profile_image, size: "160x160", class: "profile-image mx-auto my-3" %>
   </div>
   <div class="h4 profile-id m-2">
     ID:
