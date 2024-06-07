@@ -20,6 +20,9 @@ class User < ApplicationRecord
   has_many :favorites,        dependent: :destroy
   has_many :balloon_comments, dependent: :destroy
   has_many :reports,          dependent: :destroy
+  has_many :user_rooms,       dependent: :destroy
+  has_many :chats,            dependent: :destroy
+  has_many :rooms,            dependent: :destroy, through: :user_rooms
 
   # follow機能
   has_many :active_relationships,  class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
