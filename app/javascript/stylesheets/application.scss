@@ -383,7 +383,8 @@ body:after {
 
 .heading-line {
   width: 99%;
-  margin-top: -5px;
+  margin: auto;
+  padding: 16px 0 0 0;
 }
 
 // header footer
@@ -842,3 +843,48 @@ input[type="radio"]:checked + label{
   object-fit: cover;
   border-radius: 50%;
 }
+
+// DM
+
+.chat-container {
+  max-width: 450px;
+  min-width: 300px;
+}
+
+.message-box {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.message.self {
+  text-align: right;
+  width: 90%;
+  margin-left: auto;
+}
+
+.self .message-body {
+  width: fit-content;
+  border-radius: 16px;
+  margin: 8px 0 0 auto;
+  padding: 8px;
+  background-color: #FFFFFF;
+}
+
+.message.other {
+  text-align: left;
+  width: 90%;
+}
+
+.other .message-body {
+  width: fit-content;
+  border-radius: 16px;
+  margin: 8px;
+  padding: 8px;
+  background-color: #EEEEEE;
+}
+
+.message-sender {
+  font-size: small;
+  opacity: 0.6;
+}
+
