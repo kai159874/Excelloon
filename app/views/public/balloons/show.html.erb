@@ -59,6 +59,8 @@
     <% end %>
   </div>
 
+  <h3>コメント</h3>
+
   <% if current_user == @user || current_user.friends.include?(@user) %>
     <div id="comments-<%= @balloon.id %>">
       <%= render "public/balloon_comments/comments", balloon: @balloon, user: @user %>

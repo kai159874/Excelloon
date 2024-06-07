@@ -1,7 +1,8 @@
 <table class="table mx-auto">
   <tr>
     <th>ユーザー名</th>
-    <th width="50%">コメント</th>
+    <th class="balloon-comment">コメント</th>
+    <th></th>
   </tr>
   <% balloon.balloon_comments.each do |balloon_comment| %>
     <tr>
@@ -11,11 +12,11 @@
             <%= balloon_comment.user.name %>
           </div>
         </td>
-        <td width="50%">
+        <td class="balloon-comment">
           <%= balloon_comment.comment %>
         </td>
         <% if balloon_comment.user_id == current_user.id %>
-          <td width="10%">
+          <td class="balloon-comment-delete">
             <%= link_to balloon_balloon_comment_path(balloon_comment.balloon, balloon_comment), method: :delete, remote: true, data: { confirm: 'コメントを削除しますか？' }, class: "btn btn-sm btn-danger" do %>
               <i class="fa-solid fa-trash-can"></i>
             <% end %>
