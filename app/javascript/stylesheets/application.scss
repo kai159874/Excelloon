@@ -49,6 +49,8 @@ body {
   color: #333;
   text-align: left;
   background-color: #fff;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -461,7 +463,7 @@ body:after {
 // ページ幅
 .layout {
   display: block;
-  width: 40%;
+  width: 50%;
   margin: 64px auto;
 }
 
@@ -646,6 +648,18 @@ input[type="radio"]:checked + label{
 
 .pagination {
   transform: translateX(-200px);
+}
+
+.balloon-created-time, .balloon-user-id {
+  font-size: clamp(10px, 1.1vw, 14px);
+}
+
+.balloon-comment {
+  width: 50%;
+}
+
+.balloon-comment-delete {
+  width: 10%;
 }
 
 // バルーンカラー設定

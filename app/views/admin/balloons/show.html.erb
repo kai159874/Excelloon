@@ -16,14 +16,9 @@
   <div class="mx-auto">
     <table class="table">
       <tr>
-        <th>
-          名前
-        </th>
-        <th>
-          コメント
-        </th>
-        <th>
-        </th>
+        <th>名前</th>
+        <th>コメント</th>
+        <th></th>
       </tr>
       <% @balloon.balloon_comments.each do |balloon_comment| %>
         <tr>
@@ -35,8 +30,10 @@
           <td>
             <%= balloon_comment.comment %>
           </td>
-          <td>
-            <%= link_to '削除する', admin_balloon_balloon_comment_path(balloon_comment.balloon, balloon_comment), method: :delete, data: { confirm: 'コメントを削除しますか？' }, class: "btn btn-sm btn-danger"%>
+          <td width="10%">
+            <%= link_to admin_balloon_balloon_comment_path(balloon_comment.balloon, balloon_comment), method: :delete, data: { confirm: 'コメントを削除しますか？' }, class: "btn btn-sm btn-danger" do %>
+              <i class="fa-solid fa-trash-can"></i>
+            <% end %>
           </td>
         </tr>
       <% end %>
