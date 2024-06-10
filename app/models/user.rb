@@ -23,6 +23,7 @@ class User < ApplicationRecord
   has_many :user_rooms,       dependent: :destroy
   has_many :chats,            dependent: :destroy
   has_many :rooms,            dependent: :destroy, through: :user_rooms
+  has_many :notifications,    dependent: :destroy
 
   # follow機能
   has_many :active_relationships,  class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
