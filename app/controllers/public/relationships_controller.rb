@@ -31,5 +31,5 @@ class Public::RelationshipsController < ApplicationController
     @recieved_request_users = current_user.followers - current_user.friends
     @sent_request_users = current_user.followings - current_user.friends
   end
-  
+
 end

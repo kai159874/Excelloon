@@ -9,8 +9,4 @@ class Relationship < ApplicationRecord
 
   validates :follower_id, uniqueness: { scope: :followed_id }
 
-  after_create do
-    notifications.create(user_id: followed_id)
-  end
-
 end

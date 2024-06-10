@@ -63,5 +63,5 @@ class User < ApplicationRecord
   def follow_request?(user, other_user)
     !user.friends?(other_user) && other_user.following?(user)
   end
-
+  
 end
