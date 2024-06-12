@@ -9,8 +9,11 @@ class Chat < ApplicationRecord
 
   private
 
-  # def create_notifications
-  #   Notification.create(notifiable: self, user: @user, action_type: :direct_message_to_me)
-  # end
+  def create_notifications
+    self.room.user_rooms.each do |user_room|
+      next if user_room.user == self.user # 送信者自身には通知しない
+      Notification.create(notifiable: self, user: user_room.user, action_type: :direct_message_to_me)
+    end
+  end
 
 end

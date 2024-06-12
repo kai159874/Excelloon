@@ -2,7 +2,7 @@
   <td>
     <%= link_to notification.notifiable.user.name, user_path(notification.notifiable.user) %>
     からの
-    <%= link_to '新着メッセージ', rooms_path(notification.notifiable.room) %>
+    <%= link_to '新着メッセージ', chat_path(notification.notifiable.user.id) %>
     です。
     <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
   </td>
