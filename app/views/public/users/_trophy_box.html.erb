@@ -1,5 +1,5 @@
 <div class="layout bg-cover">
-  <% if counts.blank? %>
+  <% if month_balloons_counts.blank? %>
     <h4>バルーンを作ることでトロフィーを獲得できます！</h4>
     <p><%= link_to "こちら", new_balloon_path %>からバルーンを作ってみよう！</p>
   <% else %>
@@ -13,7 +13,7 @@
           <th>バルーン数</th>
           <th>トロフィー</th>
         </tr>
-        <% counts.to_a.last(6).reverse_each do |date, count| %>
+        <% month_balloons_counts.to_a.last(6).reverse_each do |date, count| %>
           </tr>
             <th><%= date %></th>
             <td><%= count %></td>

@@ -1,0 +1,8 @@
+<% unless notification.notifiable.user == current_user %>
+  <li>
+    <%= link_to notification.notifiable.user.name, user_path(notification.notifiable.user) %>
+    があなたの
+    <%= link_to 'バルーン', balloon_path(notification.notifiable.balloon) %>
+    にコメントしました。
+  </li>
+<% end %>

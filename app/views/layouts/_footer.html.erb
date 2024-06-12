@@ -31,6 +31,17 @@
           </div>
         <% end %>
       </div>
+      <!--未読バッヂ付けたい-->
+      <div class="footer-bg">
+        <%= link_to notifications_path do %>
+          <div class="footer-icon ">
+            <i class="fa-sharp fa-solid fa-bell"></i>
+          </div>
+          <div class="footer-text">
+            通知一覧
+          </div>
+        <% end %>
+      </div>
       <div class="footer-bg">
         <%= link_to mypage_path do %>
         <div>

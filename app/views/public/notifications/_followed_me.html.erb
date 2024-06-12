@@ -1,0 +1,11 @@
+<% if notification.notifiable.follower == current_user.friends?(notification.notifiable.follower) %>
+  <li>
+    <%= link_to notification.notifiable.follower.name, follow_requests_path %>
+    さんから友達申請が届きました。
+  </li>
+<% else %>
+  <li>
+    <%= link_to notification.notifiable.follower.name, follow_requests_path %>
+    さんと友達になりました。
+  </li>
+<% end %>
