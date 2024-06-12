@@ -1,11 +1,18 @@
-<div class="layout bg-cover">
-  <h3 class="text-center">通知一覧</h3>
+<div class="layout article-margin bg-cover text-center">
+  <h3>通知一覧</h3>
   <% if @notifications.blank? %>
-    <p class="text-center">現在通知はありません。</p>
+    <p>現在通知はありません。</p>
   <% else %>
-    <%= link_to "全削除",notifications_path(@notifications), method: :delete, class:"btn btn-light" %>
-    <% @notifications.each do |notification| %>
-        <%= render "#{notification.action_type}", notification: notification %>
-    <% end %>
+    <%= link_to "全削除",notification_path(@notifications), method: :delete, class:"btn btn-sm btn-danger mb-4" %>
+    <div class="jscroll-div">
+      <table class="table table-hover table-border">
+        <% @notifications.each do |notification| %>
+          <tr>
+            <%= render "#{notification.action_type}", notification: notification %>
+          </tr>
+        <% end %>
+        <%= paginate @notifications %>
+      </table>
+    </div>
   <% end %>
 </div>

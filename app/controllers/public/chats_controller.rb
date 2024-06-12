@@ -23,6 +23,9 @@ class Public::ChatsController < ApplicationController
     @chat = current_user.chats.new(chat_params)
     @room = @chat.room
     @chats = @room.chats
+    @room_other_user = @room.user_rooms.where.not(user_id: current_user.id).first
+    @user = @room_other_user.user
+    Notification.create(notifiable: chat, user: @user, action_type: :direct_message_to_me)
     @chat.save
   end
 

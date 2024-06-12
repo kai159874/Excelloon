@@ -9,7 +9,7 @@ class BalloonComment < ApplicationRecord
   validates :comment, presence: true
 
   private
-  
+
   def create_notifications
     Notification.create(notifiable: self, user: balloon.user, action_type: :commented_to_own_balloon)
   end
