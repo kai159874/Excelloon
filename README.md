@@ -42,12 +42,12 @@
 
 ## 設計書
 ### ER図
-![2024-05-27](https://github.com/kai159874/Excelloon/assets/157882052/be1f9dba-baa6-41c5-afa3-b3cfd4d976cd)
+![2024-06-13](https://github.com/kai159874/Excelloon/assets/157882052/947c6b41-1bb2-4dce-85b2-88169acf416f)
 ### 画面設計
 #### 管理者側
 ![2024-05-27 (1)](https://github.com/kai159874/Excelloon/assets/157882052/971ada47-a32a-455b-a18d-56576929410d)
 #### エンドユーザー側
-![2024-05-27 (2)](https://github.com/kai159874/Excelloon/assets/157882052/3ce25b22-8cef-40b9-a090-cd17894904ce)
+![2024-06-13 (1)](https://github.com/kai159874/Excelloon/assets/157882052/0140ec2f-d970-4b77-8019-bb61bdee9e4a)
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
