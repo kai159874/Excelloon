@@ -9,12 +9,12 @@
       <h2>友達のバルーン</h2>
       <p>ヒットするバルーンがありません。</p>
       <p>友達検索から友達申請をしてみよう！</p>
-      <%= link_to "みんなのバルーン一覧へ", root_path %>
+      <%= link_to "すべてのバルーンへ", root_path %>
     </div>
   <% else %>
     <% if @type == "friends" %>
       <h2>友達のバルーン</h2>
-      <%= link_to "みんなのバルーン一覧へ", root_path %>
+      <%= link_to "すべてのバルーンへ", root_path %>
     <% else %>
       <h2>すべてのバルーン</h2>
       <% if user_signed_in? %>
