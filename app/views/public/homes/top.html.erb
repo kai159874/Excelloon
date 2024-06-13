@@ -4,29 +4,48 @@
   <p>”みんなの頑張りを応援し合うおだやかでポジティブなプラットフォーム”を目指しています！</p>
   <hr class="heading-line">
 
-  <% if @balloons.count == 0 %>
-    <div class="text-center">
-      <h2>友達のバルーン</h2>
-      <p>ヒットするバルーンがありません。</p>
-      <p>友達検索から友達申請をしてみよう！</p>
-      <%= link_to "すべてのバルーンへ", root_path %>
+  <!--タブ作成-->
+  <!--内容入れ込む-->
+  <!--未ログイン判定入れる-->
+  <!--JSで隠す-->
+
+  <div class="wrap">
+    <ul id="tab-menu">
+      <li><a href="#tab1" class="active">すべてのバルーン</a></li>
+      <li><a href="#tab2" class="">友達のバルーン</a></li>
+    </ul>
+
+    <div id="tab-contents">
+      <div id="tab1" class="tab">
+        <h2>すべてのバルーン</h2>
+        <div>
+          <%= render "public/searches/search_form" %>
+        </div>
+        <div class="jscroll-div balloon-all-tab" tab=".balloon-all-tab">
+          <%= render "public/balloons/index", balloons: @balloon_all, stickers: @stickers %>
+          <%= paginate @balloon_all, params_name: "balloon_all_page" %>
+        </div>
+      </div>
+
+      <div id="tab2" class="tab">
+        <% if @friends_balloons.count == 0 %>
+          <div class="text-center">
+            <h2>友達のバルーン</h2>
+            <p>ヒットするバルーンがありません。</p>
+            <p>友達検索から友達申請をしてみよう！</p>
+          </div>
+        <% else %>
+          <h2>友達のバルーン</h2>
+          <div>
+            <%= render "public/searches/search_form" %>
+          </div>
+          <div class="jscroll-div friends-balloons-tab" tab=".friends-balloons-tab">
+            <%= render "public/balloons/index", balloons: @friends_balloons, stickers: @stickers %>
+            <%= paginate @friends_balloons, params_name: "friends_balloons_page" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% else %>
-    <% if @type == "friends" %>
-      <h2>友達のバルーン</h2>
-      <%= link_to "すべてのバルーンへ", root_path %>
-    <% else %>
-      <h2>すべてのバルーン</h2>
-      <% if user_signed_in? %>
-        <%= link_to "友達のバルーン一覧へ", root_path(type: "friends") %>
-      <% end %>
-    <% end %>
-      <div>
-        <%= render "public/searches/search_form" %>
-      </div>
-      <div class="jscroll-div">
-        <%= render "public/balloons/index", balloons: @balloons, stickers: @stickers %>
-        <%= paginate @balloons %>
-      </div>
-  <% end %>
+  </div>
+
 </article>

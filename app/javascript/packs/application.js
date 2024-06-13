@@ -22,7 +22,7 @@ var jscrollOption = {
   loadingHtml: '読み込み中・・・',
   autoTrigger: true,
   padding: 0,
-  contentSelector: '.jscroll-div',
+  contentSelector: $('.jscroll-div').attr("tab"),
   nextSelector: 'span.next a'
 }
 
@@ -33,4 +33,14 @@ $(document).on('turbolinks:load',function() {
 $(document).on("turbolinks:load", function(){
   let target = document.getElementById( "message_scroll" );
   target.scrollIntoView(false);
+});
+
+$('#tab-contents .tab[id != "tab1"]').hide();
+
+$('#tab-menu a').on('click', function(event) {
+  $("#tab-contents .tab").hide();
+  $("#tab-menu .active").removeClass("active");
+  $(this).addClass("active");
+  $($(this).attr("href")).show();
+  event.preventDefault();
 });
