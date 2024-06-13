@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     resources :users, only: [:show] do
       resource :relationships, only: [:create, :destroy]
     end
+    resources :chats, only: [:show, :create]
+    resources :notifications, only: [:index, :destroy]
 
     resources :balloons,            only: [:new, :create, :show, :update, :destroy] do
       resource  :favorites,         only: [:create, :destroy]

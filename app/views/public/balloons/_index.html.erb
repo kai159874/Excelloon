@@ -14,7 +14,7 @@
           <% if user_signed_in? %>
             <% current_user.friends.each do |friend| %>
               <% if balloon.user_id == friend.id %>
-               <div><%= image_tag friend.get_profile_image, size: "60x60", class: "rounded-circle mx-auto" %></div>
+               <div><%= image_tag friend.get_profile_image, size: "60x60", class: "profile-image mx-auto" %></div>
                <div><%= friend.name %></div>
               <% end %>
             <% end %>

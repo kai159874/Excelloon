@@ -65,9 +65,9 @@ class Public::UsersController < ApplicationController
 
   def set_months_balloons_counts(user)
     if ActiveRecord::Base.connection.adapter_name.downcase == 'sqlite'
-      @counts = user.balloons.group("strftime('%Y-%m', created_at)").count
+      @month_balloons_counts = user.balloons.group("strftime('%Y-%m', created_at)").count
     else
-      @counts = user.balloons.group("DATE_FORMAT(created_at, '%Y-%m')").count
+      @month_balloons_counts = user.balloons.group("DATE_FORMAT(created_at, '%Y-%m')").count
     end
   end
 

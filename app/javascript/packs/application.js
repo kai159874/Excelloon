@@ -29,3 +29,8 @@ var jscrollOption = {
 $(document).on('turbolinks:load',function() {
     $(".jscroll-div").jscroll(jscrollOption);
 });
+
+$(document).on("turbolinks:load", function(){
+  let target = document.getElementById( "message_scroll" );
+  target.scrollIntoView(false);
+});

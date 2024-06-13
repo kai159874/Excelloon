@@ -14,7 +14,9 @@
       <div class="footer-bg">
         <%= link_to searches_search_path do %>
           <div class="footer-icon ">
-            <i class="fa-solid fa-user-group"></i>
+            <span class="fa-stack">
+              <i class="fa-solid fa-user-group"></i>
+            </span>
           </div>
           <div class="footer-text">
             友達を探す
@@ -24,7 +26,9 @@
       <div class="footer-bg">
         <%= link_to new_balloon_path do %>
           <div class="footer-icon ">
-            <i class="fa-solid fa-circle-plus"></i>
+            <span class="fa-stack">
+              <i class="fa-solid fa-circle-plus"></i>
+            </span>
           </div>
           <div class="footer-text">
             新規作成
@@ -32,9 +36,30 @@
         <% end %>
       </div>
       <div class="footer-bg">
+        <%= link_to notifications_path do %>
+          <div class="footer-icon ">
+            <% if current_user.notifications.where(read: false).exists? %>
+              <span class="fa-stack">
+                <i class="fa-sharp fa-solid fa-bell"></i>
+                <i class="fas fa-circle n-circle fa-stack-1x"></i>
+              </span>
+            <% else %>
+            <span class="fa-stack">
+              <i class="fa-sharp fa-solid fa-bell"></i>
+            </span>
+            <% end %>
+          </div>
+          <div class="footer-text">
+            通知一覧
+          </div>
+        <% end %>
+      </div>
+      <div class="footer-bg">
         <%= link_to mypage_path do %>
-        <div class="footer-icon">
-          <%= image_tag current_user.get_profile_image, size: "24x24", style: "object-fit: cover;", class: "my-2 rounded-circle" %>
+        <div>
+          <span>
+            <%= image_tag current_user.get_profile_image, size: "32x32", class: "profile-image mx-auto my-2" %>
+          </span>
         </div>
         <div class="footer-text align-items-end">
           マイページ
@@ -45,7 +70,9 @@
       <div class="footer-bg">
         <%= link_to searches_search_path do %>
           <div class="footer-icon ">
-            <i class="fa-solid fa-user-group"></i>
+            <span class="fa-stack">
+              <i class="fa-solid fa-user-group"></i>
+            </span>
           </div>
           <div class="footer-text">
             友達を探す
@@ -55,7 +82,9 @@
       <div class="footer-bg">
         <%= link_to new_balloon_path do %>
           <div class="footer-icon ">
-            <i class="fa-solid fa-circle-plus"></i>
+            <span class="fa-stack">
+              <i class="fa-solid fa-circle-plus"></i>
+            </span>
           </div>
           <div class="footer-text">
             新規作成
@@ -65,7 +94,9 @@
       <div class="footer-bg">
         <%= link_to new_user_registration_path do %>
           <div class="footer-icon ">
-            <i class="fa-solid fa-right-to-bracket"></i>
+            <span class="fa-stack">
+              <i class="fa-solid fa-right-to-bracket"></i>
+            </span>
           </div>
           <div class="footer-text">
             会員登録

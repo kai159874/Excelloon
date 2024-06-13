@@ -1,0 +1,9 @@
+<% unless notification.notifiable.user == current_user %>
+  <td>
+    <%= link_to notification.notifiable.user.name, user_path(notification.notifiable.user) %>
+    さんがあなたの
+    <%= link_to 'バルーン', balloon_path(notification.notifiable.balloon) %>
+    にコメントしました。
+    <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
+  </td>
+<% end %>
