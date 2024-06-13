@@ -447,10 +447,25 @@ body:after {
 
 .footer-icon {
   color: white;
-  font-size: clamp(22px, 1.8vw, 28px);
-  width: clamp(20px, 1.8vw, 28px);
+  font-size: 28px;
   height: auto;
-  margin: 0 auto;
+  margin: 2px auto 4px;
+}
+
+// 未読バッジ
+
+.fa-stack {
+  position: relative;
+  display: inline;
+  line-height: 1em;
+}
+
+.n-circle {
+  font-size: 16px;
+  position: absolute;
+  left: 0.7rem;
+  top: 0rem;
+  color: #efa04c;
 }
 
 .footer-text {
@@ -465,6 +480,10 @@ body:after {
 .layout {
   display: block;
   width: 50%;
+  margin: auto;
+}
+
+.article-margin {
   margin: 64px auto;
 }
 
@@ -648,7 +667,8 @@ input[type="radio"]:checked + label{
 }
 
 .pagination {
-  transform: translateX(-200px);
+  line-height: 0;
+  transform: translateX(-500px);
 }
 
 .balloon-created-time, .balloon-user-id {

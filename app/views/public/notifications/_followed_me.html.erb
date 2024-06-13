@@ -1,0 +1,13 @@
+<% unless current_user.friends?(notification.notifiable.follower) %>
+  <td>
+    <%= link_to notification.notifiable.follower.name, follow_requests_path %>
+    さんから友達申請が届きました。
+    <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
+  </td>
+<% else %>
+  <td>
+    <%= link_to notification.notifiable.follower.name, user_path(notification.notifiable.follower) %>
+    さんと友達になりました。
+    <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
+  </td>
+<% end %>
