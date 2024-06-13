@@ -11,7 +11,9 @@ class BalloonComment < ApplicationRecord
   private
 
   def create_notifications
-    Notification.create(notifiable: self, user: balloon.user, action_type: :commented_to_own_balloon)
+    unless balloon.user == self.user
+      Notification.create(notifiable: self, user: balloon.user, action_type: :commented_to_own_balloon)
+    end
   end
 
 end

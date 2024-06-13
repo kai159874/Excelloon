@@ -6,7 +6,7 @@
   </td>
 <% else %>
   <td>
-    <%= link_to notification.notifiable.follower.name, follow_requests_path %>
+    <%= link_to notification.notifiable.follower.name, user_path(notification.notifiable.follower) %>
     さんと友達になりました。
     <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
   </td>
