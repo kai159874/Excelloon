@@ -1,4 +1,4 @@
-<div class="layout">
+<div class=" balloon-flex">
   <% balloons.each do |balloon| %>
     <div class="balloon-frame">
       <% if user_signed_in? %>
@@ -6,24 +6,24 @@
           <%= render "public/favorites/favorite_btn", balloon: balloon %>
         </div>
       <% end %>
-      <%= link_to balloon_path(balloon), class: "" do %>
-      <!--カラー調整-->
-        <div class="card balloon balloon-<%= balloon.color_status %>">
+
+      <div class="card balloon balloon-<%= balloon.color_status %>">
+        <%= link_to balloon_path(balloon) do %>
           <%= image_tag balloon.convert_balloon_image("300"), class: "balloon-image" if balloon.balloon_image.attached? %>
           <div class="balloon-content"><%= simple_format(h(balloon.content)) %></div>
           <% if user_signed_in? %>
             <% current_user.friends.each do |friend| %>
               <% if balloon.user_id == friend.id %>
                <div><%= image_tag friend.get_profile_image, size: "60x60", class: "profile-image mx-auto" %></div>
-               <div><%= friend.name %></div>
+               <div class="text-black"><%= friend.name %></div>
               <% end %>
             <% end %>
           <% end %>
-        </div>
-        <div id="sticker-<%= balloon.id %>">
-          <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: balloon, stickers: stickers %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+      <div id="sticker-<%= balloon.id %>">
+        <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: balloon, stickers: stickers %>
+      </div>
     </div>
   <% end %>
 </div>
