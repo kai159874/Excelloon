@@ -19,6 +19,9 @@ class Public::BalloonsController < ApplicationController
   def show
     @stickers = Sticker.all
     @user = User.find(@balloon.user_id)
+    unless @user.is_active
+      redirect_to root_path, alert: "退会ユーザーのバルーンです。"
+    end
     @balloon_comment = BalloonComment.new
   end
 
