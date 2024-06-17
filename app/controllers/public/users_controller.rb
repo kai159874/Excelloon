@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_current_user, only: [:mypage, :edit, :update, :withdrow]
+  before_action :exist_user?, only: [:show]
 
   def mypage
     @stickers = Sticker.all
@@ -68,6 +69,12 @@ class Public::UsersController < ApplicationController
       @month_balloons_counts = user.balloons.group("strftime('%Y-%m', created_at)").count
     else
       @month_balloons_counts = user.balloons.group("DATE_FORMAT(created_at, '%Y-%m')").count
+    end
+  end
+
+  def exist_user?
+    unless User.find_by(public_uid: params[:id])
+      redirect_to root_path, alert: "存在しないユーザーです。"
     end
   end
 
