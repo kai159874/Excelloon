@@ -1,6 +1,7 @@
 class Public::BalloonsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_balloon, only: [:show, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def new
     @balloon = Balloon.new
@@ -42,6 +43,10 @@ class Public::BalloonsController < ApplicationController
 
   def ensure_balloon
     @balloon = Balloon.find(params[:id])
+  end
+
+  def record_not_found
+    redirect_to root_path, alert: "存在しないページです。"
   end
 
 end

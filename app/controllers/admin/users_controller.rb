@@ -24,6 +24,9 @@ class Admin::UsersController < ApplicationController
 
   def ensure_user
     @user = User.find_by(public_uid: params[:id])
+    unless @user
+      redirect_to admin_top_path, alert: "存在しないユーザーです。"
+    end
   end
 
 end
