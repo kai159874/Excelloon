@@ -1,5 +1,5 @@
-<article class="layout mb-5">
-  <div class="balloon-frame">
+<article class="layout pb-5">
+  <div class="balloon-frame-show">
     <div class="card balloon balloon-<%= @balloon.color_status %>">
       <%= image_tag @balloon.convert_balloon_image("300"), class: "balloon-image" if @balloon.balloon_image.attached? %>
       <div class="balloon-content"><%= simple_format(h(@balloon.content)) %></div>
