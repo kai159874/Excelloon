@@ -32,5 +32,6 @@ $(document).on('turbolinks:load',function() {
 
 $(document).on("turbolinks:load", function(){
   let target = document.getElementById( "message_scroll" );
+  if (!target){ return false;}
   target.scrollIntoView(false);
 });
