@@ -39,7 +39,7 @@ describe 'ユーザログイン後のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/balloons/' + balloon.id.to_s
       end
-      it '投稿のbodyが表示される' do
+      it '投稿のcontentが表示される' do
         expect(page).to have_content balloon.content
       end
       it '投稿の削除リンクが表示される' do
