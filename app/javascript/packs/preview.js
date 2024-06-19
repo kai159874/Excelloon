@@ -8,6 +8,9 @@ document.addEventListener("turbolinks:load", function() {
     imageElement.appendChild(blobImage);
   };
 
+  let input = document.getElementById('file-input')
+  if (!input){ return false;}
+
   document.getElementById('file-input').addEventListener('change', (e) => {
     const imageContent = document.querySelector('img');
     if (imageContent){
