@@ -9,9 +9,23 @@ class Public::BalloonsController < ApplicationController
 
   def create
     @balloon = current_user.balloons.new(balloon_params)
+    
+    tag_name = params[:tag_name].split(",")
+    tags = tag_name.map { |tag_name| Tag.find_or_initialize_by(name: tag_name) }
+    
+    tags.each do |tag|
+      if tag.invalid?
+        @tag_name = params[:tag_name]
+        @balloon.errors.add(:tags, tag.errors.full_massages.join("\n"))
+        return render :edit, status: :unprocessable_entity
+      end
+    end
+    @balloon.tags = tags
+    
     if @balloon.save
       redirect_to balloon_path(@balloon), notice: "バルーンを作りました！"
     else
+      @tag_name = params[:tag_name]
       render :new
     end
   end

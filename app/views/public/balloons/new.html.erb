@@ -12,7 +12,12 @@
       </div>
 
       <div>
-        <%= f.label :balloon_image, class: "h3" do %>
+        <%= f.lavel :tag_name, "タグ(,区切りで入力してください)" %>
+        <%= f.text_field_tag :tag_name, tag_name %>
+      </div>
+
+      <div>
+        <%= f.lavel :balloon_image, class: "h3" do %>
           <i class="fa-regular fa-image"></i>
           <%= f.file_field :balloon_image, id: "file-input", class: "balloon-image-input" %>
         <% end %>

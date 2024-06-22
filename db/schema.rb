@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_10_055259) do
+ActiveRecord::Schema.define(version: 2024_06_22_055003) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -69,6 +69,16 @@ ActiveRecord::Schema.define(version: 2024_06_10_055259) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["balloon_id"], name: "index_balloon_stickers_on_balloon_id"
+  end
+
+  create_table "balloon_tags", force: :cascade do |t|
+    t.integer "balloon_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["balloon_id", "tag_id"], name: "index_balloon_tags_on_balloon_id_and_tag_id", unique: true
+    t.index ["balloon_id"], name: "index_balloon_tags_on_balloon_id"
+    t.index ["tag_id"], name: "index_balloon_tags_on_tag_id"
   end
 
   create_table "balloons", force: :cascade do |t|
@@ -147,6 +157,13 @@ ActiveRecord::Schema.define(version: 2024_06_10_055259) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
   create_table "user_rooms", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "room_id", null: false
@@ -177,6 +194,8 @@ ActiveRecord::Schema.define(version: 2024_06_10_055259) do
   add_foreign_key "balloon_comments", "balloons"
   add_foreign_key "balloon_comments", "users"
   add_foreign_key "balloon_stickers", "balloons"
+  add_foreign_key "balloon_tags", "balloons"
+  add_foreign_key "balloon_tags", "tags"
   add_foreign_key "balloons", "users"
   add_foreign_key "chats", "rooms"
   add_foreign_key "chats", "users"
