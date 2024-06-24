@@ -10,18 +10,10 @@ class Public::BalloonsController < ApplicationController
   def create
     @balloon = current_user.balloons.new(balloon_params)
 
-    tag_names = params[:tag_name].split(",")
+    tag_names = params[:tag_name].split(",").uniq
     tags = tag_names.map { |tag_name| Tag.find_or_initialize_by(name: tag_name) }
-
-    tags.each do |tag|
-      if tag.valid?
-        @tag_name = params[:tag_name]
-        @balloon.errors.add("タグの入力に失敗しました。", tag.errors.full_messages.join("\n"))
-        return render :new
-      end
-    end
     @balloon.tags = tags
-
+    
     if @balloon.save
       redirect_to balloon_path(@balloon), notice: "バルーンを作りました！"
     else
