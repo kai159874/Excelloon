@@ -13,7 +13,7 @@
       <% end %>
       <%= image_tag @balloon.convert_balloon_image("300"), class: "balloon-image" if @balloon.balloon_image.attached? %>
       <div class="balloon-content"><%= simple_format(h(@balloon.content)) %></div>
-      <% balloon.tags.each do |tag| %>
+      <% @balloon.tags.each do |tag| %>
         <div class="balloon-tag"><%= tag.name %></div>
       <% end %>
     </div>

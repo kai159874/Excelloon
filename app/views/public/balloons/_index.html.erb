@@ -20,6 +20,11 @@
             <% end %>
           <% end %>
         <% end %>
+        <div class="balloon-tag">
+          <% @balloon.tags.each do |tag| %>
+            <div class="tag-box"><%= tag.name %></div>
+          <% end %>
+        </div>
       </div>
       <div id="sticker-<%= balloon.id %>">
         <%= render "public/balloon_stickers/balloon_sticker_btn", balloon: balloon, stickers: stickers %>
