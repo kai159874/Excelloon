@@ -8,7 +8,7 @@
       <% end %>
 
       <div class="card balloon balloon-<%= balloon.color_status %>">
-        <%= link_to balloon_path(balloon) do %>
+        <%= link_to balloon_path(balloon), class: "balloon-link" do  %>
           <%= image_tag balloon.convert_balloon_image("300"), class: "balloon-image" if balloon.balloon_image.attached? %>
           <div class="balloon-content"><%= simple_format(h(balloon.content)) %></div>
           <% if user_signed_in? %>
@@ -21,8 +21,8 @@
           <% end %>
         <% end %>
         <div class="balloon-tag">
-          <% @balloon.tags.each do |tag| %>
-            <div class="tag-box"><%= tag.name %></div>
+          <% balloon.tags.each do |tag| %>
+            <div class="tag-box"><%= link_to "##{tag.name}", root_path %></div>
           <% end %>
         </div>
       </div>
