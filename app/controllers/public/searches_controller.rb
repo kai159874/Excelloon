@@ -11,12 +11,22 @@ class Public::SearchesController < ApplicationController
 
   def balloons_search
     @stickers = Sticker.all
-    unless params[:keyword].nil?
-      @keyword = params[:keyword]
-      @balloons = Balloon.where("content LIKE ?", "%#{@keyword}%").where_user_active.includes(:user).order(id: "DESC").page(params[:page]).per(20)
+    @search_obj = params[:search_obj]
+    unless params[:keyword] == ""
+      if @search_obj == "content"
+        @keyword = params[:keyword]
+        @balloons = Balloon.where("content LIKE ?", "%#{@keyword}%").where_user_active.includes(:user).order(id: "DESC").page(params[:page]).per(20)
+      else
+        @keyword = "##{params[:keyword]}"
+        @tag = Tag.find_by(name: params[:keyword])
+        unless @tag.nil?
+          @balloons = @tag.balloons.where_user_active.includes(:user).order(id: "DESC").page(params[:page]).per(20)
+        else
+          @balloons =[]
+        end
+      end
     else
-      @keyword = "##{params[:tag_keyword]}"
-      @balloons = Tag.find_by(name: params[:tag_keyword]).balloons.where_user_active.includes(:user).order(id: "DESC").page(params[:page]).per(20)
+      redirect_to request.referer
     end
   end
 end
