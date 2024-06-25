@@ -1,11 +1,13 @@
 class Balloon < ApplicationRecord
   belongs_to :user
-  
+
   has_many :favorites,        dependent: :destroy
   has_many :reports,          dependent: :destroy
   has_many :balloon_comments, dependent: :destroy
   has_many :balloon_stickers, dependent: :destroy
-  
+  has_many :balloon_tags,     dependent: :destroy
+  has_many :tags, through: :balloon_tags
+
   has_one :notification, as: :notifiable, dependent: :destroy
 
   has_one_attached :balloon_image

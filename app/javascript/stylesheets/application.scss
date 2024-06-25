@@ -666,6 +666,15 @@ input[type="radio"]:checked + label{
   border: 6px solid;
   border-radius: 46%;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .5);
+  position: relative;
+    .balloon-link::before{
+      content:"";
+      position: absolute;
+      inset: 0;
+    }
+    .balloon-tag a{
+      position: relative;
+    }
 }
 
 .balloon:hover {
@@ -675,6 +684,18 @@ input[type="radio"]:checked + label{
 .balloon-content {
   color: #222222;
   margin: 15%;
+}
+
+.balloon-tag {
+  width: fix-content;
+  margin: auto;
+}
+
+.tag-box a {
+  color: #555555;
+    &:hover {
+      opacity: 0.5;
+    }
 }
 
 .text-black {
