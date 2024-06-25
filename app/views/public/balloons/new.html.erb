@@ -12,6 +12,11 @@
       </div>
 
       <div>
+        <%= label :tag_name, "タグ(,区切りで入力、最大20文字)" %>
+        <%= text_field_tag :tag_name %>
+      </div>
+
+      <div>
         <%= f.label :balloon_image, class: "h3" do %>
           <i class="fa-regular fa-image"></i>
           <%= f.file_field :balloon_image, id: "file-input", class: "balloon-image-input" %>
