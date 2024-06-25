@@ -5,14 +5,14 @@
   <hr class="heading-line">
 
   <h2>"<%= @keyword %>"の検索結果</h2>
+  <%= link_to "すべてのバルーンへ", root_path %>
   <% if @balloons.count == 0 %>
     <div class="text-center">
-      <p>ヒットするバルーンがありません。</p>
       <div>
         <%= render "public/searches/search_form" %>
       </div>
-      <%= link_to "すべてのバルーンへ", root_path %>
     </div>
+    <p class="mt-5">ヒットするバルーンがありません。</p>
   <% else %>
     <div>
       <%= render "public/searches/search_form" %>

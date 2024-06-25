@@ -514,7 +514,7 @@ body:after {
 
 // カラー選択ボタン
 
-input[type=radio] {
+.color_form input[type=radio] {
   display: none; /* ラジオボタンを非表示にする */
 }
 
