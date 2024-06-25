@@ -11,6 +11,13 @@
         <%= link_to balloon_path(balloon), class: "balloon-link" do  %>
           <%= image_tag balloon.convert_balloon_image("300"), class: "balloon-image" if balloon.balloon_image.attached? %>
           <div class="balloon-content"><%= simple_format(h(balloon.content)) %></div>
+        <% end %>
+        <div class="balloon-tag">
+          <% balloon.tags.each do |tag| %>
+            <div class="tag-box"><%= link_to "##{tag.name}", searches_balloons_search_path(search_obj: :tag, keyword: tag.name ) %></div>
+          <% end %>
+        </div>
+        <div class="friend-introduction">
           <% if user_signed_in? %>
             <% current_user.friends.each do |friend| %>
               <% if balloon.user_id == friend.id %>
@@ -18,11 +25,6 @@
                <div class="text-black"><%= friend.name %></div>
               <% end %>
             <% end %>
-          <% end %>
-        <% end %>
-        <div class="balloon-tag">
-          <% balloon.tags.each do |tag| %>
-            <div class="tag-box"><%= link_to "##{tag.name}", searches_balloons_search_path(search_obj: :tag, keyword: tag.name ) %></div>
           <% end %>
         </div>
       </div>
