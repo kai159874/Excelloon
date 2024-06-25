@@ -15,7 +15,7 @@
       <div class="balloon-content"><%= simple_format(h(@balloon.content)) %></div>
       <div class="balloon-tag">
         <% @balloon.tags.each do |tag| %>
-          <div class="tag-box"><%= link_to "##{tag.name}", root_path %></div>
+          <div class="tag-box"><%= link_to "##{tag.name}", searches_balloons_search_path(tag_keyword: tag.name ) %></div>
         <% end %>
       </div>
     </div>
