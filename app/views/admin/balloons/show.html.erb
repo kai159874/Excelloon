@@ -3,6 +3,11 @@
     <div class="card balloon balloon-<%= @balloon.color_status %>">
       <%= image_tag @balloon.convert_balloon_image("300"), class: "balloon-image" if @balloon.balloon_image.attached? %>
       <div class="balloon-content"><%= simple_format(h(@balloon.content)) %></div>
+      <div class="balloon-tag">
+        <% @balloon.tags.each do |tag| %>
+          <div class="tag-box"><%= "##{tag.name}" %></div>
+        <% end %>
+      </div>
     </div>
     <div class="balloon-created-time">投稿日時: <%= l @balloon.created_at %></div>
     <div class="balloon-user-id">ID: <%= @user.public_uid %></div>
