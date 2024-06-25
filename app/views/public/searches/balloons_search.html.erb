@@ -8,7 +8,9 @@
   <% if @balloons.count == 0 %>
     <div class="text-center">
       <p>ヒットするバルーンがありません。</p>
-      <p>ワードを変更して再検索してください。</p>
+      <div>
+        <%= render "public/searches/search_form" %>
+      </div>
       <%= link_to "すべてのバルーンへ", root_path %>
     </div>
   <% else %>
