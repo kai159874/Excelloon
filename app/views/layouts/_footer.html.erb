@@ -2,13 +2,13 @@
   <div class="d-flex justify-content-around text-center">
     <% if admin_signed_in? %>
       <div class="bg-secondary col-4">
-        <%= link_to "通報一覧", admin_top_path, class: "footer-text" %>
+        <%= link_to "通報一覧", admin_top_path, class: "admin-footer-text" %>
       </div>
       <div class="bg-secondary col-4">
-        <%= link_to "会員一覧", admin_users_path, class: "footer-text" %>
+        <%= link_to "会員一覧", admin_users_path, class: "admin-footer-text" %>
       </div>
       <div class="bg-secondary col-4">
-        <%= link_to 'ステッカー一覧', admin_stickers_path, class: "footer-text" %>
+        <%= link_to 'ステッカー一覧', admin_stickers_path, class: "admin-footer-text" %>
       </div>
       <% elsif user_signed_in? %>
       <div class="footer-bg">
