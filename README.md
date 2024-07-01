@@ -42,7 +42,7 @@
 
 ## 設計書
 ### ER図
-![2024-06-25 (1)](https://github.com/kai159874/Excelloon/assets/157882052/b0af3b10-ee0a-41db-a5e8-708b7d788c41)
+![2024-07-01](https://github.com/kai159874/Excelloon/assets/157882052/7c273c29-63b5-47c1-909d-1144bf654e69)
 ### 画面設計
 #### 管理者側
 ![2024-05-27 (1)](https://github.com/kai159874/Excelloon/assets/157882052/971ada47-a32a-455b-a18d-56576929410d)
