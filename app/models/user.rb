@@ -34,7 +34,6 @@ class User < ApplicationRecord
   def get_profile_image
     if profile_image.attached?
       profile_image.variant( resize: "160x160" ).processed
-      return profile_image
     else
       profile_image = 'no_image.jpg'
     end
@@ -63,5 +62,5 @@ class User < ApplicationRecord
   def follow_request?(user, other_user)
     !user.friends?(other_user) && other_user.following?(user)
   end
-  
+
 end
